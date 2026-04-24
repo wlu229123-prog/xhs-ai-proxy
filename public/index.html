@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>薯运 · 小红书 AI 运营工作台</title>
+<style>
+:root {
+  --red: #E8443A;
+  --red-l: #FFF1F0;
+  --red-m: #FFD0CE;
+  --blue: #2654D4;
+  --blue-l: #EEF2FF;
+  --green: #1B7B4A;
+  --green-l: #EDFAF3;
+  --gold: #C88F2A;
+  --gold-l: #FFF8E6;
+  --purple: #6B3FA0;
+  --purple-l: #F3EEFF;
+  --bg: #F7F5F0;
+  --card: #FFFFFF;
+  --border: #E8E4DC;
+  --text: #1A1714;
+  --muted: #7A756D;
+  --light: #B5B0A8;
+  --r: 14px;
+  --rs: 9px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'PingFang SC',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;font-size:14px}
+
+/* ── Header ── */
+header{background:var(--card);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:54px;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:9px}
+.logo-icon{width:30px;height:30px;background:var(--red);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.logo-name{font-size:16px;font-weight:600}
+.logo-sub{font-size:12px;color:var(--muted);margin-left:2px}
+.hdr-right{display:flex;align-items:center;gap:10px}
+.status-badge{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--muted)}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.4}50%{opacity:1}}
+.proxy-btn{display:flex;align-items:center;gap:5px;padding:5px 12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);font-size:12px;color:var(--muted);cursor:pointer;transition:all .15s;font-family:inherit}
+.proxy-btn:hover{border-color:var(--text);color:var(--text)}
+.proxy-btn.ok{border-color:var(--green);color:var(--green);background:var(--green-l)}
+
+/* ── Layout ── */
+.layout{display:grid;grid-template-columns:210px 1fr;min-height:calc(100vh - 54px)}
+
+/* ── Sidebar ── */
+.sidebar{background:var(--card);border-right:1px solid var(--border);padding:1.25rem 0}
+.sb-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--light);padding:0 1.25rem;margin-bottom:.5rem}
+.sb-section{margin-bottom:1.25rem}
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 12px;margin:0 .5rem;border-radius:var(--rs);cursor:pointer;color:var(--muted);transition:all .15s;border:none;background:none;width:calc(100% - 1rem);text-align:left;font-family:inherit}
+.nav-item:hover{background:var(--bg);color:var(--text)}
+.nav-item.active{background:var(--red-l);color:var(--red);font-weight:500}
+.nav-icon{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.nav-txt{font-size:13px}
+.nav-sub{font-size:10px;color:var(--light);margin-top:1px}
+.nav-item.active .nav-sub{color:var(--red-m)}
+
+/* ── Main ── */
+main{padding:1.75rem 2rem;max-width:860px}
+.page{display:none}
+.page.active{display:block}
+
+/* ── Page header ── */
+.ph{margin-bottom:1.25rem}
+.ptag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;margin-bottom:6px;letter-spacing:.03em}
+.ptag-r{background:var(--red-l);color:var(--red)}
+.ptag-b{background:var(--blue-l);color:var(--blue)}
+.ptag-g{background:var(--green-l);color:var(--green)}
+.ptitle{font-size:20px;font-weight:600;margin-bottom:3px}
+.pdesc{font-size:13px;color:var(--muted)}
+
+/* ── Cards ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;margin-bottom:1.25rem}
+
+/* ── Form ── */
+.field{display:flex;flex-direction:column;gap:5px}
+label{font-size:13px;font-weight:500;color:var(--text)}
+label .hint{font-weight:400;color:var(--muted);font-size:12px;margin-left:4px}
+textarea,input[type=text],input[type=number],select{width:100%;border:1px solid var(--border);border-radius:var(--rs);padding:9px 12px;font-size:13px;font-family:inherit;color:var(--text);background:var(--bg);outline:none;transition:border-color .15s;resize:vertical}
+textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}
+.mt10{margin-top:10px}
+
+/* ── Word count chips ── */
+.wc-row{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.wcc{padding:4px 11px;border:1px solid var(--border);border-radius:20px;font-size:12px;cursor:pointer;background:var(--bg);color:var(--muted);transition:all .15s;user-select:none}
+.wcc:hover{border-color:var(--red);color:var(--red)}
+.wcc.active{background:var(--red-l);border-color:var(--red);color:var(--red);font-weight:500}
+
+/* ── Buttons ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:var(--rs);font-size:13px;font-weight:500;font-family:inherit;cursor:pointer;transition:all .15s;border:none}
+.btn-p{background:var(--red);color:#fff}
+.btn-p:hover{background:#cf3a31;transform:translateY(-1px)}
+.btn-p:active{transform:translateY(0)}
+.btn-p:disabled{background:var(--light);cursor:not-allowed;transform:none}
+.btn-s{background:transparent;color:var(--muted);border:1px solid var(--border)}
+.btn-s:hover{border-color:var(--text);color:var(--text)}
+.btn-g{background:transparent;color:var(--muted);border:none;padding:5px 10px;font-size:12px}
+.btn-g:hover{background:var(--bg);color:var(--text)}
+.arow{display:flex;align-items:center;gap:8px;margin-top:12px}
+
+/* ── Mode tabs ── */
+.mode-tabs{display:flex;gap:5px;margin-bottom:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:5px}
+.mtab{flex:1;padding:9px 10px;border-radius:var(--rs);border:none;background:transparent;font-family:inherit;cursor:pointer;text-align:center;color:var(--muted);transition:all .2s;line-height:1.35}
+.mtab-icon{font-size:15px;display:block;margin-bottom:2px}
+.mtab-name{font-size:13px;font-weight:500;display:block}
+.mtab-desc{font-size:11px;color:var(--light);display:block}
+.mtab.active{background:var(--red-l);color:var(--red)}
+.mtab.active .mtab-desc{color:var(--red-m)}
+.mtab:hover:not(.active){background:var(--bg);color:var(--text)}
+.mpanel{display:none}
+.mpanel.active{display:block}
+
+/* ── Progress ── */
+.prog-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:1.25rem;display:none}
+.prog-wrap.on{display:block}
+.prog-status{font-size:13px;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.prog-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--red),#F4856A);border-radius:2px;transition:width .7s ease;width:0%}
+
+/* ── Verdict cards ── */
+.verdicts{display:flex;flex-direction:column;gap:7px;margin-bottom:1.25rem}
+.vcard{background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:10px 13px;display:flex;gap:10px;animation:fi .35s ease forwards;opacity:0}
+@keyframes fi{to{opacity:1}}
+.vicon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.vname{font-size:12px;font-weight:500}
+.vrole{font-size:11px;color:var(--muted);margin-left:6px}
+.vtext{font-size:13px;line-height:1.65;color:var(--text);margin-top:3px}
+.vtext strong{color:var(--red);font-weight:500}
+
+/* ── Result card ── */
+.rcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:1rem}
+.rcard-hdr{padding:.875rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.rcard-title{font-size:14px;font-weight:500}
+.rcard-acts{display:flex;gap:5px}
+.rcard-body{padding:1.25rem}
+
+/* ── Score ── */
+.score-big{font-size:34px;font-weight:700;line-height:1}
+.score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:1rem}
+.sitem{text-align:center;background:var(--bg);border-radius:var(--rs);padding:8px 4px}
+.sval{font-size:18px;font-weight:600;line-height:1;margin-bottom:3px}
+.slabel{font-size:11px;color:var(--muted)}
+
+/* ── Issues ── */
+.ilist{list-style:none}
+.iitem{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px}
+.iitem:last-child{border-bottom:none}
+.inum{width:18px;height:18px;border-radius:50%;background:var(--red);color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.itxt strong{display:block;font-weight:500;margin-bottom:1px}
+.itxt span{color:var(--muted);font-size:12px}
+.alist{display:flex;flex-direction:column;gap:6px}
+.aitem{display:flex;gap:8px;align-items:flex-start;font-size:13px;padding:7px 10px;background:var(--green-l);border-radius:8px}
+.acheck{color:var(--green);font-weight:600;flex-shrink:0}
+
+/* ── Divider ── */
+.div{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--light);margin:.875rem 0}
+.div::before,.div::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── Content output ── */
+.cbox{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:.875rem 1rem;font-size:13px;line-height:1.85;white-space:pre-wrap;font-family:inherit;min-height:80px}
+
+/* ── Title variants ── */
+.tvars{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+.topt{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);font-size:13px;cursor:pointer;transition:border-color .15s}
+.topt:hover{border-color:var(--red)}
+.topt.sel{border-color:var(--red);background:var(--red-l)}
+.topt-lbl{font-size:10px;color:var(--light);font-weight:500;letter-spacing:.05em;flex-shrink:0;margin-left:8px}
+
+/* ── Tags ── */
+.tag-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.xtag{font-size:12px;padding:3px 9px;border-radius:20px;background:var(--bg);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .15s}
+.xtag:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-l)}
+
+/* ── Comments ── */
+.clist{display:flex;flex-direction:column;gap:8px}
+.citem{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:10px 12px;position:relative}
+.cmeta{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.ctype{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600}
+.ct-first{background:var(--gold-l);color:var(--gold)}
+.ct-hot{background:var(--red-l);color:var(--red)}
+.ct-topic{background:var(--blue-l);color:var(--blue)}
+.ct-dm{background:var(--green-l);color:var(--green)}
+.ct-reply{background:var(--purple-l);color:var(--purple)}
+.cnum{font-size:11px;color:var(--light)}
+.ctext{font-size:13px;line-height:1.7;padding-right:52px}
+.ccopy{position:absolute;top:10px;right:10px;font-size:11px;padding:3px 8px;background:var(--card);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--muted);transition:all .15s;font-family:inherit}
+.ccopy:hover{border-color:var(--text);color:var(--text)}
+.tip{background:var(--gold-l);border:1px solid #EFD5A0;border-radius:var(--rs);padding:10px 14px;font-size:12px;color:var(--gold);line-height:1.7;margin-top:.875rem}
+
+/* ── Follow-up chat ── */
+.fu-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:1rem}
+.fu-hdr{padding:.625rem 1.25rem;border-bottom:1px solid var(--border);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px}
+.fu-row{display:flex}
+.fu-input{flex:1;border:none!important;border-radius:0!important;background:var(--bg)!important;padding:10px 14px!important;font-size:13px;resize:none!important;outline:none}
+.fu-input:focus{background:#fff!important}
+.fu-send{padding:10px 16px;background:var(--red);color:#fff;border:none;font-size:13px;font-family:inherit;cursor:pointer;transition:background .15s;flex-shrink:0}
+.fu-send:hover{background:#cf3a31}
+.fu-send:disabled{background:var(--light);cursor:not-allowed}
+
+/* ── Spinner ── */
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(0,0,0,.12);border-top-color:var(--red);border-radius:50%;animation:rot .65s linear infinite;flex-shrink:0}
+.spin-w{border-color:rgba(255,255,255,.3);border-top-color:#fff}
+@keyframes rot{to{transform:rotate(360deg)}}
+
+/* ── Toast ── */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--text);color:#fff;padding:9px 14px;border-radius:var(--rs);font-size:13px;z-index:999;opacity:0;transform:translateY(8px);transition:all .3s;pointer-events:none}
+.toast.on{opacity:1;transform:translateY(0)}
+
+/* ── Modal ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.overlay.on{opacity:1;pointer-events:all}
+.modal{background:var(--card);border-radius:var(--r);padding:1.5rem;width:440px;max-width:90vw;transform:translateY(16px);transition:transform .2s}
+.overlay.on .modal{transform:translateY(0)}
+.modal-title{font-size:16px;font-weight:600;margin-bottom:5px}
+.modal-desc{font-size:13px;color:var(--muted);margin-bottom:1.25rem;line-height:1.7}
+.modal-desc code{background:var(--bg);padding:2px 6px;border-radius:4px;font-size:12px;font-family:monospace}
+.modal-acts{display:flex;gap:8px;justify-content:flex-end;margin-top:1rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">🌿</div>
+    <div class="logo-name">薯运</div>
+    <div class="logo-sub">小红书 AI 运营工作台</div>
+  </div>
+  <div class="hdr-right">
+    <div class="status-badge"><div class="dot"></div><span>AI 就绪</span></div>
+    
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sb-section">
+      <div class="sb-label">工作模块</div>
+      <button class="nav-item active" onclick="gotoPage('diag',this)">
+        <div class="nav-icon" style="background:var(--red-l)">🔍</div>
+        <div><div class="nav-txt">内容诊断</div><div class="nav-sub">评分 · 问题 · 优化建议</div></div>
+      </button>
+      <button class="nav-item" onclick="gotoPage('gen',this)">
+        <div class="nav-icon" style="background:var(--blue-l)">✍️</div>
+        <div><div class="nav-txt">内容生成</div><div class="nav-sub">原创 · 种草 · 话术植入</div></div>
+      </button>
+      <button class="nav-item" onclick="gotoPage('com',this)">
+        <div class="nav-icon" style="background:var(--green-l)">💬</div>
+        <div><div class="nav-txt">评论生成</div><div class="nav-sub">模拟真实用户评论</div></div>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main>
+
+    <!-- ═══ DIAGNOSIS ═══ -->
+    <div class="page active" id="page-diag">
+      <div class="ph">
+        <div class="ptag ptag-r">🔍 内容诊断</div>
+        <div class="ptitle">分析笔记，找问题，给建议</div>
+        <div class="pdesc">多维 Agent 交叉评估，输出五维评分 + 核心问题 + 可执行优化清单</div>
+      </div>
+
+      <div class="card">
+        <div class="field">
+          <label>笔记内容<span class="hint">粘贴完整标题 + 正文</span></label>
+          <textarea id="d-content" rows="7" placeholder="标题：…&#10;&#10;正文：…"></textarea>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label>内容品类</label>
+            <select id="d-cat">
+              <option value="career">职场 / 求职</option>
+              <option value="lifestyle">生活方式</option>
+              <option value="beauty">美妆护肤</option>
+              <option value="food">美食</option>
+              <option value="travel">旅游</option>
+              <option value="finance">理财</option>
+              <option value="fashion">穿搭</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>运营目标</label>
+            <select id="d-goal">
+              <option value="followers">涨粉</option>
+              <option value="traffic">引流私信</option>
+              <option value="sales">带货转化</option>
+              <option value="brand">品牌曝光</option>
+            </select>
+          </div>
+        </div>
+        <div class="arow">
+          <button class="btn btn-p" id="d-btn" onclick="runDiag()"><span>🚀</span> 开始诊断</button>
+          <button class="btn btn-s" onclick="demoFill('diag')">填入示例</button>
+        </div>
+      </div>
+
+      <div class="prog-wrap" id="d-prog">
+        <div class="prog-status"><span class="spin"></span><span id="d-ptxt">分析中…</span></div>
+        <div class="prog-bar"><div class="prog-fill" id="d-pfill"></div></div>
+      </div>
+      <div class="verdicts" id="d-verdicts"></div>
+      <div id="d-result"></div>
+    </div>
+
+    <!-- ═══ GENERATION ═══ -->
+    <div class="page" id="page-gen">
+      <div class="ph">
+        <div class="ptag ptag-b">✍️ 内容生成</div>
+        <div class="ptitle">三种模式，覆盖日常内容生产</div>
+        <div class="pdesc">品牌资料已内嵌，AI 自动结合产品信息生成，结果支持追加修改</div>
+      </div>
+
+      <div class="mode-tabs">
+        <button class="mtab active" onclick="gotoMode('orig',this)">
+          <span class="mtab-icon">🖊️</span>
+          <span class="mtab-name">原创生成</span>
+          <span class="mtab-desc">选题 → 原创笔记</span>
+        </button>
+        <button class="mtab" onclick="gotoMode('seed',this)">
+          <span class="mtab-icon">🌱</span>
+          <span class="mtab-name">品牌种草</span>
+          <span class="mtab-desc">选题 + 内容 → 种草笔记</span>
+        </button>
+        <button class="mtab" onclick="gotoMode('inj',this)">
+          <span class="mtab-icon">💉</span>
+          <span class="mtab-name">话术植入</span>
+          <span class="mtab-desc">现有文案 → 植入品牌</span>
+        </button>
+      </div>
+
+      <!-- Mode: Original -->
+      <div class="mpanel active" id="mode-orig">
+        <div class="card">
+          <div class="field">
+            <label>选题 / 参考内容<span class="hint">一个话题、关键词，或参考文章</span></label>
+            <textarea id="o-topic" rows="4" placeholder="例：双非本科如何在秋招中拿到大厂 offer？有哪些可复制的方法…"></textarea>
+          </div>
+          <div class="row2 mt10">
+            <div class="field">
+              <label>内容风格</label>
+              <select id="o-style">
+                <option value="real">真实感 / 素人分享</option>
+                <option value="story">故事 / 情感向</option>
+                <option value="expert">干货 / 专业向</option>
+                <option value="list">清单 / 攻略向</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>目标字数</label>
+              <div class="wc-row" id="o-wcrow">
+                <span class="wcc" data-v="150" onclick="pickWC(this,'o')">短（150）</span>
+                <span class="wcc active" data-v="300" onclick="pickWC(this,'o')">标准（300）</span>
+                <span class="wcc" data-v="500" onclick="pickWC(this,'o')">长（500）</span>
+                <span class="wcc" data-v="custom" onclick="pickWC(this,'o')">自定义</span>
+              </div>
+              <input type="number" id="o-wc" placeholder="输入字数" min="50" max="1000" style="display:none;margin-top:6px">
+            </div>
+          </div>
+          <div class="arow">
+            <button class="btn btn-p" id="o-btn" onclick="runGen('orig')">✨ 生成内容</button>
+            <button class="btn btn-s" onclick="demoFill('orig')">填入示例</button>
+          </div>
+        </div>
+        <div class="prog-wrap" id="o-prog"><div class="prog-status"><span class="spin"></span><span id="o-ptxt">创作中…</span></div><div class="prog-bar"><div class="prog-fill" id="o-pfill"></div></div></div>
+        <div class="verdicts" id="o-verdicts"></div>
+        <div id="o-result"></div>
+      </div>
+
+      <!-- Mode: Seeding -->
+      <div class="mpanel" id="mode-seed">
+        <div class="card">
+          <div class="field">
+            <label>选题 / 内容要点<span class="hint">描述想写什么，AI 会自然融入品牌信息</span></label>
+            <textarea id="s-topic" rows="4" placeholder="例：秋招最后冲刺阶段如何高效备考？从笔试到面试，30天必做的5件事…"></textarea>
+          </div>
+          <div class="row2 mt10">
+            <div class="field">
+              <label>种草力度</label>
+              <select id="s-str">
+                <option value="light">轻种草（自然提及，侧重干货）</option>
+                <option value="mid" selected>中种草（平衡干货与品牌）</option>
+                <option value="strong">强种草（突出产品，转化导向）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>目标字数</label>
+              <div class="wc-row" id="s-wcrow">
+                <span class="wcc" data-v="150" onclick="pickWC(this,'s')">短（150）</span>
+                <span class="wcc active" data-v="300" onclick="pickWC(this,'s')">标准（300）</span>
+                <span class="wcc" data-v="500" onclick="pickWC(this,'s')">长（500）</span>
+                <span class="wcc" data-v="custom" onclick="pickWC(this,'s')">自定义</span>
+              </div>
+              <input type="number" id="s-wc" placeholder="输入字数" min="50" max="1000" style="display:none;margin-top:6px">
+            </div>
+          </div>
+          <div class="arow">
+            <button class="btn btn-p" id="s-btn" onclick="runGen('seed')">🌱 生成种草内容</button>
+            <button class="btn btn-s" onclick="demoFill('seed')">填入示例</button>
+          </div>
+        </div>
+        <div class="prog-wrap" id="s-prog"><div class="prog-status"><span class="spin"></span><span id="s-ptxt">创作中…</span></div><div class="prog-bar"><div class="prog-fill" id="s-pfill"></div></div></div>
+        <div class="verdicts" id="s-verdicts"></div>
+        <div id="s-result"></div>
+      </div>
+
+      <!-- Mode: Inject -->
+      <div class="mpanel" id="mode-inj">
+        <div class="card">
+          <div class="field">
+            <label>现有文案<span class="hint">粘贴任意文案，AI 找合适的点自然植入品牌</span></label>
+            <textarea id="i-content" rows="6" placeholder="粘贴一段已有的文案内容，AI 会在不破坏原有风格的前提下，找最合适的位置植入品牌信息…"></textarea>
+          </div>
+          <div class="row2 mt10">
+            <div class="field">
+              <label>植入方式</label>
+              <select id="i-style">
+                <option value="natural">自然提及（不打断阅读节奏）</option>
+                <option value="recommend">推荐式（以亲身体验推荐）</option>
+                <option value="solution">解决方案式（用品牌解决痛点）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>输出长度</label>
+              <select id="i-len">
+                <option value="same">保持原文长度</option>
+                <option value="shorter">略短于原文</option>
+                <option value="longer">略长于原文（补充品牌信息）</option>
+              </select>
+            </div>
+          </div>
+          <div class="arow">
+            <button class="btn btn-p" id="i-btn" onclick="runGen('inj')">💉 植入品牌话术</button>
+            <button class="btn btn-s" onclick="demoFill('inj')">填入示例</button>
+          </div>
+        </div>
+        <div class="prog-wrap" id="i-prog"><div class="prog-status"><span class="spin"></span><span id="i-ptxt">分析植入点…</span></div><div class="prog-bar"><div class="prog-fill" id="i-pfill"></div></div></div>
+        <div class="verdicts" id="i-verdicts"></div>
+        <div id="i-result"></div>
+      </div>
+    </div>
+
+    <!-- ═══ COMMENTS ═══ -->
+    <div class="page" id="page-com">
+      <div class="ph">
+        <div class="ptag ptag-g">💬 评论生成</div>
+        <div class="ptitle">生成真实感评论，营造评论区氛围</div>
+        <div class="pdesc">模拟不同用户角色，生成首评 / 热评 / 话题引导 / 私信话术</div>
+      </div>
+
+      <div class="card">
+        <div class="field">
+          <label>笔记内容摘要<span class="hint">简要描述这条笔记的内容和卖点</span></label>
+          <textarea id="c-content" rows="4" placeholder="例：发了一篇秋招备考干货笔记，讲了刷题、内推、AI模拟面试的方法，有真实数据，最后提到了用某求职 APP 备考的经历…"></textarea>
+        </div>
+        <div class="row3 mt10">
+          <div class="field">
+            <label>运营目标</label>
+            <select id="c-goal">
+              <option value="traffic">引流私信</option>
+              <option value="engagement">提升互动</option>
+              <option value="sales">带货转化</option>
+              <option value="followers">涨粉</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>评论人设</label>
+            <select id="c-persona">
+              <option value="student">在校大学生</option>
+              <option value="fresh">应届毕业生</option>
+              <option value="exp">有求职经历的人</option>
+              <option value="mixed">混合人设</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>生成条数<span class="hint">1–30</span></label>
+            <input type="number" id="c-count" value="10" min="1" max="30">
+          </div>
+        </div>
+        <div class="arow">
+          <button class="btn btn-p" id="c-btn" onclick="runCom()">🌱 生成评论</button>
+          <button class="btn btn-s" onclick="demoFill('com')">填入示例</button>
+        </div>
+      </div>
+
+      <div class="prog-wrap" id="c-prog"><div class="prog-status"><span class="spin"></span><span id="c-ptxt">生成中…</span></div><div class="prog-bar"><div class="prog-fill" id="c-pfill"></div></div></div>
+      <div class="verdicts" id="c-verdicts"></div>
+      <div id="c-result"></div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Proxy modal -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-title">⚙️ 配置 AI 服务地址</div>
+    <div class="modal-desc">
+      输入你部署的 Vercel 代理地址。地址保存在本地浏览器，每台电脑配置一次即可。<br><br>
+      格式：<code>https://你的项目名.vercel.app/api/proxy</code>
+    </div>
+    <div class="field">
+      <label>代理地址</label>
+      <input type="text" id="proxy-input" placeholder="https://...vercel.app/api/proxy">
+    </div>
+    <div class="modal-acts">
+      <button class="btn btn-s" onclick="closeModal()">取消</button>
+      <button class="btn btn-p" onclick="saveProxy()">保存</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══ 品牌资料（内嵌，自动带入所有生成模块）═══
+const BRAND = `【品牌资料·勿直接复述】
+产品定位：一站式 AI 求职招聘与职业成长平台，集题库、面经、内推、AI 工具、社区交流于一体。
+核心价值：用科技（AI）消除信息差，让普通人也能高效拿到心仪 offer。
+用户规模：累计服务 1400 万＋应届毕业生，为 500 强企业输送大量人才。
+行业背书：荣获 2021 年"新旗奖·年度产品大奖"。
+目标人群：18–25 岁在校大学生（大一至研三）、应届毕业生、毕业 1 年内往届生；重点覆盖互联网、国企、金融、AI/算法岗求职者。
+核心功能：
+  · 求职准备：全行业题库（覆盖 99% 大厂笔试真题）、专项刷题、系统课程、百万求职者社区
+  · 网申投递：实时校招信息推送、名企内推（简历直达 HR）、AI 网申助手（一键优化简历·通过率翻倍）
+  · 笔试面试：海量面经库、AI 模拟面试（实时语音·逐题解析）、AI 面试押题、AI 群面模拟
+  · 求职决策：在职员工薪资爆料、公司真实评价、AI 薪资分析、AI offer 对比
+情感型卖点：求职不再孤军奋战 / 少走 90% 求职弯路 / 普通本科也能进大厂。
+信任型卖点：1400 万大学生的共同选择 / 100% 真实用户内容 / 名企官方合作。
+差异化卖点：行业领先 AI 模拟面试 / 独家 AI 网申助手 / 最全 AI 岗求职资源。
+用户痛点：找不到完整真题 / 简历石沉大海 / 面试紧张发挥失常 / 校招信息易错过 / 不知道真实薪资。`;
+
+// ═══ Proxy ═══
+const DEFAULT_PROXY = '/api/proxy';
+const getProxy = () => localStorage.getItem('xhs_proxy') || DEFAULT_PROXY;
+function refreshProxyBtn() {
+  const btn = document.getElementById('proxy-btn');
+  if (getProxy()) { btn.textContent = '✅ 服务已配置'; btn.className = 'proxy-btn ok'; }
+  else { btn.textContent = '⚙️ 配置服务地址'; btn.className = 'proxy-btn'; }
+}
+function openModal() { document.getElementById('proxy-input').value = getProxy(); document.getElementById('overlay').classList.add('on'); }
+function closeModal() { document.getElementById('overlay').classList.remove('on'); }
+function saveProxy() {
+  const v = document.getElementById('proxy-input').value.trim();
+  if (!v) { toast('请输入有效地址'); return; }
+  localStorage.setItem('xhs_proxy', v);
+  toast('服务地址已保存'); refreshProxyBtn(); closeModal();
+}
+document.getElementById('overlay').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
+
+// ═══ Toast ═══
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('on');
+  clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('on'), 2500);
+}
+
+// ═══ Navigation ═══
+function gotoPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+function gotoMode(id, btn) {
+  document.querySelectorAll('.mpanel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.mtab').forEach(t => t.classList.remove('active'));
+  document.getElementById('mode-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ═══ Word count ═══
+function pickWC(chip, pfx) {
+  document.querySelectorAll('#' + pfx + '-wcrow .wcc').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  const inp = document.getElementById(pfx + '-wc');
+  inp.style.display = chip.dataset.v === 'custom' ? 'block' : 'none';
+  if (chip.dataset.v === 'custom') inp.focus();
+}
+function getWC(pfx) {
+  const a = document.querySelector('#' + pfx + '-wcrow .wcc.active');
+  if (!a || a.dataset.v === 'custom') return parseInt(document.getElementById(pfx + '-wc').value) || 300;
+  return parseInt(a.dataset.v);
+}
+
+// ═══ Progress ═══
+function progShow(id, txt, pct) {
+  const w = document.getElementById(id + '-prog'); if (w) w.classList.add('on');
+  const t = document.getElementById(id + '-ptxt'); if (t) t.textContent = txt;
+  const f = document.getElementById(id + '-pfill'); if (f) f.style.width = pct + '%';
+}
+function progHide(id) { const w = document.getElementById(id + '-prog'); if (w) setTimeout(() => w.classList.remove('on'), 700); }
+
+// ═══ Add verdict card ═══
+function addVerdict(cid, icon, bg, name, role, txt) {
+  const c = document.getElementById(cid);
+  const d = document.createElement('div'); d.className = 'vcard';
+  d.innerHTML = `<div class="vicon" style="background:${bg}">${icon}</div><div style="flex:1"><span class="vname">${name}</span><span class="vrole">${role}</span><div class="vtext">${txt.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div></div>`;
+  c.appendChild(d);
+}
+
+// ═══ API call ═══
+async function callAI(sys, usr, maxTok = 1600) {
+  const px = getProxy();
+  if (!px) { openModal(); throw new Error('请先配置 AI 服务地址'); }
+  const r = await fetch(px, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: maxTok, system: sys, messages: [{ role: 'user', content: usr }] })
+  });
+  const d = await r.json();
+  if (d.error) throw new Error(d.error.message);
+  return d.content[0].text;
+}
+
+// ═══ Follow-up chat ═══
+const fuState = {};
+function addFollowup(rid, content, sys) {
+  fuState[rid] = { content, sys };
+  if (document.getElementById('fu-' + rid)) return;
+  const w = document.createElement('div'); w.className = 'fu-wrap'; w.id = 'fu-' + rid;
+  w.innerHTML = `
+    <div class="fu-hdr">💬 对结果不满意？告诉 AI 怎么改（回车发送）</div>
+    <div class="fu-row">
+      <textarea class="fu-input" id="fu-inp-${rid}" rows="1"
+        placeholder="例：改短一点 / 语气更活泼 / 结尾加互动钩子 / 换个标题方向…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendFU('${rid}')}"></textarea>
+      <button class="fu-send" id="fu-send-${rid}" onclick="sendFU('${rid}')">发送</button>
+    </div>`;
+  document.getElementById(rid).appendChild(w);
+}
+async function sendFU(rid) {
+  const inp = document.getElementById('fu-inp-' + rid);
+  const req = inp.value.trim(); if (!req) return;
+  const btn = document.getElementById('fu-send-' + rid);
+  btn.disabled = true; btn.textContent = '…'; inp.disabled = true;
+  try {
+    const refined = await callAI(fuState[rid].sys, `当前内容：\n\n${fuState[rid].content}\n\n修改要求：${req}\n\n请按要求修改，直接输出修改后的完整内容。`, 2000);
+    fuState[rid].content = refined;
+    const box = document.querySelector('#' + rid + ' .cbox[data-fu]');
+    if (box) box.textContent = refined;
+    inp.value = ''; toast('已根据要求修改 ✓');
+  } catch(e) { toast('修改失败：' + e.message); }
+  btn.disabled = false; btn.textContent = '发送'; inp.disabled = false; inp.focus();
+}
+
+// ═══ Copy ═══
+function cp(txt) { navigator.clipboard.writeText(txt).then(() => toast('已复制 ✓')); }
+function cpEl(id) { const el = document.getElementById(id); if (el) cp(el.innerText); }
+
+// 标题选择（存在全局避免特殊字符转义问题）
+let _titles = [];
+function pickTitle(el, idx) {
+  el.closest('.tvars').querySelectorAll('.topt').forEach(x => x.classList.remove('sel'));
+  el.classList.add('sel');
+  cp(_titles[idx] || '');
+}
+
+// ═══ DIAGNOSIS ═══
+async function runDiag() {
+  const content = document.getElementById('d-content').value.trim();
+  if (!content) { toast('请先填写笔记内容'); return; }
+  const cat = document.getElementById('d-cat').value;
+  const goal = document.getElementById('d-goal').value;
+  const catM = {career:'职场/求职',lifestyle:'生活方式',beauty:'美妆护肤',food:'美食',travel:'旅游',finance:'理财',fashion:'穿搭',other:'其他'};
+  const goalM = {followers:'涨粉',traffic:'引流私信',sales:'带货转化',brand:'品牌曝光'};
+
+  const btn = document.getElementById('d-btn');
+  btn.disabled = true; btn.innerHTML = '<span class="spin spin-w"></span> 诊断中…';
+  document.getElementById('d-verdicts').innerHTML = '';
+  document.getElementById('d-result').innerHTML = '';
+  progShow('d', '内容审计师正在分析…', 20);
+
+  try {
+    const r1 = await callAI(
+      `你是小红书内容审计师，从批判角度分析笔记核心问题。从标题吸引力、内容逻辑、互动设计、关键词、情绪钩子五个维度，找出2–3个最关键的问题。语言简洁直接，不超过120字。`,
+      `品类：${catM[cat]}，目标：${goalM[goal]}\n\n笔记：\n${content}`
+    );
+    progShow('d', '用户共鸣官正在评估…', 48);
+    addVerdict('d-verdicts', '🔍', 'var(--red-l)', '内容审计师', '批判视角', r1);
+
+    const r2 = await callAI(
+      `你是小红书用户共鸣官，代表目标用户评估内容。分析情感共鸣、点赞冲动、收藏价值、评论欲望。语言简洁，不超过120字。`,
+      `品类：${catM[cat]}，目标：${goalM[goal]}\n\n笔记：\n${content}`
+    );
+    progShow('d', '综合裁判汇总中…', 78);
+    addVerdict('d-verdicts', '💬', 'var(--blue-l)', '用户共鸣官', '用户视角', r2);
+
+    const r3 = await callAI(
+      `你是综合裁判，根据两位 Agent 的意见生成最终诊断报告。只返回 JSON，不要代码块：
+{"overall":75,"scores":{"title":70,"body":78,"engagement":65,"keywords":72,"hook":80},"issues":[{"t":"问题标题","d":"具体说明"},{"t":"问题标题","d":"具体说明"},{"t":"问题标题","d":"具体说明"}],"actions":["优化建议1","优化建议2","优化建议3"]}`,
+      `审计师：${r1}\n共鸣官：${r2}\n品类：${catM[cat]}，目标：${goalM[goal]}`
+    );
+
+    let v;
+    try { v = JSON.parse(r3.replace(/```json|```/g,'').trim().match(/\{[\s\S]*\}/)?.[0] || r3); }
+    catch { v = {overall:72,scores:{title:70,body:75,engagement:68,keywords:72,hook:75},issues:[{t:'标题悬念不足',d:'缺乏具体数字冲击力，建议加入反差感'},{t:'互动钩子缺失',d:'正文末尾未引导评论，错失流量'},{t:'关键词布局弱',d:'核心搜索词出现频次不足'}],actions:['标题加入具体数字对比','正文末添加问句引导评论','增加2–3个高搜索关键词']}; }
+
+    progShow('d', '完成', 100);
+    addVerdict('d-verdicts', '⚖️', 'var(--gold-l)', '综合裁判', '汇总评分', `综合评分 <strong>${v.overall}/100</strong>，已生成五维评分与优化清单`);
+
+    const sc = n => n>=80?'var(--green)':n>=60?'var(--gold)':'var(--red)';
+    const dims = [{k:'title',l:'标题力'},{k:'body',l:'内容质量'},{k:'engagement',l:'互动设计'},{k:'keywords',l:'关键词'},{k:'hook',l:'钩子效果'}];
+
+    document.getElementById('d-result').innerHTML = `
+      <div class="rcard">
+        <div class="rcard-hdr"><div class="rcard-title">📊 综合诊断报告</div><div class="score-big" style="color:${sc(v.overall)}">${v.overall}</div></div>
+        <div class="rcard-body">
+          <div class="score-grid">${dims.map(d=>`<div class="sitem"><div class="sval" style="color:${sc(v.scores[d.k])}">${v.scores[d.k]}</div><div class="slabel">${d.l}</div></div>`).join('')}</div>
+          <div class="div">核心问题</div>
+          <ul class="ilist">${v.issues.map((x,i)=>`<li class="iitem"><div class="inum">${i+1}</div><div class="itxt"><strong>${x.t}</strong><span>${x.d}</span></div></li>`).join('')}</ul>
+          <div class="div">优化清单</div>
+          <div class="alist">${v.actions.map(a=>`<div class="aitem"><span class="acheck">✓</span><span>${a}</span></div>`).join('')}</div>
+        </div>
+      </div>`;
+    progHide('d');
+  } catch(e) { toast('诊断失败：' + e.message); progHide('d'); }
+  btn.disabled = false; btn.innerHTML = '<span>🚀</span> 开始诊断';
+}
+
+// ═══ GENERATION ═══
+async function runGen(mode) {
+  const cfgMap = {
+    orig: { inputId:'o-topic', btnId:'o-btn', resId:'o-result', vId:'o-verdicts', pid:'o', btnLbl:'✨ 生成内容' },
+    seed: { inputId:'s-topic', btnId:'s-btn', resId:'s-result', vId:'s-verdicts', pid:'s', btnLbl:'🌱 生成种草内容' },
+    inj:  { inputId:'i-content', btnId:'i-btn', resId:'i-result', vId:'i-verdicts', pid:'i', btnLbl:'💉 植入品牌话术' },
+  };
+  const cfg = cfgMap[mode];
+  const input = document.getElementById(cfg.inputId).value.trim();
+  if (!input) { toast('请先填写内容'); return; }
+
+  const btn = document.getElementById(cfg.btnId);
+  btn.disabled = true; btn.innerHTML = '<span class="spin spin-w"></span> 创作中…';
+  document.getElementById(cfg.vId).innerHTML = '';
+  document.getElementById(cfg.resId).innerHTML = '';
+  document.getElementById(cfg.pid + '-prog').classList.add('on');
+
+  const styleM = {real:'真实感/素人分享',story:'故事/情感向',expert:'干货/专业向',list:'清单/攻略向'};
+  const strM = {light:'轻种草（自然提及，侧重干货，品牌只作为辅助）',mid:'中种草（平衡干货与品牌，有效植入但不突兀）',strong:'强种草（以产品为主角，突出功能，引导转化）'};
+  const injM = {natural:'自然提及（提到即可，不打断阅读节奏）',recommend:'推荐式（以亲身使用体验推荐品牌）',solution:'解决方案式（用品牌功能直接解决文中提到的痛点）'};
+  const lenM = {same:'输出长度与原文相近',shorter:'输出略短于原文',longer:'输出略长于原文，补充品牌相关信息'};
+
+  try {
+    if (mode === 'orig') {
+      const wc = getWC('o');
+      const style = document.getElementById('o-style').value;
+      progShow('o', '策划选题角度…', 25);
+
+      const plan = await callAI(
+        `你是小红书内容策划师，擅长挖掘话题的爆款潜力。根据给定选题，给出2–3个不同的内容切入角度（每个角度一句话，重点突出差异化）。不超过80字。`,
+        `选题：${input}\n风格：${styleM[style]}`
+      );
+      addVerdict('o-verdicts', '💡', 'var(--blue-l)', '内容策划师', '选题策略', plan);
+      progShow('o', '生成正式内容…', 65);
+
+      const raw = await callAI(
+        `你是小红书爆款文案师。根据策划角度生成完整笔记，只返回 JSON，不要代码块：
+{"titles":["标题A（含emoji，不超过25字）","标题B（含emoji，不超过25字）","标题C（含emoji，不超过25字）"],"body":"正文（${wc}字左右，含emoji节奏，段落分明，末尾有互动钩子）","tags":["标签1","标签2","标签3","标签4","标签5","标签6"]}
+风格要求：${styleM[style]}。正文约${wc}字。`,
+        `策划角度：${plan}\n\n原始选题：${input}`
+      );
+
+      let cp2;
+      try { cp2 = JSON.parse(raw.replace(/```json|```/g,'').trim().match(/\{[\s\S]*\}/)?.[0] || raw); }
+      catch { cp2 = {titles:['✨ '+input.slice(0,18)+'…（方案A）','💡 '+input.slice(0,18)+'…（方案B）','🌟 '+input.slice(0,18)+'…（方案C）'], body: raw, tags:['小红书','干货分享','经验分享']}; }
+
+      progShow('o', '完成', 100);
+      _titles = cp2.titles || [];
+      const fuSys = `你是小红书文案优化师，擅长调整内容风格、长度、结构。请按用户要求修改，保持小红书风格，直接输出修改后内容。`;
+      document.getElementById('o-result').innerHTML = genResultHTML('o', cp2, '✍️ 生成结果', '3 套标题 · 正文 · 标签');
+      addFollowup('o-result', cp2.body || '', fuSys);
+
+    } else if (mode === 'seed') {
+      const wc = getWC('s');
+      const str = document.getElementById('s-str').value;
+      progShow('s', '分析种草策略…', 30);
+
+      const plan = await callAI(
+        `你是小红书品牌内容策划师，熟悉内容营销。根据选题和品牌资料，设计种草切入角度：从哪个用户痛点出发、用什么场景/故事承接品牌、不能太广告感。50字以内。\n\n${BRAND}`,
+        `选题：${input}\n种草力度：${strM[str]}`
+      );
+      addVerdict('s-verdicts', '🌱', 'var(--green-l)', '种草策划师', '内容策略', plan);
+      progShow('s', '生成种草内容…', 68);
+
+      const raw = await callAI(
+        `你是小红书爆款种草文案师。结合品牌资料，从真实用户视角生成种草笔记，只返回 JSON：
+{"titles":["标题A","标题B","标题C"],"body":"正文（${wc}字左右，从用户痛点出发，自然融入品牌功能，末尾有行动召唤）","tags":["标签1","标签2","标签3","标签4","标签5","标签6"]}
+种草力度：${strM[str]}\n\n${BRAND}`,
+        `策划角度：${plan}\n\n选题：${input}`
+      );
+
+      let cp2;
+      try { cp2 = JSON.parse(raw.replace(/```json|```/g,'').trim().match(/\{[\s\S]*\}/)?.[0] || raw); }
+      catch { cp2 = {titles:['种草方案A','种草方案B','种草方案C'], body: raw, tags:['求职干货','秋招备考','校招']}; }
+
+      progShow('s', '完成', 100);
+      _titles = cp2.titles || [];
+      const fuSys = `你是小红书种草内容优化师。以下是品牌资料：\n${BRAND}\n请按用户要求修改内容，保持种草感和小红书风格，直接输出修改后内容。`;
+      document.getElementById('s-result').innerHTML = genResultHTML('s', cp2, '🌱 种草内容', '3 套标题 · 正文 · 标签');
+      addFollowup('s-result', cp2.body || '', fuSys);
+
+    } else if (mode === 'inj') {
+      const istyle = document.getElementById('i-style').value;
+      const ilen = document.getElementById('i-len').value;
+      progShow('i', '分析植入点…', 35);
+
+      const analysis = await callAI(
+        `你是品牌内容策略师，分析文案中适合自然植入品牌的位置。指出1–2个最佳植入点（说明在哪里植入、为什么合适、如何植入最自然）。50字以内。\n\n${BRAND}`,
+        `文案：${input}\n植入方式：${injM[istyle]}`
+      );
+      addVerdict('i-verdicts', '💉', 'var(--purple-l)', '植入分析师', '策略建议', analysis);
+      progShow('i', '植入品牌话术…', 70);
+
+      const result = await callAI(
+        `你是品牌话术植入专家，在不破坏原文风格的前提下植入品牌信息。直接输出植入后的完整文案，不加任何说明。
+植入要求：${injM[istyle]}
+长度要求：${lenM[ilen]}
+\n${BRAND}`,
+        `植入分析：${analysis}\n\n原文：\n${input}`
+      );
+
+      progShow('i', '完成', 100);
+      const fuSys = `你是品牌话术植入专家。品牌资料：\n${BRAND}\n请按用户要求调整植入内容，保持自然感，直接输出修改后的完整文案。`;
+      document.getElementById('i-result').innerHTML = `
+        <div class="rcard">
+          <div class="rcard-hdr">
+            <div class="rcard-title">💉 植入结果</div>
+            <div class="rcard-acts"><button class="btn btn-g" onclick="cp(document.querySelector('#i-result .cbox').innerText)">📋 复制全文</button></div>
+          </div>
+          <div class="rcard-body">
+            <div class="div">植入后文案</div>
+            <div class="cbox" data-fu="1">${esc(result)}</div>
+          </div>
+        </div>`;
+      addFollowup('i-result', result, fuSys);
+    }
+
+    progHide(cfg.pid);
+  } catch(e) { toast('生成失败：' + e.message); progHide(cfg.pid); }
+  btn.disabled = false; btn.innerHTML = cfg.btnLbl;
+}
+
+// 渲染通用结果卡片（原创/种草共用）
+function genResultHTML(pfx, data, title, sub) {
+  const titlesHTML = (data.titles || []).map((t, i) =>
+    `<div class="topt" onclick="pickTitle(this,${i})"><span>${esc(t)}</span><span class="topt-lbl">方案${'ABC'[i]}  点击复制</span></div>`
+  ).join('');
+  const tagsHTML = (data.tags || []).map(t => `<span class="xtag" onclick="cp('#${t}')">#${t}</span>`).join('');
+  return `
+    <div class="rcard">
+      <div class="rcard-hdr">
+        <div class="rcard-title">${title}</div>
+        <div class="rcard-acts">
+          <button class="btn btn-g" onclick="cp(document.querySelector('#${pfx}-result .cbox').innerText)">📋 复制正文</button>
+        </div>
+      </div>
+      <div class="rcard-body">
+        <div class="div">标题方案（点击选用并复制）</div>
+        <div class="tvars">${titlesHTML}</div>
+        <div class="div">正文</div>
+        <div class="cbox" data-fu="1">${esc(data.body || '')}</div>
+        <div class="div">推荐标签</div>
+        <div class="tag-row">${tagsHTML}</div>
+      </div>
+    </div>`;
+}
+
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ═══ COMMENTS ═══
+async function runCom() {
+  const content = document.getElementById('c-content').value.trim();
+  if (!content) { toast('请先填写笔记摘要'); return; }
+  const goal = document.getElementById('c-goal').value;
+  const persona = document.getElementById('c-persona').value;
+  const count = Math.min(30, Math.max(1, parseInt(document.getElementById('c-count').value) || 10));
+  const goalM = {traffic:'引流私信',engagement:'提升互动',sales:'带货转化',followers:'涨粉'};
+  const personaM = {
+    student:'在校大学生（有点焦虑求职，用语活泼，常用"姐妹""哈哈""woc""啊啊啊"，偶尔用emoji）',
+    fresh:'应届毕业生（有真实求职经历，相对成熟，有自己见解，能给出建议）',
+    exp:'有一定求职经历的人（可以给经验、对比不同平台、有具体细节）',
+    mixed:'多种人设混合（有大学生、应届生、有经验的人，评论风格多样，更真实）'
+  };
+
+  const btn = document.getElementById('c-btn');
+  btn.disabled = true; btn.innerHTML = '<span class="spin spin-w"></span> 生成中…';
+  document.getElementById('c-verdicts').innerHTML = '';
+  document.getElementById('c-result').innerHTML = '';
+  progShow('c', '规划评论策略…', 30);
+
+  try {
+    const strat = await callAI(
+      `你是小红书评论区运营专家，规划评论区整体策略：首评如何定调氛围、热评如何引发讨论、哪种话术自然引导私信。30字以内，简洁有力。`,
+      `笔记：${content}\n目标：${goalM[goal]}\n人设：${personaM[persona]}`
+    );
+    addVerdict('c-verdicts', '🌱', 'var(--green-l)', '评论生态师', '策略规划', strat);
+    progShow('c', `生成 ${count} 条评论…`, 65);
+
+    const raw = await callAI(
+      `你是小红书评论生成专家，模拟真实用户写评论，只返回 JSON：
+{"comments":[{"type":"first|hot|topic|dm|reply","text":"评论文字"}]}
+类型：first=首评（定调，营造氛围）hot=热评（引发点赞讨论）topic=话题引导（提问式）dm=私信引导（自然地引导私信）reply=追评（追问/分享经验）
+人设：${personaM[persona]}  目标：${goalM[goal]}
+要求：真实自然，口语化，避免广告感，长短错落。生成${count}条，分配各类型。`,
+      `笔记摘要：${content}\n策略：${strat}`, 2500
+    );
+
+    let data;
+    try { data = JSON.parse(raw.replace(/```json|```/g,'').trim().match(/\{[\s\S]*\}/)?.[0] || raw); }
+    catch { data = {comments:[{type:'hot',text:raw}]}; }
+
+    progShow('c', '完成', 100);
+    addVerdict('c-verdicts', '🎯', 'var(--blue-l)', '互动转化师', '生成完成', `已生成 ${data.comments.length} 条评论，涵盖首评 / 热评 / 话题引导等类型`);
+
+    const typeM = {first:'首评',hot:'热评',topic:'话题引导',dm:'私信引导',reply:'追评'};
+    const typeC = {first:'ct-first',hot:'ct-hot',topic:'ct-topic',dm:'ct-dm',reply:'ct-reply'};
+
+    document.getElementById('c-result').innerHTML = `
+      <div class="rcard">
+        <div class="rcard-hdr">
+          <div class="rcard-title">💬 评论脚本 · ${data.comments.length} 条</div>
+          <div class="rcard-acts"><button class="btn btn-g" onclick="cpAllCom()">📋 复制全部</button></div>
+        </div>
+        <div class="rcard-body">
+          <div class="clist">
+            ${data.comments.map((c,i)=>`
+              <div class="citem">
+                <div class="cmeta">
+                  <span class="ctype ${typeC[c.type]||'ct-hot'}">${typeM[c.type]||'评论'}</span>
+                  <span class="cnum">第 ${i+1} 条</span>
+                </div>
+                <div class="ctext" id="ct-${i}">${esc(c.text)}</div>
+                <button class="ccopy" onclick="cp(document.getElementById('ct-${i}').innerText)">复制</button>
+              </div>`).join('')}
+          </div>
+          <div class="tip">📌 首评建议发布后 <strong>5 分钟内</strong>发出，抢占黄金流量期<br>💬 热评间隔 <strong>30–60 分钟</strong>，模拟真实用户节奏<br>🎯 私信话术在有人主动问询时自然带出，不要群发</div>
+        </div>
+      </div>`;
+    progHide('c');
+  } catch(e) { toast('生成失败：' + e.message); progHide('c'); }
+  btn.disabled = false; btn.innerHTML = '🌱 生成评论';
+}
+
+function cpAllCom() {
+  const els = document.querySelectorAll('.ctext');
+  cp(Array.from(els).map((el,i) => `${i+1}. ${el.innerText}`).join('\n\n'));
+}
+
+// ═══ Demo fills ═══
+function demoFill(t) {
+  const m = {
+    diag: () => {
+      document.getElementById('d-content').value = `标题：应届生秋招，我是怎么拿到大厂 offer 的？（真实经历）\n\n正文：\n说实话，去年秋招我真的差点放弃了。\n\n投了三十多份简历，只有两个面试机会，还都挂了。\n\n转折点是我开始系统刷题和练面试，而不是到处海投。\n\n①刷题：按岗位+公司分类，每天 2 小时，集中突破薄弱环节\n②面经：把目标公司近三年面经全看了一遍\n③AI 模拟面试：反复练，找到自己的表达问题\n\n最后秋招拿到了 2 个 offer，选了其中一个互联网大厂。\n\n方法没有秘密，就是要早准备、系统练。\n\n你们现在备考到哪一步了？💬\n\n#秋招 #求职干货 #应届生 #大厂offer`;
+      document.getElementById('d-cat').value = 'career';
+    },
+    orig: () => { document.getElementById('o-topic').value = '双非本科如何在秋招中杀出重围，拿到大厂 offer？有哪些真实可复制的方法？'; document.getElementById('o-style').value = 'story'; },
+    seed: () => { document.getElementById('s-topic').value = '秋招最后冲刺阶段的备考计划，从笔试到面试，30 天如何高效准备'; document.getElementById('s-str').value = 'mid'; },
+    inj: () => {
+      document.getElementById('i-content').value = `九月了，秋招正式开始了！不知道大家准备得怎么样，我去年这时候真的很焦虑，感觉什么都没准备好。\n\n后来调整了方向：不再到处海投，集中精力攻破 3–5 个目标公司。每天固定 2 小时刷题，把面经全过一遍，重点练面试表达。\n\n这套方法下来，秋招末期拿到了 2 个 offer。\n\n你们现在在准备什么？一起加油！`;
+      document.getElementById('i-style').value = 'solution';
+    },
+    com: () => {
+      document.getElementById('c-content').value = '发了一篇秋招备考干货笔记，讲了刷题策略、面经积累、AI 模拟面试练习的方法，有真实备考数据，最后提到用某求职 APP 系统备考的经历';
+      document.getElementById('c-goal').value = 'engagement';
+      document.getElementById('c-persona').value = 'student';
+      document.getElementById('c-count').value = 8;
+    }
+  };
+  m[t] && m[t]();
+}
+
+// ═══ Init ═══
+refreshProxyBtn();
+</script>
+</body>
+</html>
