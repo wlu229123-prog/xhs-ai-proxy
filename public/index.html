@@ -501,21 +501,21 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
 
 <div class="toast" id="toast"></div>
 
-<!-- Proxy modal -->
+<!-- Key modal -->
 <div class="overlay" id="overlay">
   <div class="modal">
-    <div class="modal-title">⚙️ 配置 AI 服务地址</div>
+    <div class="modal-title">🔑 配置 DeepSeek API Key</div>
     <div class="modal-desc">
-      输入你部署的 Vercel 代理地址。地址保存在本地浏览器，每台电脑配置一次即可。<br><br>
-      格式：<code>https://你的项目名.vercel.app/api/proxy</code>
+      输入 DeepSeek API Key，保存在本机浏览器，每台设备配置一次即可。<br><br>
+      前往 <code>platform.deepseek.com</code> 获取，格式 <code>sk-...</code>
     </div>
     <div class="field">
-      <label>代理地址</label>
-      <input type="text" id="proxy-input" placeholder="https://...vercel.app/api/proxy">
+      <label>API Key</label>
+      <input type="password" id="key-input" placeholder="sk-...">
     </div>
     <div class="modal-acts">
       <button class="btn btn-s" onclick="closeModal()">取消</button>
-      <button class="btn btn-p" onclick="saveProxy()">保存</button>
+      <button class="btn btn-p" onclick="saveKey()">保存</button>
     </div>
   </div>
 </div>
@@ -538,21 +538,15 @@ const BRAND = `【品牌资料·勿直接复述】
 差异化卖点：行业领先 AI 模拟面试 / 独家 AI 网申助手 / 最全 AI 岗求职资源。
 用户痛点：找不到完整真题 / 简历石沉大海 / 面试紧张发挥失常 / 校招信息易错过 / 不知道真实薪资。`;
 
-// ═══ Proxy ═══
-const DEFAULT_PROXY = '/api/proxy';
-const getProxy = () => localStorage.getItem('xhs_proxy') || DEFAULT_PROXY;
-function refreshProxyBtn() {
-  const btn = document.getElementById('proxy-btn');
-  if (getProxy()) { btn.textContent = '✅ 服务已配置'; btn.className = 'proxy-btn ok'; }
-  else { btn.textContent = '⚙️ 配置服务地址'; btn.className = 'proxy-btn'; }
-}
-function openModal() { document.getElementById('proxy-input').value = getProxy(); document.getElementById('overlay').classList.add('on'); }
+// ═══ API Key ═══
+const getKey = () => localStorage.getItem('xhs_ds_key') || '';
+function openModal() { document.getElementById('key-input').value = getKey(); document.getElementById('overlay').classList.add('on'); }
 function closeModal() { document.getElementById('overlay').classList.remove('on'); }
-function saveProxy() {
-  const v = document.getElementById('proxy-input').value.trim();
-  if (!v) { toast('请输入有效地址'); return; }
-  localStorage.setItem('xhs_proxy', v);
-  toast('服务地址已保存'); refreshProxyBtn(); closeModal();
+function saveKey() {
+  const v = document.getElementById('key-input').value.trim();
+  if (!v) { toast('请输入有效 Key'); return; }
+  localStorage.setItem('xhs_ds_key', v);
+  toast('API Key 已保存'); closeModal();
 }
 document.getElementById('overlay').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
 
@@ -608,17 +602,21 @@ function addVerdict(cid, icon, bg, name, role, txt) {
 }
 
 // ═══ API call ═══
+const DS_URL = 'https://api.deepseek.com/v1/chat/completions';
 async function callAI(sys, usr, maxTok = 1600) {
-  const px = getProxy();
-  if (!px) { openModal(); throw new Error('请先配置 AI 服务地址'); }
-  const r = await fetch(px, {
+  const key = getKey();
+  if (!key) { openModal(); throw new Error('请先配置 API Key'); }
+  const msgs = [];
+  if (sys) msgs.push({ role: 'system', content: sys });
+  msgs.push({ role: 'user', content: usr });
+  const r = await fetch(DS_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: maxTok, system: sys, messages: [{ role: 'user', content: usr }] })
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+    body: JSON.stringify({ model: 'deepseek-chat', messages: msgs, max_tokens: maxTok })
   });
   const d = await r.json();
-  if (d.error) throw new Error(d.error.message);
-  return d.content[0].text;
+  if (d.error) throw new Error(d.error.message || JSON.stringify(d.error));
+  return d.choices[0].message.content;
 }
 
 // ═══ Follow-up chat ═══

@@ -422,6 +422,24 @@ textarea:focus { border-color: var(--red); background: #fff; }
   .step { padding: 22px; }
   .gen-btn { font-size: 15px; }
 }
+
+/* ── Modal ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.overlay.on{opacity:1;pointer-events:all}
+.modal{background:var(--card);border-radius:var(--r);padding:1.5rem;width:360px;max-width:90vw;transform:translateY(14px);transition:transform .2s}
+.overlay.on .modal{transform:translateY(0)}
+.modal-title{font-size:16px;font-weight:600;margin-bottom:6px}
+.modal-desc{font-size:13px;color:var(--muted);margin-bottom:1.2rem;line-height:1.7}
+.modal-desc code{background:var(--bg);padding:2px 6px;border-radius:4px;font-size:11px;font-family:monospace}
+.modal-acts{display:flex;gap:8px;justify-content:flex-end;margin-top:1rem}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:13px;font-weight:500}
+.field input{border:1px solid var(--border);border-radius:var(--rs);padding:8px 12px;font-size:14px;font-family:inherit;outline:none}
+.field input:focus{border-color:var(--red)}
+.btn{padding:7px 16px;border-radius:var(--rs);border:none;font-size:13px;font-family:inherit;cursor:pointer;transition:all .15s}
+.btn-s{background:var(--bg);color:var(--muted);border:1px solid var(--border)}
+.btn-p{background:var(--red);color:#fff}
+.btn-p:hover{opacity:.88}
 </style>
 </head>
 <body>
@@ -607,10 +625,39 @@ textarea:focus { border-color: var(--red); background: #fff; }
   <div class="footer">由 DeepSeek AI 驱动 · 内容仅供参考</div>
 </div>
 
+<!-- Key modal -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-title">🔑 配置 DeepSeek API Key</div>
+    <div class="modal-desc">
+      输入 DeepSeek API Key，保存在本机浏览器，每台设备配置一次即可。<br><br>
+      前往 <code>platform.deepseek.com</code> 获取，格式 <code>sk-...</code>
+    </div>
+    <div class="field">
+      <label>API Key</label>
+      <input type="password" id="key-input" placeholder="sk-...">
+    </div>
+    <div class="modal-acts">
+      <button class="btn btn-s" onclick="closeModal()">取消</button>
+      <button class="btn btn-p" onclick="saveKey()">保存</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
-const PROXY = '/api/proxy';
+const DS_URL = 'https://api.deepseek.com/v1/chat/completions';
+const getKey = () => localStorage.getItem('xhs_ds_key') || '';
+function openModal() { document.getElementById('key-input').value = getKey(); document.getElementById('overlay').classList.add('on'); }
+function closeModal() { document.getElementById('overlay').classList.remove('on'); }
+function saveKey() {
+  const v = document.getElementById('key-input').value.trim();
+  if (!v) { toast('请输入有效 Key'); return; }
+  localStorage.setItem('xhs_ds_key', v);
+  toast('API Key 已保存'); closeModal();
+}
+document.getElementById('overlay').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
 
 const BRAND = `【品牌资料·勿直接复述】
 产品定位：一站式 AI 求职招聘与职业成长平台，集题库、面经、内推、AI 工具、社区交流于一体。
@@ -707,14 +754,19 @@ function addVerdict(icon, bg, name, role, txt) {
 
 // ── API ──
 async function callAI(sys, usr, maxTok = 1600) {
-  const r = await fetch(PROXY, {
+  const key = getKey();
+  if (!key) { openModal(); throw new Error('请先配置 API Key'); }
+  const msgs = [];
+  if (sys) msgs.push({ role: 'system', content: sys });
+  msgs.push({ role: 'user', content: usr });
+  const r = await fetch(DS_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: maxTok, system: sys, messages: [{ role: 'user', content: usr }] })
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+    body: JSON.stringify({ model: 'deepseek-chat', messages: msgs, max_tokens: maxTok })
   });
   const d = await r.json();
   if (d.error) throw new Error(typeof d.error === 'string' ? d.error : d.error.message || JSON.stringify(d.error));
-  return d.content[0].text;
+  return d.choices[0].message.content;
 }
 
 // ── Generate ──
