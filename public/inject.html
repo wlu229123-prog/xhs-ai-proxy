@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>话术植入 · 小红书品牌工具</title>
+<style>
+:root {
+  --red: #E8443A;
+  --red-l: #FFF1F0;
+  --red-m: #FFD0CE;
+  --green: #1B7B4A;
+  --green-l: #EDFAF3;
+  --purple: #6B3FA0;
+  --purple-l: #F3EEFF;
+  --blue: #2654D4;
+  --blue-l: #EEF2FF;
+  --gold: #C88F2A;
+  --gold-l: #FFF8E6;
+  --bg: #F7F5F0;
+  --card: #fff;
+  --border: #E8E4DC;
+  --text: #1A1714;
+  --muted: #7A756D;
+  --light: #B5B0A8;
+  --r: 16px;
+  --rs: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  font-size: 15px;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ── Header ── */
+.hdr {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.hdr-logo { display: flex; align-items: center; gap: 9px; }
+.hdr-icon {
+  width: 34px; height: 34px;
+  background: var(--red);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+}
+.hdr-name { font-size: 17px; font-weight: 600; }
+.hdr-tag {
+  font-size: 11px; color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+/* ── Body ── */
+.body { padding: 16px; max-width: 640px; margin: 0 auto; }
+
+/* ── Step ── */
+.step {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 18px;
+  margin-bottom: 12px;
+}
+.step-hdr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.step-num {
+  width: 26px; height: 26px;
+  background: var(--red);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.step-title { font-size: 15px; font-weight: 600; }
+.step-desc { font-size: 13px; color: var(--muted); margin-top: 1px; }
+
+/* ── Textarea ── */
+textarea {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: var(--rs);
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  resize: none;
+  transition: border-color .15s;
+  line-height: 1.7;
+}
+textarea:focus { border-color: var(--red); background: #fff; }
+
+/* ── Radio cards ── */
+.radio-group { display: flex; flex-direction: column; gap: 8px; }
+.radio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--rs);
+  cursor: pointer;
+  transition: all .15s;
+  background: var(--bg);
+  user-select: none;
+}
+.radio-card.active { border-color: var(--red); background: var(--red-l); }
+.radio-dot {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+}
+.radio-card.active .radio-dot { border-color: var(--red); background: var(--red); }
+.radio-card.active .radio-dot::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+.radio-label { font-size: 14px; font-weight: 500; }
+.radio-desc { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+.radio-card.active .radio-desc { color: var(--red); opacity: .7; }
+
+/* ── Length chips ── */
+.chip-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  padding: 8px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  background: var(--bg);
+  color: var(--muted);
+  transition: all .15s;
+  user-select: none;
+  font-family: inherit;
+}
+.chip.active { background: var(--red-l); border-color: var(--red); color: var(--red); font-weight: 500; }
+.chip:hover { border-color: var(--red); }
+
+/* ── Generate button ── */
+.gen-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: var(--r);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all .15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  min-height: 54px;
+}
+.gen-btn:active { transform: scale(.98); background: #cf3a31; }
+.gen-btn:disabled { background: var(--light); cursor: not-allowed; transform: none; }
+
+/* ── Progress ── */
+.prog {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 18px;
+  margin-bottom: 12px;
+  display: none;
+}
+.prog.on { display: block; }
+.prog-status { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+.prog-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.prog-fill { height: 100%; background: linear-gradient(90deg, var(--red), #F4856A); border-radius: 2px; transition: width .7s ease; width: 0%; }
+
+/* ── Agent verdict ── */
+.verdict {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--rs);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 10px;
+  animation: fi .35s ease forwards;
+  opacity: 0;
+}
+@keyframes fi { to { opacity: 1; } }
+.v-icon { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.v-name { font-size: 13px; font-weight: 500; }
+.v-role { font-size: 11px; color: var(--muted); margin-left: 6px; }
+.v-text { font-size: 13px; line-height: 1.65; color: var(--text); margin-top: 3px; }
+
+/* ── Result ── */
+.result {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.result-hdr {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.result-title { font-size: 15px; font-weight: 600; }
+.copy-all-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 7px 14px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: var(--rs);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all .15s;
+}
+.copy-all-btn:active { background: #cf3a31; transform: scale(.97); }
+.copy-all-btn.copied { background: var(--green); }
+
+.result-body { padding: 18px; }
+.result-text {
+  font-size: 14px;
+  line-height: 1.85;
+  white-space: pre-wrap;
+  color: var(--text);
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--light);
+  margin: 14px 0;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ── Follow-up ── */
+.fu {
+  border-top: 1px solid var(--border);
+}
+.fu-hint {
+  padding: 10px 18px;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.fu-row { display: flex; }
+.fu-inp {
+  flex: 1;
+  border: none !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  padding: 12px 16px !important;
+  font-size: 14px;
+  min-height: 48px;
+  resize: none !important;
+  outline: none;
+}
+.fu-send {
+  padding: 12px 18px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.fu-send:active { background: #cf3a31; }
+.fu-send:disabled { background: var(--light); }
+
+/* ── Spinner ── */
+.spin {
+  width: 18px; height: 18px;
+  border: 2.5px solid rgba(255,255,255,.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: rot .65s linear infinite;
+  flex-shrink: 0;
+}
+.spin-dark {
+  border-color: rgba(0,0,0,.12);
+  border-top-color: var(--red);
+}
+@keyframes rot { to { transform: rotate(360deg); } }
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  left: 50%; transform: translateX(-50%) translateY(16px);
+  background: rgba(26,23,20,.88);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  z-index: 999;
+  opacity: 0;
+  transition: all .25s;
+  pointer-events: none;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+.toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── Demo link ── */
+.demo-link {
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+.demo-link button {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  color: var(--light);
+}
+
+@media (min-width: 640px) {
+  .body { padding: 24px; }
+  .step { padding: 22px; }
+  .gen-btn { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-logo">
+    <div class="hdr-icon">💉</div>
+    <div class="hdr-name">话术植入</div>
+  </div>
+  <span class="hdr-tag">小红书品牌工具</span>
+</div>
+
+<div class="body">
+
+  <!-- Step 1 -->
+  <div class="step">
+    <div class="step-hdr">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">粘贴原始文案</div>
+        <div class="step-desc">任意一段文字，AI 找合适的位置植入品牌</div>
+      </div>
+    </div>
+    <textarea id="inp-content" rows="7"
+      placeholder="在这里粘贴你的文案内容…&#10;&#10;可以是朋友圈文案、笔记草稿、活动文案等任意文字，AI 会在不破坏原有风格的前提下自然植入品牌信息。"></textarea>
+    <div class="demo-link"><button onclick="fillDemo()">填入示例文案</button></div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step">
+    <div class="step-hdr">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">选择植入方式</div>
+        <div class="step-desc">决定品牌出现的方式和力度</div>
+      </div>
+    </div>
+    <div class="radio-group" id="style-group">
+      <div class="radio-card active" onclick="pickStyle(this,'natural')">
+        <div class="radio-dot"></div>
+        <div>
+          <div class="radio-label">🌿 自然提及</div>
+          <div class="radio-desc">顺带一提，不打断阅读节奏，读者感觉不到刻意</div>
+        </div>
+      </div>
+      <div class="radio-card" onclick="pickStyle(this,'recommend')">
+        <div class="radio-dot"></div>
+        <div>
+          <div class="radio-label">⭐ 推荐式</div>
+          <div class="radio-desc">以"我用过，真的好用"的亲身体验方式推荐品牌</div>
+        </div>
+      </div>
+      <div class="radio-card" onclick="pickStyle(this,'solution')">
+        <div class="radio-dot"></div>
+        <div>
+          <div class="radio-label">🎯 解决方案式</div>
+          <div class="radio-desc">文中有什么痛点，就用品牌功能来解决，逻辑更强</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step">
+    <div class="step-hdr">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">输出长度</div>
+        <div class="step-desc">植入后的文案和原文长度的关系</div>
+      </div>
+    </div>
+    <div class="chip-row" id="len-group">
+      <span class="chip active" data-v="same" onclick="pickLen(this)">和原文差不多</span>
+      <span class="chip" data-v="shorter" onclick="pickLen(this)">略短一点</span>
+      <span class="chip" data-v="longer" onclick="pickLen(this)">略长（补充品牌信息）</span>
+    </div>
+  </div>
+
+  <!-- Generate -->
+  <button class="gen-btn" id="gen-btn" onclick="generate()">
+    <span>💉</span> 开始植入
+  </button>
+  <div class="demo-link" style="margin-bottom:16px"></div>
+
+  <!-- Progress -->
+  <div class="prog" id="prog">
+    <div class="prog-status"><div class="spin spin-dark"></div><span id="prog-txt">分析植入点…</span></div>
+    <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
+  </div>
+
+  <!-- Verdicts -->
+  <div id="verdicts"></div>
+
+  <!-- Result -->
+  <div id="result-wrap"></div>
+
+  <div class="footer">由 DeepSeek AI 驱动 · 内容仅供参考</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PROXY = '/api/proxy';
+
+const BRAND = `【品牌资料·勿直接复述】
+产品定位：一站式 AI 求职招聘与职业成长平台，集题库、面经、内推、AI 工具、社区交流于一体。
+核心价值：用科技（AI）消除信息差，让普通人也能高效拿到心仪 offer。
+用户规模：累计服务 1400 万＋应届毕业生，为 500 强企业输送大量人才。
+行业背书：荣获 2021 年"新旗奖·年度产品大奖"。
+目标人群：18–25 岁在校大学生、应届毕业生、毕业 1 年内往届生；重点覆盖互联网、国企、金融、AI/算法岗求职者。
+核心功能：
+  · 求职准备：全行业题库（99% 大厂笔试真题）、专项刷题、系统课程、百万求职者社区
+  · 网申投递：实时校招信息推送、名企内推（简历直达 HR）、AI 网申助手（一键优化简历）
+  · 笔试面试：海量面经库、AI 模拟面试（实时语音·逐题解析）、AI 面试押题、AI 群面模拟
+  · 求职决策：在职员工薪资爆料、公司真实评价、AI 薪资分析
+情感型卖点：求职不再孤军奋战 / 少走 90% 求职弯路 / 普通本科也能进大厂。
+信任型卖点：1400 万大学生的共同选择 / 100% 真实用户内容 / 名企官方合作。
+差异化卖点：行业领先 AI 模拟面试 / 独家 AI 网申助手 / 最全 AI 岗求职资源。
+用户痛点：找不到完整真题 / 简历石沉大海 / 面试紧张发挥失常 / 校招信息易错过。`;
+
+// ── State ──
+let currentStyle = 'natural';
+let currentLen = 'same';
+let lastResult = '';
+let fuSys = '';
+
+// ── Style / Length selectors ──
+function pickStyle(el, val) {
+  document.querySelectorAll('#style-group .radio-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  currentStyle = val;
+}
+function pickLen(el) {
+  document.querySelectorAll('#len-group .chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  currentLen = el.dataset.v;
+}
+
+// ── Toast ──
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('on');
+  clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('on'), 2200);
+}
+
+// ── Progress ──
+function setProgress(txt, pct) {
+  document.getElementById('prog').classList.add('on');
+  document.getElementById('prog-txt').textContent = txt;
+  document.getElementById('prog-fill').style.width = pct + '%';
+}
+function hideProgress() { setTimeout(() => document.getElementById('prog').classList.remove('on'), 700); }
+
+// ── Add verdict ──
+function addVerdict(icon, bg, name, role, txt) {
+  const c = document.getElementById('verdicts');
+  const d = document.createElement('div'); d.className = 'verdict';
+  d.innerHTML = `<div class="v-icon" style="background:${bg}">${icon}</div><div style="flex:1"><span class="v-name">${name}</span><span class="v-role">${role}</span><div class="v-text">${txt}</div></div>`;
+  c.appendChild(d);
+}
+
+// ── API ──
+async function callAI(sys, usr, maxTok = 1600) {
+  const r = await fetch(PROXY, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: maxTok, system: sys, messages: [{ role: 'user', content: usr }] })
+  });
+  const d = await r.json();
+  if (d.error) throw new Error(typeof d.error === 'string' ? d.error : d.error.message || JSON.stringify(d.error));
+  return d.content[0].text;
+}
+
+// ── Generate ──
+async function generate() {
+  const content = document.getElementById('inp-content').value.trim();
+  if (!content) { toast('请先粘贴文案内容'); return; }
+
+  const styleMap = {
+    natural:   '自然提及（顺带一提，读者感觉不到刻意，品牌只是一个辅助工具）',
+    recommend: '推荐式（以亲身使用体验推荐品牌，真实感强，有具体场景）',
+    solution:  '解决方案式（用品牌的具体功能直接解决原文中提到的痛点）'
+  };
+  const lenMap = {
+    same:    '输出长度与原文相近，不要大幅增删',
+    shorter: '输出略短于原文，精简表达',
+    longer:  '输出略长于原文，可适当补充品牌相关信息'
+  };
+
+  const btn = document.getElementById('gen-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spin"></div> 生成中…';
+  document.getElementById('verdicts').innerHTML = '';
+  document.getElementById('result-wrap').innerHTML = '';
+  setProgress('分析植入点…', 30);
+
+  try {
+    // Step 1: 分析
+    const analysis = await callAI(
+      `你是品牌内容策略师，专注于小红书内容营销。分析这段文案中适合自然植入品牌的位置，指出1–2个最佳植入点（说明在哪里、为什么合适、怎么植入最自然）。简洁，50字以内。\n\n${BRAND}`,
+      `文案：${content}\n植入方式：${styleMap[currentStyle]}`
+    );
+    addVerdict('💉', 'var(--purple-l)', '植入分析师', '策略建议', analysis);
+    setProgress('正在植入品牌话术…', 68);
+
+    // Step 2: 植入
+    fuSys = `你是品牌话术植入专家，在不破坏原文风格的前提下植入品牌信息。品牌资料：\n${BRAND}\n请按用户要求调整，直接输出修改后的完整文案，不加任何说明。`;
+    const result = await callAI(
+      `你是品牌话术植入专家，在不破坏原文风格的前提下植入品牌信息。直接输出植入后的完整文案，不加任何说明、不加引号、不加标注。
+植入方式：${styleMap[currentStyle]}
+长度要求：${lenMap[currentLen]}
+\n${BRAND}`,
+      `植入分析：${analysis}\n\n原文：\n${content}`
+    );
+
+    lastResult = result;
+    setProgress('完成', 100);
+    renderResult(result);
+    hideProgress();
+
+  } catch(e) {
+    toast('生成失败：' + e.message);
+    hideProgress();
+  }
+  btn.disabled = false;
+  btn.innerHTML = '<span>💉</span> 重新生成';
+}
+
+// ── Render result ──
+function renderResult(text) {
+  document.getElementById('result-wrap').innerHTML = `
+    <div class="result">
+      <div class="result-hdr">
+        <div class="result-title">植入结果</div>
+        <button class="copy-all-btn" id="copy-btn" onclick="copyResult()">📋 复制</button>
+      </div>
+      <div class="result-body">
+        <div class="result-text" id="result-text">${esc(text)}</div>
+      </div>
+      <div class="fu">
+        <div class="fu-hint">💬 不满意？告诉 AI 怎么改（回车发送）</div>
+        <div class="fu-row">
+          <textarea class="fu-inp" id="fu-inp" rows="1"
+            placeholder="例：改短一点 / 植入再自然一点 / 换个切入角度…"
+            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendFU()}"></textarea>
+          <button class="fu-send" id="fu-send" onclick="sendFU()">发送</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById('result-wrap').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ── Copy ──
+function copyResult() {
+  const text = document.getElementById('result-text')?.innerText || '';
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✅ 已复制'; btn.classList.add('copied');
+    toast('已复制到剪贴板');
+    setTimeout(() => { btn.textContent = '📋 复制'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ── Follow-up ──
+async function sendFU() {
+  const inp = document.getElementById('fu-inp');
+  const req = inp.value.trim(); if (!req) return;
+  const send = document.getElementById('fu-send');
+  send.disabled = true; send.textContent = '…'; inp.disabled = true;
+  try {
+    const refined = await callAI(fuSys, `当前内容：\n\n${lastResult}\n\n修改要求：${req}\n\n请按要求修改，直接输出修改后的完整文案。`, 2000);
+    lastResult = refined;
+    document.getElementById('result-text').textContent = refined;
+    inp.value = ''; toast('已根据要求修改 ✓');
+  } catch(e) { toast('修改失败：' + e.message); }
+  send.disabled = false; send.textContent = '发送'; inp.disabled = false; inp.focus();
+}
+
+// ── Demo ──
+function fillDemo() {
+  document.getElementById('inp-content').value = `九月了，秋招正式开始了！不知道大家准备得怎么样，我去年这时候真的很焦虑，感觉什么都没准备好。
+
+后来调整了方向：不再到处海投，集中精力攻破 3–5 个目标公司。每天固定 2 小时刷题，把面经全过一遍，重点练面试表达。
+
+这套方法下来，秋招末期拿到了 2 个 offer。
+
+你们现在在准备什么？一起加油！`;
+}
+
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+</script>
+</body>
+</html>
