@@ -796,33 +796,26 @@ async function generate() {
   if (!selectedPts) { toast('请至少选择 1 个营销点'); return; }
 
   try {
-    // Step 1: 分析
-    const analysis = await callAI(
-      `你是品牌内容策略师，专注于小红书内容营销。分析这段文案中适合自然植入以下营销点的位置，指出最佳植入方案（说明在哪里植入、用哪个营销点、为什么合适）。简洁，60字以内。
-
-【需重点植入的营销点】
-${selectedPts}
-
-${BRAND}`,
-      `文案：${content}\n植入方式：${styleMap[currentStyle]}`
-    );
-    addVerdict('💉', 'var(--purple-l)', '植入分析师', '策略建议', analysis);
-    setProgress('正在植入品牌话术…', 68);
-
-    // Step 2: 植入
-    fuSys = `你是品牌话术植入专家，在不破坏原文风格的前提下植入品牌信息。\n\n【需重点植入的营销点】\n${selectedPts}\n\n${BRAND}\n\n请按用户要求调整，直接输出修改后的完整文案，不加任何说明。`;
-    const result = await callAI(
-      `你是品牌话术植入专家，在不破坏原文风格的前提下植入品牌信息。直接输出植入后的完整文案，不加任何说明、不加引号、不加标注。
+    setProgress('AI 分析并植入中…', 40);
+    const combined = await callAI(
+      `你是品牌话术植入专家。先简要分析植入点，再直接输出植入后完整文案，只返回 JSON（不要代码块）：
+{"analysis":"最佳植入点（60字以内）","result":"植入后的完整文案（直接输出，不加说明、不加引号）"}
 
 植入方式：${styleMap[currentStyle]}
 长度要求：${lenMap[currentLen]}
 
-【需重点植入的营销点——只植入这些，不要把所有功能都堆上去】
+【需重点植入的营销点——只植入这些，不要堆砌所有功能】
 ${selectedPts}
 
 ${BRAND}`,
-      `植入分析：${analysis}\n\n原文：\n${content}`
+      `原文：\n${content}`
     );
+    let _parsed;
+    try { _parsed = JSON.parse(combined.replace(/\`\`\`json|\`\`\`/g,'').trim().match(/\{[\s\S]*\}/)?.[0] || combined); }
+    catch { _parsed = { analysis: '', result: combined }; }
+    addVerdict('💉', 'var(--purple-l)', '植入分析师', '策略建议', _parsed.analysis || '已完成植入分析');
+    fuSys = `你是品牌话术植入专家，在不破坏原文风格的前提下植入品牌信息。\n\n【需重点植入的营销点】\n${selectedPts}\n\n${BRAND}\n\n请按用户要求调整，直接输出修改后的完整文案，不加任何说明。`;
+    const result = _parsed.result || combined;
 
     lastResult = result;
     setProgress('完成', 100);

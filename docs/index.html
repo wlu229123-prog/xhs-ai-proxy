@@ -675,22 +675,22 @@ async function runDiag() {
   btn.disabled = true; btn.innerHTML = '<span class="spin spin-w"></span> 诊断中…';
   document.getElementById('d-verdicts').innerHTML = '';
   document.getElementById('d-result').innerHTML = '';
-  progShow('d', '内容审计师正在分析…', 20);
+  progShow('d', 'AI 双视角同步分析中…', 30);
 
   try {
-    const r1 = await callAI(
-      `你是小红书内容审计师，从批判角度分析笔记核心问题。从标题吸引力、内容逻辑、互动设计、关键词、情绪钩子五个维度，找出2–3个最关键的问题。语言简洁直接，不超过120字。`,
-      `品类：${catM[cat]}，目标：${goalM[goal]}\n\n笔记：\n${content}`
-    );
-    progShow('d', '用户共鸣官正在评估…', 48);
+    const [r1, r2] = await Promise.all([
+      callAI(
+        `你是小红书内容审计师，从批判角度分析笔记核心问题。从标题吸引力、内容逻辑、互动设计、关键词、情绪钩子五个维度，找出2–3个最关键的问题。语言简洁直接，不超过120字。`,
+        `品类：${catM[cat]}，目标：${goalM[goal]}\n\n笔记：\n${content}`
+      ),
+      callAI(
+        `你是小红书用户共鸣官，代表目标用户评估内容。分析情感共鸣、点赞冲动、收藏价值、评论欲望。语言简洁，不超过120字。`,
+        `品类：${catM[cat]}，目标：${goalM[goal]}\n\n笔记：\n${content}`
+      )
+    ]);
     addVerdict('d-verdicts', '🔍', 'var(--red-l)', '内容审计师', '批判视角', r1);
-
-    const r2 = await callAI(
-      `你是小红书用户共鸣官，代表目标用户评估内容。分析情感共鸣、点赞冲动、收藏价值、评论欲望。语言简洁，不超过120字。`,
-      `品类：${catM[cat]}，目标：${goalM[goal]}\n\n笔记：\n${content}`
-    );
-    progShow('d', '综合裁判汇总中…', 78);
     addVerdict('d-verdicts', '💬', 'var(--blue-l)', '用户共鸣官', '用户视角', r2);
+    progShow('d', '综合裁判汇总中…', 78);
 
     const r3 = await callAI(
       `你是综合裁判，根据两位 Agent 的意见生成最终诊断报告。只返回 JSON，不要代码块：
@@ -752,18 +752,12 @@ async function runGen(mode) {
       const style = document.getElementById('o-style').value;
       progShow('o', '策划选题角度…', 25);
 
-      const plan = await callAI(
-        `你是小红书内容策划师，擅长挖掘话题的爆款潜力。根据给定选题，给出2–3个不同的内容切入角度（每个角度一句话，重点突出差异化）。不超过80字。`,
-        `选题：${input}\n风格：${styleM[style]}`
-      );
-      addVerdict('o-verdicts', '💡', 'var(--blue-l)', '内容策划师', '选题策略', plan);
-      progShow('o', '生成正式内容…', 65);
-
+      progShow('o', '创作中…', 40);
       const raw = await callAI(
-        `你是小红书爆款文案师。根据策划角度生成完整笔记，只返回 JSON，不要代码块：
-{"titles":["标题A（含emoji，不超过25字）","标题B（含emoji，不超过25字）","标题C（含emoji，不超过25字）"],"body":"正文（${wc}字左右，含emoji节奏，段落分明，末尾有互动钩子）","tags":["标签1","标签2","标签3","标签4","标签5","标签6"]}
+        `你是小红书爆款内容创作师。先构思2–3个切入角度，选最佳角度生成完整笔记，只返回 JSON，不要代码块：
+{"strategy":"选择的切入角度（一句话，体现差异化）","titles":["标题A（含emoji，不超过25字）","标题B（含emoji，不超过25字）","标题C（含emoji，不超过25字）"],"body":"正文（${wc}字左右，含emoji节奏，段落分明，末尾有互动钩子）","tags":["标签1","标签2","标签3","标签4","标签5","标签6"]}
 风格要求：${styleM[style]}。正文约${wc}字。`,
-        `策划角度：${plan}\n\n原始选题：${input}`
+        `选题：${input}`
       );
 
       let cp2;
@@ -771,6 +765,7 @@ async function runGen(mode) {
       catch { cp2 = {titles:['✨ '+input.slice(0,18)+'…（方案A）','💡 '+input.slice(0,18)+'…（方案B）','🌟 '+input.slice(0,18)+'…（方案C）'], body: raw, tags:['小红书','干货分享','经验分享']}; }
 
       progShow('o', '完成', 100);
+      if (cp2.strategy) addVerdict('o-verdicts', '💡', 'var(--blue-l)', '内容策划师', '选题策略', cp2.strategy);
       _titles = cp2.titles || [];
       const fuSys = `你是小红书文案优化师，擅长调整内容风格、长度、结构。请按用户要求修改，保持小红书风格，直接输出修改后内容。`;
       document.getElementById('o-result').innerHTML = genResultHTML('o', cp2, '✍️ 生成结果', '3 套标题 · 正文 · 标签');
@@ -781,18 +776,12 @@ async function runGen(mode) {
       const str = document.getElementById('s-str').value;
       progShow('s', '分析种草策略…', 30);
 
-      const plan = await callAI(
-        `你是小红书品牌内容策划师，熟悉内容营销。根据选题和品牌资料，设计种草切入角度：从哪个用户痛点出发、用什么场景/故事承接品牌、不能太广告感。50字以内。\n\n${BRAND}`,
-        `选题：${input}\n种草力度：${strM[str]}`
-      );
-      addVerdict('s-verdicts', '🌱', 'var(--green-l)', '种草策划师', '内容策略', plan);
-      progShow('s', '生成种草内容…', 68);
-
+      progShow('s', '创作中…', 40);
       const raw = await callAI(
-        `你是小红书爆款种草文案师。结合品牌资料，从真实用户视角生成种草笔记，只返回 JSON：
-{"titles":["标题A","标题B","标题C"],"body":"正文（${wc}字左右，从用户痛点出发，自然融入品牌功能，末尾有行动召唤）","tags":["标签1","标签2","标签3","标签4","标签5","标签6"]}
+        `你是小红书爆款种草文案师。先思考种草切入角度（从用户痛点出发），再生成完整种草笔记，只返回 JSON：
+{"strategy":"种草切入角度（50字以内，从哪个痛点出发、如何自然融入品牌）","titles":["标题A","标题B","标题C"],"body":"正文（${wc}字左右，从用户痛点出发，自然融入品牌功能，末尾有行动召唤）","tags":["标签1","标签2","标签3","标签4","标签5","标签6"]}
 种草力度：${strM[str]}\n\n${BRAND}`,
-        `策划角度：${plan}\n\n选题：${input}`
+        `选题：${input}`
       );
 
       let cp2;
@@ -800,6 +789,7 @@ async function runGen(mode) {
       catch { cp2 = {titles:['种草方案A','种草方案B','种草方案C'], body: raw, tags:['求职干货','秋招备考','校招']}; }
 
       progShow('s', '完成', 100);
+      if (cp2.strategy) addVerdict('s-verdicts', '🌱', 'var(--green-l)', '种草策划师', '内容策略', cp2.strategy);
       _titles = cp2.titles || [];
       const fuSys = `你是小红书种草内容优化师。以下是品牌资料：\n${BRAND}\n请按用户要求修改内容，保持种草感和小红书风格，直接输出修改后内容。`;
       document.getElementById('s-result').innerHTML = genResultHTML('s', cp2, '🌱 种草内容', '3 套标题 · 正文 · 标签');
@@ -810,20 +800,20 @@ async function runGen(mode) {
       const ilen = document.getElementById('i-len').value;
       progShow('i', '分析植入点…', 35);
 
-      const analysis = await callAI(
-        `你是品牌内容策略师，分析文案中适合自然植入品牌的位置。指出1–2个最佳植入点（说明在哪里植入、为什么合适、如何植入最自然）。50字以内。\n\n${BRAND}`,
-        `文案：${input}\n植入方式：${injM[istyle]}`
-      );
-      addVerdict('i-verdicts', '💉', 'var(--purple-l)', '植入分析师', '策略建议', analysis);
-      progShow('i', '植入品牌话术…', 70);
-
-      const result = await callAI(
-        `你是品牌话术植入专家，在不破坏原文风格的前提下植入品牌信息。直接输出植入后的完整文案，不加任何说明。
+      progShow('i', 'AI 分析并植入中…', 40);
+      const raw_inj = await callAI(
+        `你是品牌话术植入专家。先分析植入点，再直接输出植入后完整文案，只返回 JSON（不要代码块）：
+{"analysis":"最佳植入点说明（1–2个，50字以内）","result":"植入后的完整文案（不加说明、不加引号）"}
 植入要求：${injM[istyle]}
 长度要求：${lenM[ilen]}
 \n${BRAND}`,
-        `植入分析：${analysis}\n\n原文：\n${input}`
+        `文案：${input}`
       );
+      let parsed_inj;
+      try { parsed_inj = JSON.parse(raw_inj.replace(/\`\`\`json|\`\`\`/g,'').trim().match(/\{[\s\S]*\}/)?.[0] || raw_inj); }
+      catch { parsed_inj = { analysis: '', result: raw_inj }; }
+      addVerdict('i-verdicts', '💉', 'var(--purple-l)', '植入分析师', '策略建议', parsed_inj.analysis || '已完成植入分析');
+      const result = parsed_inj.result || raw_inj;
 
       progShow('i', '完成', 100);
       const fuSys = `你是品牌话术植入专家。品牌资料：\n${BRAND}\n请按用户要求调整植入内容，保持自然感，直接输出修改后的完整文案。`;
