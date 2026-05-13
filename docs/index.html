@@ -91,6 +91,18 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
 .wcc:hover{border-color:var(--red);color:var(--red)}
 .wcc.active{background:var(--red-l);border-color:var(--red);color:var(--red);font-weight:500}
 
+/* ── Marketing points grid (话术植入) ── */
+.ipts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px}
+.ipt-card{display:flex;align-items:flex-start;gap:8px;padding:9px 10px;border:1.5px solid var(--border);border-radius:var(--rs);cursor:pointer;transition:all .15s;background:var(--bg);user-select:none;position:relative}
+.ipt-card.active{border-color:var(--purple);background:var(--purple-l)}
+.ipt-emoji{font-size:16px;flex-shrink:0;margin-top:1px}
+.ipt-name{font-size:12px;font-weight:600;line-height:1.3;color:var(--text)}
+.ipt-desc{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.35}
+.ipt-card.active .ipt-desc{color:var(--purple);opacity:.8}
+.ipt-check{position:absolute;top:7px;right:8px;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;font-size:9px;transition:all .15s;flex-shrink:0}
+.ipt-card.active .ipt-check{background:var(--purple);border-color:var(--purple);color:#fff}
+.ipts-hint{font-size:11px;color:var(--muted);margin-top:2px}
+
 /* ── Keyword pool chips ── */
 .kw-chip{display:inline-flex;align-items:center;gap:3px;padding:4px 10px;border:1px solid var(--border);border-radius:20px;font-size:12px;cursor:pointer;background:var(--bg);color:var(--text);transition:all .15s;user-select:none;line-height:1.4}
 .kw-chip:hover{border-color:var(--gold);color:var(--gold)}
@@ -426,8 +438,62 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
         <div class="card">
           <div class="field">
             <label>现有文案<span class="hint">粘贴任意文案，AI 找合适的点自然植入品牌</span></label>
-            <textarea id="i-content" rows="6" placeholder="粘贴一段已有的文案内容，AI 会在不破坏原有风格的前提下，找最合适的位置植入品牌信息…"></textarea>
+            <textarea id="i-content" rows="5" placeholder="粘贴一段已有的文案内容，AI 会在不破坏原有风格的前提下，找最合适的位置植入品牌信息…"></textarea>
           </div>
+
+          <!-- 营销点选择 -->
+          <div class="field mt10">
+            <label>选择植入营销点<span class="hint">选中的功能才会被植入，避免堆砌所有功能</span></label>
+            <div class="ipts-grid" id="i-pts-grid">
+              <div class="ipt-card active" data-key="miangjing" onclick="toggleInjPt(this)">
+                <div class="ipt-check">✓</div>
+                <span class="ipt-emoji">📝</span>
+                <div><div class="ipt-name">面经库</div><div class="ipt-desc">海量真实面经，目标公司直接搜</div></div>
+              </div>
+              <div class="ipt-card active" data-key="ai_interview" onclick="toggleInjPt(this)">
+                <div class="ipt-check">✓</div>
+                <span class="ipt-emoji">🎤</span>
+                <div><div class="ipt-name">AI 模拟面试</div><div class="ipt-desc">实时语音·逐题解析·24h随时练</div></div>
+              </div>
+              <div class="ipt-card" data-key="ai_apply" onclick="toggleInjPt(this)">
+                <div class="ipt-check">✓</div>
+                <span class="ipt-emoji">📄</span>
+                <div><div class="ipt-name">AI 网申助手</div><div class="ipt-desc">一键优化简历，精准匹配岗位JD</div></div>
+              </div>
+              <div class="ipt-card" data-key="question_bank" onclick="toggleInjPt(this)">
+                <div class="ipt-check">✓</div>
+                <span class="ipt-emoji">📚</span>
+                <div><div class="ipt-name">AI 学习题库</div><div class="ipt-desc">99%大厂真题，AI拆解考点</div></div>
+              </div>
+              <div class="ipt-card" data-key="company_bank" onclick="toggleInjPt(this)">
+                <div class="ipt-check">✓</div>
+                <span class="ipt-emoji">🏢</span>
+                <div><div class="ipt-name">公司真实校招题库</div><div class="ipt-desc">按公司岗位分类历年真题</div></div>
+              </div>
+              <div class="ipt-card" data-key="referral" onclick="toggleInjPt(this)">
+                <div class="ipt-check">✓</div>
+                <span class="ipt-emoji">🚀</span>
+                <div><div class="ipt-name">名企内推</div><div class="ipt-desc">简历直达HR，跳过简历筛选</div></div>
+              </div>
+              <div class="ipt-card" data-key="salary" onclick="toggleInjPt(this)">
+                <div class="ipt-check">✓</div>
+                <span class="ipt-emoji">💰</span>
+                <div><div class="ipt-name">薪资爆料</div><div class="ipt-desc">在职员工匿名爆料真实薪资</div></div>
+              </div>
+              <div class="ipt-card" data-key="ai_predict" onclick="toggleInjPt(this)">
+                <div class="ipt-check">✓</div>
+                <span class="ipt-emoji">🎯</span>
+                <div><div class="ipt-name">AI 面试押题</div><div class="ipt-desc">大数据预测高频考点，命中率高</div></div>
+              </div>
+              <div class="ipt-card" data-key="community" onclick="toggleInjPt(this)">
+                <div class="ipt-check">✓</div>
+                <span class="ipt-emoji">👥</span>
+                <div><div class="ipt-name">百万求职社区</div><div class="ipt-desc">1400万+用户，求职不孤军奋战</div></div>
+              </div>
+            </div>
+            <div class="ipts-hint" id="i-pts-hint">已选 2 个营销点（点击切换）</div>
+          </div>
+
           <div class="row2 mt10">
             <div class="field">
               <label>植入方式</label>
@@ -918,13 +984,18 @@ async function runGen(mode) {
       const ilen = document.getElementById('i-len').value;
       progShow('i', '分析植入点…', 35);
 
+      const selectedPts = getInjSelectedPts();
       progShow('i', 'AI 分析并植入中…', 40);
       const raw_inj = await callAI(
         `你是品牌话术植入专家。先分析植入点，再直接输出植入后完整文案，只返回 JSON（不要代码块）：
 {"analysis":"最佳植入点说明（1–2个，50字以内）","result":"植入后的完整文案（不加说明、不加引号）"}
 植入要求：${injM[istyle]}
 长度要求：${lenM[ilen]}
-\n${BRAND}`,
+
+【需重点植入的营销点——只植入这些，不要把所有功能都堆上去】
+${selectedPts}
+
+${BRAND}`,
         `文案：${input}`
       );
       let parsed_inj;
@@ -934,7 +1005,7 @@ async function runGen(mode) {
       const result = parsed_inj.result || raw_inj;
 
       progShow('i', '完成', 100);
-      const fuSys = `你是品牌话术植入专家。品牌资料：\n${BRAND}\n请按用户要求调整植入内容，保持自然感，直接输出修改后的完整文案。`;
+      const fuSys = `你是品牌话术植入专家。\n\n【需重点植入的营销点】\n${selectedPts}\n\n${BRAND}\n\n请按用户要求调整植入内容，保持自然感，直接输出修改后的完整文案。`;
       document.getElementById('i-result').innerHTML = `
         <div class="rcard">
           <div class="rcard-hdr">
@@ -1085,6 +1156,39 @@ function demoFill(t) {
 
 // ═══ Init ═══
 // ready
+
+// ════════════════════════════════════════════════════════════
+// ═══ 话术植入 · 营销点选择 ════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+const INJ_PT_INFO = {
+  miangjing:     { name:'面经库',           desc:'百万真实面经，覆盖各大厂各岗位，搜目标公司直接找到，比自己搜快10倍' },
+  ai_interview:  { name:'AI 模拟面试',      desc:'支持多岗位、多场景实时语音模拟，生成逐题解析、综合评价和改进建议，24小时随时练，比真人陪练更方便专业' },
+  ai_apply:      { name:'AI 网申助手',      desc:'一键优化简历内容，精准匹配岗位JD，让简历从HR邮箱里脱颖而出，通过率大幅提升' },
+  question_bank: { name:'AI 学习题库',      desc:'覆盖99%大厂笔试真题，AI自动拆解核心考点，生成个性化学习计划，错题智能分析推送同类题强化' },
+  company_bank:  { name:'公司真实校招题库', desc:'按公司和岗位分类的历年真题，精准备考不走弯路，真题全到离谱，面经多到刷不完' },
+  referral:      { name:'名企内推',         desc:'名企在职员工在线内推，简历直达HR，跳过初筛环节，通过率提升3倍，内推真的能上岸' },
+  salary:        { name:'薪资爆料',         desc:'在职员工匿名爆料真实薪资、福利待遇、加班情况，薪资透明不踩坑，再也不会被HR压价当白菜' },
+  ai_predict:    { name:'AI 面试押题',      desc:'根据目标公司历年真题大数据，智能预测高频考点，命中率极高，笔试面试都能押中原题' },
+  community:     { name:'百万求职社区',     desc:'1400万+用户真实互动，学长学姐分享经验、答疑解惑，求职不再孤军奋战' },
+};
+
+function toggleInjPt(el) {
+  const active = document.querySelectorAll('#i-pts-grid .ipt-card.active');
+  if (el.classList.contains('active') && active.length <= 1) {
+    toast('至少保留 1 个营销点'); return;
+  }
+  el.classList.toggle('active');
+  const n = document.querySelectorAll('#i-pts-grid .ipt-card.active').length;
+  document.getElementById('i-pts-hint').textContent = `已选 ${n} 个营销点（点击切换）`;
+}
+
+function getInjSelectedPts() {
+  return Array.from(document.querySelectorAll('#i-pts-grid .ipt-card.active'))
+    .map(el => INJ_PT_INFO[el.dataset.key])
+    .filter(Boolean)
+    .map(p => `· ${p.name}：${p.desc}`)
+    .join('\n');
+}
 
 // ════════════════════════════════════════════════════════════
 // ═══ 选题规划模块 ═══════════════════════════════════════════
