@@ -85,11 +85,16 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
 .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}
 .mt10{margin-top:10px}
 
-/* ── Word count chips ── */
-.wc-row{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+/* ── Chip rows ── */
+.wc-row,.chiprow{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
 .wcc{padding:4px 11px;border:1px solid var(--border);border-radius:20px;font-size:12px;cursor:pointer;background:var(--bg);color:var(--muted);transition:all .15s;user-select:none}
 .wcc:hover{border-color:var(--red);color:var(--red)}
 .wcc.active{background:var(--red-l);border-color:var(--red);color:var(--red);font-weight:500}
+
+/* ── Keyword pool chips ── */
+.kw-chip{display:inline-flex;align-items:center;gap:3px;padding:4px 10px;border:1px solid var(--border);border-radius:20px;font-size:12px;cursor:pointer;background:var(--bg);color:var(--text);transition:all .15s;user-select:none;line-height:1.4}
+.kw-chip:hover{border-color:var(--gold);color:var(--gold)}
+.kw-chip.kw-sel{background:var(--gold-l);border-color:var(--gold);color:var(--gold);font-weight:500}
 
 /* ── Buttons ── */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:var(--rs);font-size:13px;font-weight:500;font-family:inherit;cursor:pointer;transition:all .15s;border:none}
@@ -253,6 +258,10 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
       <button class="nav-item" onclick="gotoPage('com',this)">
         <div class="nav-icon" style="background:var(--green-l)">💬</div>
         <div><div class="nav-txt">评论生成</div><div class="nav-sub">模拟真实用户评论</div></div>
+      </button>
+      <button class="nav-item" onclick="gotoPage('topic',this)">
+        <div class="nav-icon" style="background:var(--gold-l)">📋</div>
+        <div><div class="nav-txt">选题规划</div><div class="nav-sub">关键词库 · AI生成选题</div></div>
       </button>
     </div>
   </nav>
@@ -494,6 +503,104 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
       <div class="prog-wrap" id="c-prog"><div class="prog-status"><span class="spin"></span><span id="c-ptxt">生成中…</span></div><div class="prog-bar"><div class="prog-fill" id="c-pfill"></div></div></div>
       <div class="verdicts" id="c-verdicts"></div>
       <div id="c-result"></div>
+    </div>
+
+    <!-- ═══ TOPIC ═══ -->
+    <div class="page" id="page-topic">
+      <div class="ph">
+        <div class="ptag" style="background:var(--gold-l);color:var(--gold)">📋 选题规划</div>
+        <div class="ptitle">从关键词库选词，AI 生成爆款选题方向</div>
+        <div class="pdesc">内嵌①内容运营精选词库 + ③GEO精选词库，按阶段/竞争度筛选后交 AI 组合出选题</div>
+      </div>
+
+      <!-- Step 1: 筛选关键词 -->
+      <div class="card">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px">Step 1 · 筛选关键词</div>
+        <div class="field" style="margin-bottom:10px">
+          <label>求职阶段</label>
+          <div class="chiprow" id="t-stage-row">
+            <span class="wcc active" data-v="all" onclick="topicFilter('stage',this)">全部</span>
+            <span class="wcc" data-v="申请/行动阶段" onclick="topicFilter('stage',this)">申请·行动</span>
+            <span class="wcc" data-v="技能/准备阶段" onclick="topicFilter('stage',this)">技能·准备</span>
+            <span class="wcc" data-v="信息/认知阶段" onclick="topicFilter('stage',this)">信息·认知</span>
+            <span class="wcc" data-v="转型/未来阶段" onclick="topicFilter('stage',this)">AI·转型</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <div class="field" style="flex:1;min-width:160px">
+            <label>竞争程度</label>
+            <div class="chiprow" id="t-comp-row">
+              <span class="wcc active" data-v="all" onclick="topicFilter('comp',this)">全部</span>
+              <span class="wcc" data-v="蓝海词" onclick="topicFilter('comp',this)">🌊 蓝海词</span>
+              <span class="wcc" data-v="红海竞争词" onclick="topicFilter('comp',this)">🔥 红海词</span>
+            </div>
+          </div>
+          <div class="field" style="flex:1;min-width:160px">
+            <label>流量层级</label>
+            <div class="chiprow" id="t-tier-row">
+              <span class="wcc active" data-v="all" onclick="topicFilter('tier',this)">全部</span>
+              <span class="wcc" data-v="高频热词" onclick="topicFilter('tier',this)">高频热词</span>
+              <span class="wcc" data-v="长尾词" onclick="topicFilter('tier',this)">长尾精准</span>
+            </div>
+          </div>
+          <div class="field" style="flex:1;min-width:160px">
+            <label>词库来源</label>
+            <div class="chiprow" id="t-src-row">
+              <span class="wcc active" data-v="all" onclick="topicFilter('src',this)">全部</span>
+              <span class="wcc" data-v="op" onclick="topicFilter('src',this)">①内容运营</span>
+              <span class="wcc" data-v="geo" onclick="topicFilter('src',this)">③GEO精选</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: 选词 -->
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:13px;font-weight:600">Step 2 · 点击关键词加入选题（可多选）</span>
+          <span style="font-size:12px;color:var(--muted)" id="t-pool-count"></span>
+        </div>
+        <div id="t-kw-pool" style="display:flex;flex-wrap:wrap;gap:6px;max-height:180px;overflow-y:auto;padding:2px"></div>
+        <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:10px">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:6px">已选关键词 <span id="t-sel-count" style="color:var(--red)">0</span> 个</div>
+          <div id="t-selected-pool" style="display:flex;flex-wrap:wrap;gap:6px;min-height:28px"></div>
+        </div>
+      </div>
+
+      <!-- Step 3: 生成设置 -->
+      <div class="card">
+        <div style="font-size:13px;font-weight:600;margin-bottom:12px">Step 3 · 生成设置</div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <div class="field" style="flex:2;min-width:200px">
+            <label>内容方向</label>
+            <select id="t-direction">
+              <option value="general">求职干货（通用）</option>
+              <option value="company">公司合集</option>
+              <option value="app">APP推广·牛客种草</option>
+              <option value="story">经验故事·情感共鸣</option>
+              <option value="ai">AI求职·前沿趋势</option>
+              <option value="resume">简历优化技巧</option>
+              <option value="interview">面试技巧攻略</option>
+            </select>
+          </div>
+          <div class="field" style="flex:1;min-width:140px">
+            <label>生成数量</label>
+            <div class="chiprow">
+              <span class="wcc" data-v="3" onclick="pickNum(this)">3条</span>
+              <span class="wcc active" data-v="5" onclick="pickNum(this)">5条</span>
+              <span class="wcc" data-v="8" onclick="pickNum(this)">8条</span>
+            </div>
+          </div>
+        </div>
+        <div class="arow mt10">
+          <button class="btn btn-p" id="t-btn" onclick="runTopic()">📋 AI 生成选题</button>
+          <button class="btn btn-s" onclick="clearTopicSel()">清空已选</button>
+          <span style="font-size:12px;color:var(--muted);margin-left:6px">AI 结合关键词+品牌资料生成完整选题方案</span>
+        </div>
+      </div>
+
+      <div class="prog-wrap" id="t-prog"><div class="prog-status"><span class="spin"></span><span id="t-ptxt">AI 正在规划选题…</span></div><div class="prog-bar"><div class="prog-fill" id="t-pfill"></div></div></div>
+      <div id="t-result"></div>
     </div>
 
   </main>
@@ -977,7 +1084,272 @@ function demoFill(t) {
 }
 
 // ═══ Init ═══
-refreshProxyBtn();
+// ready
+
+// ════════════════════════════════════════════════════════════
+// ═══ 选题规划模块 ═══════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+
+// ── 关键词数据库（来自关键词总库-筛选版.xlsx，①内容运营 + ③GEO精选 + 通用核心词）──
+const KW_DB = [
+  // ── ①内容运营精选词（有机内容首选）──
+  {kw:'简历怎么做更吸引人',vol:92445,comp:'红海竞争词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·话题性强',src:'op'},
+  {kw:'考研简历模板',vol:90938,comp:'红海竞争词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·话题性强',src:'op'},
+  {kw:'找工作没有方向怎么办女生',vol:86793,comp:'红海竞争词',stage:'申请/行动阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·话题性强',src:'op'},
+  {kw:'简历个人简介怎么写',vol:82674,comp:'红海竞争词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·话题性强',src:'op'},
+  {kw:'简历怎么制作',vol:81280,comp:'红海竞争词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·话题性强',src:'op'},
+  {kw:'广东省考面试时间',vol:65224,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起',src:'op'},
+  {kw:'研究生复试简历模板',vol:51832,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起·话题性强',src:'op'},
+  {kw:'四川事业编报名时间',vol:42510,comp:'蓝海词',stage:'申请/行动阶段',type:'求职节点/时间',tier:'高频热词',reason:'流量稳·蓝海可起',src:'op'},
+  {kw:'江苏省考面试时间',vol:38167,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起',src:'op'},
+  {kw:'春招怎么投',vol:36630,comp:'红海竞争词',stage:'申请/行动阶段',type:'求职节点/时间',tier:'高频热词',reason:'流量稳·话题性强',src:'op'},
+  {kw:'boss怎么取消面试',vol:19988,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起·话题性强',src:'op'},
+  {kw:'面试通过后不想去怎么回复',vol:18673,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起·话题性强',src:'op'},
+  {kw:'人行面试时间',vol:14771,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起',src:'op'},
+  {kw:'如何拒绝面试通过的工作',vol:14384,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起·话题性强',src:'op'},
+  {kw:'约了面试不想去怎么说',vol:12355,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起·话题性强',src:'op'},
+  {kw:'面试过了不想去怎么拒绝',vol:11313,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起·话题性强',src:'op'},
+  {kw:'接了offer又不想去了怎么跟hr说',vol:10667,comp:'蓝海词',stage:'申请/行动阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起·话题性强',src:'op'},
+  {kw:'面试拒绝回复话术',vol:10678,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起',src:'op'},
+  {kw:'应届生退税个人所得税流程',vol:10318,comp:'蓝海词',stage:'信息/认知阶段',type:'求职流程/方法',tier:'高频热词',reason:'流量稳·蓝海可起',src:'op'},
+  {kw:'读研规划怎么写进简历',vol:9606,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'长尾词',reason:'长尾精准·蓝海可起·话题性强',src:'op'},
+  {kw:'试岗期不想干了怎么说',vol:7609,comp:'蓝海词',stage:'信息/认知阶段',type:'求职流程/方法',tier:'长尾词',reason:'长尾精准·蓝海可起·话题性强',src:'op'},
+  {kw:'春招分享',vol:4068,comp:'蓝海词',stage:'申请/行动阶段',type:'求职节点/时间',tier:'长尾词',reason:'长尾精准·蓝海可起',src:'op'},
+  {kw:'考研时间',vol:75847,comp:'红海竞争词',stage:'信息/认知阶段',type:'求职节点/时间',tier:'高频热词',reason:'流量稳',src:'op'},
+  {kw:'银行从业资格证报名时间',vol:71358,comp:'红海竞争词',stage:'申请/行动阶段',type:'求职节点/时间',tier:'高频热词',reason:'流量稳',src:'op'},
+  // ── ③GEO精选词（AI求职·问句·低竞争）──
+  {kw:'牛客AI面试怎么会被判定为作弊',vol:468,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'长尾词',reason:'问句型·AI×求职·低竞争易抢占',src:'geo'},
+  {kw:'AI面试到底是怎么筛人的',vol:0,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'长尾词',reason:'问句型·AI×求职·低竞争易抢占',src:'geo'},
+  {kw:'AI面试怎么读稿不被发现',vol:0,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'长尾词',reason:'问句型·AI×求职·低竞争易抢占',src:'geo'},
+  {kw:'线上面试怎么用AI辅助回答',vol:0,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'长尾词',reason:'问句型·AI×求职·低竞争易抢占',src:'geo'},
+  {kw:'AI面试怎么用豆包辅助回答',vol:0,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'长尾词',reason:'AI×求职·低竞争易抢占',src:'geo'},
+  {kw:'AI岗位有哪些',vol:0,comp:'蓝海词',stage:'转型/未来阶段',type:'行业/岗位趋势',tier:'长尾词',reason:'问句型·低竞争易抢占',src:'geo'},
+  {kw:'AI领域有哪些岗位',vol:0,comp:'蓝海词',stage:'申请/行动阶段',type:'行业/岗位趋势',tier:'长尾词',reason:'问句型·低竞争易抢占',src:'geo'},
+  {kw:'管培生是什么意思',vol:76890,comp:'红海竞争词',stage:'信息/认知阶段',type:'行业/岗位趋势',tier:'高频热词',reason:'低竞争易抢占',src:'geo'},
+  {kw:'春招是几月份',vol:76282,comp:'红海竞争词',stage:'信息/认知阶段',type:'求职节点/时间',tier:'高频热词',reason:'低竞争易抢占',src:'geo'},
+  {kw:'应届生没有工作经验怎么找工作',vol:515,comp:'蓝海词',stage:'申请/行动阶段',type:'经验分享/案例',tier:'长尾词',reason:'问句型·低竞争易抢占',src:'geo'},
+  {kw:'2026年春招什么时候开始',vol:595,comp:'蓝海词',stage:'申请/行动阶段',type:'求职节点/时间',tier:'长尾词',reason:'问句型·低竞争易抢占',src:'geo'},
+  {kw:'农行春招2026网申什么时候出结果',vol:920,comp:'蓝海词',stage:'申请/行动阶段',type:'求职节点/时间',tier:'长尾词',reason:'AI×求职·低竞争易抢占',src:'geo'},
+  {kw:'上海应届生落户流程时间线',vol:476,comp:'蓝海词',stage:'信息/认知阶段',type:'求职节点/时间',tier:'长尾词',reason:'低竞争易抢占',src:'geo'},
+  {kw:'考研复试时间大概什么时候',vol:1325,comp:'蓝海词',stage:'信息/认知阶段',type:'求职节点/时间',tier:'长尾词',reason:'问句型·低竞争易抢占',src:'geo'},
+  {kw:'27届毕业生什么时候可以投央国企',vol:119,comp:'蓝海词',stage:'信息/认知阶段',type:'求职节点/时间',tier:'长尾词',reason:'问句型·低竞争易抢占',src:'geo'},
+  {kw:'春招拿到offer后什么时候入职',vol:915,comp:'蓝海词',stage:'申请/行动阶段',type:'求职节点/时间',tier:'长尾词',reason:'问句型·低竞争易抢占',src:'geo'},
+  // ── 通用核心词（高流量必备）──
+  {kw:'春招',vol:561333,comp:'红海竞争词',stage:'申请/行动阶段',type:'求职节点/时间',tier:'核心大词',reason:'大盘核心流量',src:'core'},
+  {kw:'秋招',vol:220000,comp:'红海竞争词',stage:'申请/行动阶段',type:'求职节点/时间',tier:'核心大词',reason:'大盘核心流量',src:'core'},
+  {kw:'暑期实习',vol:180000,comp:'红海竞争词',stage:'申请/行动阶段',type:'求职节点/时间',tier:'核心大词',reason:'大盘核心流量',src:'core'},
+  {kw:'AI模拟面试',vol:35000,comp:'蓝海词',stage:'技能/准备阶段',type:'工具/资源',tier:'高频热词',reason:'AI×求职·蓝海',src:'core'},
+  {kw:'面试技巧',vol:120000,comp:'红海竞争词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'高频必投词',src:'core'},
+  {kw:'大厂实习',vol:95000,comp:'红海竞争词',stage:'申请/行动阶段',type:'经验分享/案例',tier:'高频热词',reason:'高频高流量',src:'core'},
+  {kw:'面经分享',vol:45000,comp:'蓝海词',stage:'技能/准备阶段',type:'经验分享/案例',tier:'高频热词',reason:'蓝海可起',src:'core'},
+  {kw:'名企内推',vol:28000,comp:'蓝海词',stage:'申请/行动阶段',type:'工具/资源',tier:'高频热词',reason:'蓝海·转化强',src:'core'},
+  {kw:'求职焦虑',vol:22000,comp:'蓝海词',stage:'信息/认知阶段',type:'经验分享/案例',tier:'高频热词',reason:'情感共鸣·蓝海',src:'core'},
+  {kw:'27届秋招',vol:18000,comp:'蓝海词',stage:'申请/行动阶段',type:'求职节点/时间',tier:'高频热词',reason:'时效蓝海词',src:'core'},
+  {kw:'大模型岗位',vol:15000,comp:'蓝海词',stage:'转型/未来阶段',type:'行业/岗位趋势',tier:'高频热词',reason:'AI趋势蓝海',src:'core'},
+  {kw:'牛客APP测评',vol:12000,comp:'蓝海词',stage:'技能/准备阶段',type:'工具/资源',tier:'高频热词',reason:'品牌词·蓝海',src:'core'},
+  {kw:'秋招上岸经验',vol:9800,comp:'蓝海词',stage:'技能/准备阶段',type:'经验分享/案例',tier:'高频热词',reason:'经验共鸣·蓝海',src:'core'},
+  {kw:'应届生求职攻略',vol:8500,comp:'蓝海词',stage:'申请/行动阶段',type:'求职流程/方法',tier:'高频热词',reason:'蓝海·精准',src:'core'},
+  {kw:'AI求职工具',vol:6200,comp:'蓝海词',stage:'技能/准备阶段',type:'工具/资源',tier:'高频热词',reason:'AI×求职·蓝海',src:'core'},
+  {kw:'简历优化技巧',vol:58000,comp:'蓝海词',stage:'技能/准备阶段',type:'求职流程/方法',tier:'高频热词',reason:'蓝海可起·话题性强',src:'core'},
+];
+
+// ── 筛选状态 ──
+const topicFilters = { stage:'all', comp:'all', tier:'all', src:'all' };
+const topicSelected = new Set(); // 已选关键词 kw 字符串
+
+function topicFilter(dim, el) {
+  // 同行取消其他 active
+  el.closest('.chiprow').querySelectorAll('.wcc').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  topicFilters[dim] = el.dataset.v;
+  renderKwPool();
+}
+
+function pickNum(el) {
+  el.closest('.chiprow').querySelectorAll('.wcc').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function renderKwPool() {
+  const pool = KW_DB.filter(k => {
+    if (topicFilters.stage !== 'all' && k.stage !== topicFilters.stage) return false;
+    if (topicFilters.comp  !== 'all' && k.comp  !== topicFilters.comp)  return false;
+    if (topicFilters.tier  !== 'all' && k.tier  !== topicFilters.tier)  return false;
+    if (topicFilters.src   !== 'all' && k.src   !== topicFilters.src)   return false;
+    return true;
+  });
+
+  const poolDiv = document.getElementById('t-kw-pool');
+  poolDiv.innerHTML = '';
+  document.getElementById('t-pool-count').textContent = `共 ${pool.length} 个词`;
+
+  pool.forEach(k => {
+    const chip = document.createElement('span');
+    const isSel = topicSelected.has(k.kw);
+    chip.className = 'kw-chip' + (isSel ? ' kw-sel' : '');
+    const volStr = k.vol >= 10000 ? Math.round(k.vol/1000) + 'k' : k.vol > 0 ? k.vol : '—';
+    const compMark = k.comp === '蓝海词' ? '🌊' : '🔥';
+    chip.innerHTML = `${compMark}<span style="font-weight:500">${k.kw}</span><span style="opacity:.6;font-size:11px;margin-left:3px">${volStr}</span>`;
+    chip.title = `${k.stage} | ${k.type} | ${k.tier}\n${k.reason}`;
+    chip.onclick = () => toggleKwChip(k.kw, chip);
+    poolDiv.appendChild(chip);
+  });
+}
+
+function toggleKwChip(kw, chipEl) {
+  if (topicSelected.has(kw)) {
+    topicSelected.delete(kw);
+    chipEl && chipEl.classList.remove('kw-sel');
+  } else {
+    topicSelected.add(kw);
+    chipEl && chipEl.classList.add('kw-sel');
+  }
+  renderSelectedPool();
+}
+
+function renderSelectedPool() {
+  const selDiv = document.getElementById('t-selected-pool');
+  selDiv.innerHTML = '';
+  document.getElementById('t-sel-count').textContent = topicSelected.size;
+  topicSelected.forEach(kw => {
+    const tag = document.createElement('span');
+    tag.className = 'kw-chip kw-sel';
+    tag.innerHTML = `${kw} <span onclick="removeKw('${kw}')" style="cursor:pointer;opacity:.7;margin-left:2px">×</span>`;
+    selDiv.appendChild(tag);
+  });
+}
+
+function removeKw(kw) {
+  topicSelected.delete(kw);
+  renderSelectedPool();
+  // 同步取消 pool 里的选中态
+  document.querySelectorAll('#t-kw-pool .kw-chip').forEach(c => {
+    if (c.querySelector('span')?.textContent === kw) c.classList.remove('kw-sel');
+  });
+}
+
+function clearTopicSel() { topicSelected.clear(); renderSelectedPool(); renderKwPool(); }
+
+// ── AI 生成选题 ──
+async function runTopic() {
+  if (topicSelected.size === 0) { toast('请先从词库中选择至少 1 个关键词'); return; }
+
+  const dirMap = {
+    general:'求职干货（通用教程/攻略型）',
+    company:'公司合集（公司清单+待遇对比）',
+    app:'APP种草推广（以牛客为主，真实测评/功能展示角度）',
+    story:'经验故事（第一人称真实经历+情感共鸣）',
+    ai:'AI求职（AI工具/趋势/AI岗位前沿）',
+    resume:'简历优化（简历技巧/模板/避坑）',
+    interview:'面试技巧（话术/穿搭/心态/真题解析）'
+  };
+  const dir = document.getElementById('t-direction').value;
+  const numEl = document.querySelector('#page-topic .chiprow:last-of-type .wcc.active');
+  const num = numEl ? parseInt(numEl.dataset.v) : 5;
+
+  // 获取已选词的完整信息
+  const selKwData = KW_DB.filter(k => topicSelected.has(k.kw));
+  const kwList = selKwData.map(k =>
+    `「${k.kw}」月搜索${k.vol>0?Math.round(k.vol/1000)+'k':'低'}，${k.comp}，${k.stage}，${k.reason}`
+  ).join('\n');
+
+  const sys = `你是小红书校招求职内容运营专家，擅长基于搜索关键词规划爆款选题。
+你了解小红书标题公式：
+公式1（高点击率）：情绪词+人群词+痛点对比+数字/符号
+公式2（强共鸣）：第二人称+人群词+锐评观点+痛点结果
+公式3（蹭趋势）：口语化+热词+数字+痛点对比
+公式4（直给型）：锐评观点+人群词+冲突点+符号
+
+${BRAND}`;
+
+  const usr = `请基于以下关键词和内容方向，生成 ${num} 个完整的小红书选题方案。
+
+【已选关键词（含数据）】
+${kwList}
+
+【内容方向】${dirMap[dir]}
+
+要求：每个选题方案必须包含：
+1. 三个备选标题（分别用3种不同公式，含emoji，25字内）
+2. 内容结构（3-4步骤的框架）
+3. 必含元素（核心干货点）
+4. 核心关键词（2-4个写入正文的词）
+5. 一句话选题理由（为什么这个选题现在值得做）
+
+只返回 JSON，格式：
+{"topics":[{"id":1,"keyword":"主要关键词","titles":["标题A","标题B","标题C"],"structure":"第一步：xxx / 第二步：xxx / 第三步：xxx","mustHave":"xxx、xxx、xxx","keywords":["词1","词2","词3"],"reason":"xxx"}]}`;
+
+  const btn = document.getElementById('t-btn');
+  btn.disabled = true; btn.textContent = '生成中…';
+  progShow('t', 'AI 分析关键词价值…', 20);
+
+  try {
+    progShow('t', 'AI 生成选题方案…', 55);
+    const raw = await callAI(sys, usr, 3000);
+    progShow('t', '渲染选题卡片…', 90);
+
+    let data;
+    try {
+      const m = raw.match(/\{[\s\S]*\}/);
+      data = JSON.parse(m ? m[0] : raw);
+    } catch { throw new Error('AI 返回格式异常，请重试'); }
+
+    const resultDiv = document.getElementById('t-result');
+    resultDiv.innerHTML = `<div style="font-size:13px;color:var(--muted);margin-bottom:12px">共生成 ${data.topics?.length || 0} 个选题方案 · 关键词：${[...topicSelected].join('、')}</div>`;
+
+    (data.topics || []).forEach((t, i) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.cssText = 'border-left:3px solid var(--gold);margin-bottom:14px';
+      card.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:13px;font-weight:600;color:var(--gold)">选题方案 ${i+1} · ${t.keyword || ''}</span>
+          <span style="font-size:11px;background:var(--gold-l);color:var(--gold);padding:2px 8px;border-radius:20px">${dir === 'app' ? '🎯 APP种草' : dir === 'company' ? '🏢 公司合集' : dir === 'ai' ? '🤖 AI求职' : dir === 'story' ? '💛 经验故事' : dir === 'resume' ? '📄 简历优化' : dir === 'interview' ? '🎤 面试技巧' : '📚 求职干货'}</span>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:5px">📌 三个备选标题</div>
+          ${(t.titles||[]).map((tl,ti)=>`
+            <div style="display:flex;align-items:flex-start;gap:8px;padding:7px 10px;background:var(--bg);border-radius:8px;margin-bottom:5px;cursor:pointer" onclick="navigator.clipboard?.writeText('${tl.replace(/'/g,"\\'")}');toast('已复制：${tl.slice(0,15)}…')">
+              <span style="font-size:11px;color:var(--muted);padding-top:1px;flex-shrink:0">公式${ti+1}</span>
+              <span style="font-size:14px;font-weight:500;flex:1">${tl}</span>
+              <span style="font-size:11px;color:var(--light);flex-shrink:0">点击复制</span>
+            </div>`).join('')}
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px">
+          <div>
+            <div style="color:var(--muted);font-size:12px;margin-bottom:4px">📋 内容结构</div>
+            <div style="line-height:1.7">${(t.structure||'').replace(/\//g,'<br>')}</div>
+          </div>
+          <div>
+            <div style="color:var(--muted);font-size:12px;margin-bottom:4px">✅ 必含元素</div>
+            <div style="line-height:1.7">${t.mustHave||''}</div>
+          </div>
+        </div>
+        <div style="margin-top:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <span style="font-size:12px;color:var(--muted)">核心关键词：</span>
+          ${(t.keywords||[]).map(k=>`<span style="background:var(--blue-l);color:var(--blue);padding:2px 8px;border-radius:12px;font-size:12px">${k}</span>`).join('')}
+        </div>
+        <div style="margin-top:8px;padding:8px 10px;background:var(--green-l);border-radius:8px;font-size:12px;color:var(--green)">
+          💡 ${t.reason||''}
+        </div>`;
+      resultDiv.appendChild(card);
+    });
+
+    progHide('t');
+  } catch(e) {
+    progHide('t');
+    toast('生成失败：' + e.message);
+  }
+  btn.disabled = false; btn.textContent = '📋 AI 生成选题';
+}
+
+// ── 初始化选题模块 ──
+(function initTopic() {
+  renderKwPool();
+})();
+
+// ═══ Init ═══
+// ready
 </script>
 </body>
 </html>
