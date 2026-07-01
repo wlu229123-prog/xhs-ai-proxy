@@ -1,0 +1,438 @@
+{
+ "updated": "2026-05-13",
+ "isMock": false,
+ "totalCount": 20,
+ "taxonomyDistribution": {
+  "求职交流": 6,
+  "校园": 4,
+  "薪资爆料": 4,
+  "职场经验": 1,
+  "面经": 1,
+  "职场交流": 1,
+  "公告反馈": 1,
+  "求职攻略": 1,
+  "公司评价": 1
+ },
+ "interactionDistribution": {
+  "话题讨论型": 11,
+  "干货收藏型": 4,
+  "深度内容型": 3,
+  "标题吸引型": 2
+ },
+ "hotpoints": [
+  {
+   "title": "我旁听了几场联宝杯的赛题讨论会，发现一个秘密……",
+   "webLink": "https://www.nowcoder.com/discuss/882262668478865408",
+   "taxonomy": "校园",
+   "jobType": "其他",
+   "viewCnt": 14770,
+   "ctr": 1.52,
+   "cvr": 33.3,
+   "likeCnt": 185,
+   "commentCnt": 32,
+   "followCnt": 85,
+   "shareCnt": 0,
+   "interactionType": "深度内容型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号"
+   ],
+   "subjectNames": "联宝杯大学生创新大赛，你的技术值得产业级答案",
+   "createDate": "2026-05-08"
+  },
+  {
+   "title": "百度又放大招了：实习生薪资全面提升，最高涨110%",
+   "webLink": "https://www.nowcoder.com/discuss/882300904785960960",
+   "taxonomy": "求职交流",
+   "jobType": "软件开发",
+   "viewCnt": 3696,
+   "ctr": 8.67,
+   "cvr": 42.86,
+   "likeCnt": 58,
+   "commentCnt": 14,
+   "followCnt": 39,
+   "shareCnt": 0,
+   "interactionType": "干货收藏型",
+   "suggestedPlatforms": [
+    "小红书",
+    "抖音",
+    "公众号"
+   ],
+   "subjectNames": "开放七大实习专项，百度暑期实习值得冲吗",
+   "createDate": "2026-05-08"
+  },
+  {
+   "title": "求内推，求职！",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/f2bf1a9498a24f0eb642a16959e59c76",
+   "taxonomy": "求职交流",
+   "jobType": "人事/行政/财务",
+   "viewCnt": 3032,
+   "ctr": 32.69,
+   "cvr": 76.47,
+   "likeCnt": 5,
+   "commentCnt": 8,
+   "followCnt": 0,
+   "shareCnt": 0,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "抖音",
+    "牛客"
+   ],
+   "subjectNames": "",
+   "createDate": "2026-05-05"
+  },
+  {
+   "title": "agent开发是测试的最好转型期",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/726917ea4b144447890778158956c60c",
+   "taxonomy": "职场经验",
+   "jobType": "软件开发",
+   "viewCnt": 1156,
+   "ctr": 19.23,
+   "cvr": 31.82,
+   "likeCnt": 9,
+   "commentCnt": 15,
+   "followCnt": 8,
+   "shareCnt": 3,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号",
+    "牛客"
+   ],
+   "subjectNames": "想做Agent可以做哪些岗位？",
+   "createDate": "2026-05-05"
+  },
+  {
+   "title": "为什么说“灯塔工厂”的人才预演场，是技术人最该去的地方？",
+   "webLink": "https://www.nowcoder.com/discuss/881851907440984064",
+   "taxonomy": "校园",
+   "jobType": "其他",
+   "viewCnt": 1152,
+   "ctr": 6.78,
+   "cvr": 252.78,
+   "likeCnt": 53,
+   "commentCnt": 15,
+   "followCnt": 23,
+   "shareCnt": 0,
+   "interactionType": "深度内容型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号"
+   ],
+   "subjectNames": "联宝杯大学生创新大赛，你的技术值得产业级答案",
+   "createDate": "2026-05-07"
+  },
+  {
+   "title": "27届UE游戏客户端暑期结束力，小小地做个总结吧",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/e4788a7389854d28842e9db1373a3c29",
+   "taxonomy": "求职交流",
+   "jobType": "软件开发",
+   "viewCnt": 1041,
+   "ctr": 14.04,
+   "cvr": 124.24,
+   "likeCnt": 10,
+   "commentCnt": 26,
+   "followCnt": 4,
+   "shareCnt": 1,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "抖音",
+    "牛客"
+   ],
+   "subjectNames": "我的求职进度条,暑期,游戏求职进展汇总",
+   "createDate": "2026-05-05"
+  },
+  {
+   "title": "找不到实习是不是真的完了",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/21eac7df5bb34b36a85eb11bfc55cd75",
+   "taxonomy": "求职交流",
+   "jobType": "产品/项目/运营",
+   "viewCnt": 992,
+   "ctr": 26.87,
+   "cvr": 44.44,
+   "likeCnt": 0,
+   "commentCnt": 8,
+   "followCnt": 0,
+   "shareCnt": 0,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "抖音",
+    "牛客"
+   ],
+   "subjectNames": "",
+   "createDate": "2026-05-05"
+  },
+  {
+   "title": "华为通用软件面经/凉经",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/707a3ac58460401f83ff39b7c6bfa32d",
+   "taxonomy": "面经",
+   "jobType": "软件开发",
+   "viewCnt": 902,
+   "ctr": 21.0,
+   "cvr": 66.67,
+   "likeCnt": 3,
+   "commentCnt": 8,
+   "followCnt": 3,
+   "shareCnt": 0,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号",
+    "牛客"
+   ],
+   "subjectNames": "发面经攒人品,我的求职进度条",
+   "createDate": "2026-04-29"
+  },
+  {
+   "title": "毕业了，有些话只能藏在心里了",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/ab8b9756319640bbb404278c5357b7c9",
+   "taxonomy": "校园",
+   "jobType": "其他",
+   "viewCnt": 788,
+   "ctr": 15.66,
+   "cvr": 45.05,
+   "likeCnt": 12,
+   "commentCnt": 32,
+   "followCnt": 4,
+   "shareCnt": 2,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号",
+    "牛客"
+   ],
+   "subjectNames": "记录我的毕业季",
+   "createDate": "2026-05-07"
+  },
+  {
+   "title": "27届双非Agent开发春招选择",
+   "webLink": "https://www.nowcoder.com/discuss/879349992144568320",
+   "taxonomy": "薪资爆料",
+   "jobType": "软件开发",
+   "viewCnt": 742,
+   "ctr": 8.32,
+   "cvr": 34.09,
+   "likeCnt": 2,
+   "commentCnt": 10,
+   "followCnt": 3,
+   "shareCnt": 0,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "抖音",
+    "牛客"
+   ],
+   "subjectNames": "AI求职记录,双非应该如何逆袭？,我的求职进度条,找工作，你会甘心进小厂还是猛冲大厂,投票,这个offer值得去吗？",
+   "createDate": "2026-04-30"
+  },
+  {
+   "title": "我的春招结束了",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/a7689573ffac48188c2c5c82302b485d",
+   "taxonomy": "薪资爆料",
+   "jobType": "软件开发",
+   "viewCnt": 488,
+   "ctr": 19.57,
+   "cvr": 43.98,
+   "likeCnt": 57,
+   "commentCnt": 13,
+   "followCnt": 14,
+   "shareCnt": 0,
+   "interactionType": "标题吸引型",
+   "suggestedPlatforms": [
+    "小红书",
+    "抖音"
+   ],
+   "subjectNames": "巨人网络春招,我的求职进度条,游戏求职进展汇总",
+   "createDate": "2026-05-12"
+  },
+  {
+   "title": "春招最后冲刺！别慌，这些机会你可能还没刷到",
+   "webLink": "https://www.nowcoder.com/discuss/879035731329437696",
+   "taxonomy": "求职交流",
+   "jobType": "其他",
+   "viewCnt": 441,
+   "ctr": 3.87,
+   "cvr": 86.67,
+   "likeCnt": 23,
+   "commentCnt": 5,
+   "followCnt": 24,
+   "shareCnt": 0,
+   "interactionType": "干货收藏型",
+   "suggestedPlatforms": [
+    "小红书",
+    "抖音",
+    "公众号"
+   ],
+   "subjectNames": "厦门银行科技岗值不值得投",
+   "createDate": "2026-04-29"
+  },
+  {
+   "title": "“这需求谁想试？”我举手了，然后真干成了",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/5af8f762d49b437d8f6c96d43200fe64",
+   "taxonomy": "职场交流",
+   "jobType": "其他",
+   "viewCnt": 342,
+   "ctr": 22.42,
+   "cvr": 40.38,
+   "likeCnt": 54,
+   "commentCnt": 12,
+   "followCnt": 20,
+   "shareCnt": 0,
+   "interactionType": "标题吸引型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号"
+   ],
+   "subjectNames": "携程26春招",
+   "createDate": "2026-05-07"
+  },
+  {
+   "title": "2026春招到底卷成什么样了？填问卷说出真相，最高领200元现金红包",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/2351e86e98ba4cd5be4b8a0107c02b3c",
+   "taxonomy": "公告反馈",
+   "jobType": "其他",
+   "viewCnt": 334,
+   "ctr": 5.43,
+   "cvr": 40.0,
+   "likeCnt": 2,
+   "commentCnt": 6,
+   "followCnt": 0,
+   "shareCnt": 0,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号",
+    "牛客"
+   ],
+   "subjectNames": "AI求职记录,offer,我的求职进度条,找工作,春招,春招至今，你的战绩如何？",
+   "createDate": "2026-05-08"
+  },
+  {
+   "title": "度小满 大数据开发2面",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/034abfc7e2b64845be1ae410f9f007ef",
+   "taxonomy": "求职攻略",
+   "jobType": "软件开发",
+   "viewCnt": 323,
+   "ctr": 8.89,
+   "cvr": 50.0,
+   "likeCnt": 0,
+   "commentCnt": 2,
+   "followCnt": 0,
+   "shareCnt": 0,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号",
+    "牛客"
+   ],
+   "subjectNames": "发面经攒人品",
+   "createDate": "2026-05-05"
+  },
+  {
+   "title": "在松江园区上班是一种什么体验？",
+   "webLink": "https://www.nowcoder.com/discuss/882259628866732032",
+   "taxonomy": "公司评价",
+   "jobType": "其他",
+   "viewCnt": 317,
+   "ctr": 7.06,
+   "cvr": 74.83,
+   "likeCnt": 64,
+   "commentCnt": 15,
+   "followCnt": 31,
+   "shareCnt": 0,
+   "interactionType": "深度内容型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号"
+   ],
+   "subjectNames": "巨人网络春招",
+   "createDate": "2026-05-08"
+  },
+  {
+   "title": "binance跟国内大厂比哪个好",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/5acfc5a82dfe4761ba59e28401c8aa15",
+   "taxonomy": "薪资爆料",
+   "jobType": "其他",
+   "viewCnt": 302,
+   "ctr": 13.93,
+   "cvr": 42.86,
+   "likeCnt": 1,
+   "commentCnt": 11,
+   "followCnt": 0,
+   "shareCnt": 0,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "抖音",
+    "牛客"
+   ],
+   "subjectNames": "",
+   "createDate": "2026-05-02"
+  },
+  {
+   "title": "27届二本学院零实习全栈简历，请狠狠地拷打",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/3e3fecf2f13442119f03de52b9ce67e4",
+   "taxonomy": "求职交流",
+   "jobType": "软件开发",
+   "viewCnt": 299,
+   "ctr": 22.92,
+   "cvr": 45.45,
+   "likeCnt": 0,
+   "commentCnt": 5,
+   "followCnt": 0,
+   "shareCnt": 0,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "抖音",
+    "牛客"
+   ],
+   "subjectNames": "",
+   "createDate": "2026-05-05"
+  },
+  {
+   "title": "高铁上收到了2w奖金，激动！",
+   "webLink": "https://www.nowcoder.com/discuss/882623806550855680",
+   "taxonomy": "校园",
+   "jobType": "其他",
+   "viewCnt": 263,
+   "ctr": 7.38,
+   "cvr": 91.89,
+   "likeCnt": 50,
+   "commentCnt": 12,
+   "followCnt": 40,
+   "shareCnt": 0,
+   "interactionType": "干货收藏型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号"
+   ],
+   "subjectNames": "华泰星战营，提前锁定校招offer",
+   "createDate": "2026-05-09"
+  },
+  {
+   "title": "春招极限三选一！",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/a8fe2265d3a24606941eabd8ac8f8d9c",
+   "taxonomy": "薪资爆料",
+   "jobType": "产品/项目/运营",
+   "viewCnt": 240,
+   "ctr": 11.1,
+   "cvr": 94.96,
+   "likeCnt": 60,
+   "commentCnt": 19,
+   "followCnt": 34,
+   "shareCnt": 0,
+   "interactionType": "干货收藏型",
+   "suggestedPlatforms": [
+    "小红书",
+    "抖音",
+    "公众号"
+   ],
+   "subjectNames": "巨人网络春招,游戏",
+   "createDate": "2026-05-12"
+  }
+ ]
+}
