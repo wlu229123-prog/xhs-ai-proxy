@@ -131,6 +131,26 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
 .mtab:hover:not(.active){background:var(--bg);color:var(--text)}
 .mpanel{display:none}
 .mpanel.active{display:block}
+.tpanel{display:none}
+.tpanel.active{display:block}
+.dsec-h{font-size:13px;font-weight:600;margin:18px 2px 10px;display:flex;align-items:center;gap:6px}
+.dsec-h .cnt{font-size:12px;font-weight:400;color:var(--light)}
+.tcard{border:1px solid var(--border);border-radius:var(--rs);padding:13px 15px;margin-bottom:10px;background:var(--card);transition:box-shadow .15s}
+.tcard:hover{box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.tcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.tcard-title{font-size:14.5px;font-weight:600;line-height:1.45;color:var(--text)}
+.score-badge{flex-shrink:0;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;background:var(--red-l);color:var(--red)}
+.score-badge.hi{background:var(--gold-l);color:var(--gold)}
+.kw-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.kw-chip{font-size:11.5px;padding:2px 9px;border-radius:20px;background:var(--bg);color:var(--muted);border:1px solid var(--border)}
+.tcard-src{margin-top:9px;font-size:12px;color:var(--muted)}
+.tcard-src a{color:var(--blue);text-decoration:none}
+.tcard-src a:hover{text-decoration:underline}
+.hotrow{display:flex;align-items:baseline;gap:8px;padding:8px 2px;border-bottom:1px solid var(--border);font-size:13px;line-height:1.5}
+.hotrow:last-child{border-bottom:none}
+.hot-src{flex-shrink:0;font-size:11px;color:var(--light);background:var(--bg);padding:1px 7px;border-radius:4px}
+.hotrow a{color:var(--text);text-decoration:none}
+.hotrow a:hover{color:var(--red)}
 
 /* ── Progress ── */
 .prog-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:1.25rem;display:none}
@@ -579,6 +599,35 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
         <div class="pdesc">内嵌①内容运营精选词库 + ③GEO精选词库，按阶段/竞争度筛选后交 AI 组合出选题</div>
       </div>
 
+      <!-- 二级栏目切换 -->
+      <div class="mode-tabs">
+        <button class="mtab ttab active" onclick="gotoTopicTab('daily',this)">
+          <span class="mtab-icon">🔥</span>
+          <span class="mtab-name">今日热点与AI选题</span>
+          <span class="mtab-desc">每日自动更新 · 借势选题</span>
+        </button>
+        <button class="mtab ttab" onclick="gotoTopicTab('kw',this)">
+          <span class="mtab-icon">📋</span>
+          <span class="mtab-name">关键词库生成</span>
+          <span class="mtab-desc">选词 → AI 组合选题</span>
+        </button>
+      </div>
+
+      <!-- 栏目1：今日热点与AI选题 -->
+      <div class="tpanel active" id="tpanel-daily">
+        <div class="card" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+          <div style="font-size:12.5px;color:var(--muted)">数据来源：36氪 / IT之家 / 量子位 / InfoQ / 少数派 RSS · 每日 9:00 自动刷新</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span id="daily-updated" style="font-size:12px;color:var(--light)"></span>
+            <button class="btn btn-s" onclick="loadDaily(true)">↻ 刷新</button>
+          </div>
+        </div>
+        <div id="daily-body"><div style="padding:36px;text-align:center;color:var(--muted)">加载中…</div></div>
+      </div>
+
+      <!-- 栏目2：关键词库生成 -->
+      <div class="tpanel" id="tpanel-kw">
+
       <!-- Step 1: 筛选关键词 -->
       <div class="card">
         <div style="font-size:13px;font-weight:600;margin-bottom:10px">Step 1 · 筛选关键词</div>
@@ -667,6 +716,7 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
 
       <div class="prog-wrap" id="t-prog"><div class="prog-status"><span class="spin"></span><span id="t-ptxt">AI 正在规划选题…</span></div><div class="prog-bar"><div class="prog-fill" id="t-pfill"></div></div></div>
       <div id="t-result"></div>
+      </div><!-- /tpanel-kw -->
     </div>
 
   </main>
@@ -749,10 +799,69 @@ function gotoPage(id, btn) {
   btn.classList.add('active');
 }
 function gotoMode(id, btn) {
-  document.querySelectorAll('.mpanel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.mtab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('#page-gen .mpanel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#page-gen .mtab').forEach(t => t.classList.remove('active'));
   document.getElementById('mode-' + id).classList.add('active');
   btn.classList.add('active');
+}
+
+// ═══ 今日热点与AI选题（读 daily.json）═══
+function gotoTopicTab(id, btn) {
+  document.querySelectorAll('#page-topic .tpanel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#page-topic .ttab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tpanel-' + id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'daily' && !window._dailyLoaded) loadDaily();
+}
+function escH(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+async function loadDaily(force) {
+  const body = document.getElementById('daily-body');
+  if (force) body.innerHTML = '<div style="padding:36px;text-align:center;color:var(--muted)">加载中…</div>';
+  try {
+    const r = await fetch('./daily.json?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const d = await r.json();
+    window._dailyLoaded = true;
+    renderDaily(d);
+  } catch (e) {
+    window._dailyLoaded = false;
+    body.innerHTML = '<div style="padding:32px;text-align:center;color:var(--muted)">暂无今日数据<br><span style="font-size:12px;color:var(--light)">首批选题将于每天 9:00 自动生成并刷新</span></div>';
+  }
+}
+function renderDaily(d) {
+  document.getElementById('daily-updated').textContent = d.updated ? ('更新于 ' + d.updated) : '';
+  let h = '';
+  const topics = d.topics || [];
+  h += '<div class="dsec-h">📝 AI 推荐选题 <span class="cnt">' + topics.length + ' 条</span></div>';
+  topics.forEach((t, i) => {
+    const hi = (t.score >= 9) ? ' hi' : '';
+    const kws = (t.keywords || '').split('/').filter(Boolean)
+      .map(k => '<span class="kw-chip">' + escH(k.trim()) + '</span>').join('');
+    const src = t.source_url
+      ? '<a href="' + escH(t.source_url) + '" target="_blank" rel="noopener">' + escH(t.source_hot || '查看原文') + ' ↗</a>'
+      : escH(t.source_hot || '');
+    h += '<div class="tcard"><div class="tcard-top">'
+      + '<div class="tcard-title">' + (i + 1) + '. ' + escH(t.title) + '</div>'
+      + (t.score != null ? '<span class="score-badge' + hi + '">★ ' + t.score + '</span>' : '')
+      + '</div>'
+      + (kws ? '<div class="kw-chips">' + kws + '</div>' : '')
+      + '<div class="tcard-src">🌊 借势热点：' + src + '</div></div>';
+  });
+  const hs = d.hotspots || {};
+  const hotSec = (title, arr) => {
+    if (!arr || !arr.length) return '';
+    let s = '<div class="dsec-h">' + title + ' <span class="cnt">' + arr.length + ' 条</span></div>';
+    arr.forEach(x => {
+      const t = x.url
+        ? '<a href="' + escH(x.url) + '" target="_blank" rel="noopener">' + escH(x.title) + '</a>'
+        : escH(x.title);
+      s += '<div class="hotrow"><span class="hot-src">' + escH(x.source) + '</span><span>' + t + '</span></div>';
+    });
+    return s;
+  };
+  h += hotSec('🎯 直接相关（求职/职场）', hs.strong);
+  h += hotSec('🌊 AI趋势（可借势）', hs.trend);
+  document.getElementById('daily-body').innerHTML = h;
 }
 
 // ═══ Word count ═══
@@ -1450,6 +1559,7 @@ ${kwList}
 // ── 初始化选题模块 ──
 (function initTopic() {
   renderKwPool();
+  loadDaily();  // 预加载今日热点与AI选题
 })();
 
 // ═══ Init ═══
