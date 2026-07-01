@@ -380,6 +380,11 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
           <span class="mtab-name">话术植入</span>
           <span class="mtab-desc">现有文案 → 植入品牌</span>
         </button>
+        <button class="mtab" onclick="gotoMode('rewrite',this)">
+          <span class="mtab-icon">🔄</span>
+          <span class="mtab-name">一键改写</span>
+          <span class="mtab-desc">改语序 / 换渠道 / 按指令</span>
+        </button>
       </div>
 
       <!-- Mode: Original -->
@@ -544,6 +549,54 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
         <div class="prog-wrap" id="i-prog"><div class="prog-status"><span class="spin"></span><span id="i-ptxt">分析植入点…</span></div><div class="prog-bar"><div class="prog-fill" id="i-pfill"></div></div></div>
         <div class="verdicts" id="i-verdicts"></div>
         <div id="i-result"></div>
+      </div>
+
+      <!-- Mode: Rewrite 一键改写 -->
+      <div class="mpanel" id="mode-rewrite">
+        <div class="card">
+          <div class="field">
+            <label>原文案<span class="hint">粘贴要改写的文案，AI 保持原意帮你改</span></label>
+            <textarea id="r-content" rows="6" placeholder="粘贴一段已有文案，选下面的改写方式，一键生成新版本…"></textarea>
+          </div>
+          <div class="field mt10">
+            <label>改写方式</label>
+            <div class="chiprow" id="r-mode-row">
+              <span class="wcc active" data-v="synonym" onclick="pickRewriteMode(this)">🔀 同义改写</span>
+              <span class="wcc" data-v="channel" onclick="pickRewriteMode(this)">📡 换渠道适配</span>
+              <span class="wcc" data-v="custom" onclick="pickRewriteMode(this)">✏️ 自定义指令</span>
+            </div>
+          </div>
+          <div class="field mt10 r-sub" id="r-sub-synonym">
+            <label>改写强度</label>
+            <select id="r-strength">
+              <option value="light">轻度润色（仅优化字词，结构基本不变）</option>
+              <option value="mid" selected>中度改写（调整语序表达，防重复）</option>
+              <option value="deep">深度重写（彻底换说法，只保留信息内核·防搬运判定）</option>
+            </select>
+          </div>
+          <div class="field mt10 r-sub" id="r-sub-channel" style="display:none">
+            <label>目标渠道</label>
+            <select id="r-channel">
+              <option value="xhs">小红书笔记</option>
+              <option value="douyin">抖音口播脚本</option>
+              <option value="gzh">公众号文章</option>
+              <option value="weibo">微博</option>
+              <option value="nowcoder">牛客社区帖</option>
+              <option value="shipinhao">视频号</option>
+            </select>
+          </div>
+          <div class="field mt10 r-sub" id="r-sub-custom" style="display:none">
+            <label>修改指令</label>
+            <textarea id="r-instruct" rows="2" placeholder="例：更活泼加emoji / 缩到100字 / 突出薪资数据 / 改成第一人称口吻…"></textarea>
+          </div>
+          <div class="arow mt10">
+            <button class="btn btn-p" id="r-btn" onclick="runRewrite()">🔄 一键改写</button>
+            <button class="btn btn-s" onclick="document.getElementById('r-content').value='刚参加完字节的秋招面试，三面挂了。面试官说我算法基础还行，但项目经验偏薄，问到分布式的部分答得不好。复盘下来，还是得多刷题、多补系统设计，简历上的项目也要能讲深。'">填入示例</button>
+          </div>
+        </div>
+        <div class="prog-wrap" id="r-prog"><div class="prog-status"><span class="spin"></span><span id="r-ptxt">改写中…</span></div><div class="prog-bar"><div class="prog-fill" id="r-pfill"></div></div></div>
+        <div class="verdicts" id="r-verdicts"></div>
+        <div id="r-result"></div>
       </div>
     </div>
 
@@ -1197,6 +1250,83 @@ ${BRAND}`,
     progHide(cfg.pid);
   } catch(e) { toast('生成失败：' + e.message); progHide(cfg.pid); }
   btn.disabled = false; btn.innerHTML = cfg.btnLbl;
+}
+
+// ═══ REWRITE 一键改写 ═══
+function pickRewriteMode(el) {
+  document.querySelectorAll('#r-mode-row .wcc').forEach(x => x.classList.remove('active'));
+  el.classList.add('active');
+  const v = el.dataset.v;
+  ['synonym', 'channel', 'custom'].forEach(m => {
+    document.getElementById('r-sub-' + m).style.display = (m === v) ? '' : 'none';
+  });
+}
+async function runRewrite() {
+  const input = document.getElementById('r-content').value.trim();
+  if (!input) { toast('请先粘贴要改写的文案'); return; }
+  const mode = document.querySelector('#r-mode-row .wcc.active').dataset.v;
+  const btn = document.getElementById('r-btn');
+
+  let sys, usr, extraTips = false;
+  if (mode === 'synonym') {
+    const st = document.getElementById('r-strength').value;
+    const stM = {
+      light: '轻度：只优化字词和表达，句子结构与顺序基本保留',
+      mid: '中度：调整语序、替换用词和句式，让文案读起来明显不同，但意思完全一致',
+      deep: '深度：彻底改变表达方式和结构，只保留核心信息内核（用于防重复/防搬运判定），但绝不改变原意'
+    };
+    sys = `你是中文文案改写师。在【完全保持原意和关键信息不变】的前提下改写文案。改写强度——${stM[st]}。不要新增虚构信息，不要遗漏关键信息点。只返回JSON不要代码块：{"core":"用一句话概括原文核心信息点（供用户核对没改跑偏）","result":"改写后的完整文案"}`;
+    usr = `原文案：\n${input}`;
+  } else if (mode === 'channel') {
+    const ch = document.getElementById('r-channel').value;
+    const chM = {
+      xhs: '小红书笔记：口语化亲和、emoji点缀、痛点开头、分点清晰、结尾有互动钩子、附3-6个话题标签，约200-800字',
+      douyin: '抖音口播脚本：开头3秒强钩子、口语短句、有节奏感、适合念出来、可加简单分镜/停顿提示，对应30-60秒',
+      gzh: '公众号文章：结构完整、逻辑清晰、有小标题分段、可较长、适度标题党',
+      weibo: '微博：精简有梗、结合话题#标签#、互动性强、可短可长博',
+      nowcoder: '牛客求职社区帖：真实经验分享口吻、干货实在、贴近学生党/求职者、可引发讨论',
+      shipinhao: '视频号：生活化、通俗易懂、正能量、标题吸引、适合口播'
+    };
+    sys = `你是多平台内容改编专家。把用户的文案改编成【适合${chM[ch]}】的版本，遵循该平台的风格、长度、格式和语气习惯，保持核心信息不变。只返回JSON不要代码块：{"core":"原文核心信息点（一句话）","tips":"该平台的发布小建议，如话题标签/发布形式/节奏，50字内","result":"改编后的完整文案"}`;
+    usr = `原文案：\n${input}`;
+    extraTips = true;
+  } else {
+    const ins = document.getElementById('r-instruct').value.trim();
+    if (!ins) { toast('请填写修改指令'); return; }
+    sys = `你是中文文案改写师。严格按用户的修改指令改写文案，保持通顺自然、符合中文表达习惯。只返回JSON不要代码块：{"core":"改写后文案的核心信息点（一句话）","result":"改写后的完整文案"}`;
+    usr = `原文案：\n${input}\n\n修改指令：${ins}`;
+  }
+
+  btn.disabled = true; btn.innerHTML = '<span class="spin spin-w"></span> 改写中…';
+  document.getElementById('r-verdicts').innerHTML = '';
+  document.getElementById('r-result').innerHTML = '';
+  progShow('r', 'AI 改写中…', 45);
+
+  try {
+    const raw = await callAI(sys, usr, 2500);
+    let p;
+    try { p = JSON.parse(raw.replace(/```json|```/g, '').trim().match(/\{[\s\S]*\}/)?.[0] || raw); }
+    catch { p = { core: '', result: raw }; }
+    const result = p.result || raw;
+    progShow('r', '完成', 100);
+    if (p.core) addVerdict('r-verdicts', '🎯', 'var(--blue-l)', '核心信息点', '改写没跑偏', p.core);
+    if (extraTips && p.tips) addVerdict('r-verdicts', '📡', 'var(--gold-l)', '发布建议', document.getElementById('r-channel').selectedOptions[0].text, p.tips);
+    const fuSys = `你是中文文案改写师，按用户要求继续调整文案，保持通顺自然，直接输出修改后的完整文案。`;
+    document.getElementById('r-result').innerHTML = `
+      <div class="rcard">
+        <div class="rcard-hdr">
+          <div class="rcard-title">🔄 改写结果</div>
+          <div class="rcard-acts"><button class="btn btn-g" onclick="cp(document.querySelector('#r-result .cbox').innerText)">📋 复制全文</button></div>
+        </div>
+        <div class="rcard-body">
+          <div class="div">改写后文案</div>
+          <div class="cbox" data-fu="1">${esc(result)}</div>
+        </div>
+      </div>`;
+    addFollowup('r-result', result, fuSys);
+    progHide('r');
+  } catch (e) { toast('改写失败：' + e.message); progHide('r'); }
+  btn.disabled = false; btn.innerHTML = '🔄 一键改写';
 }
 
 // 渲染通用结果卡片（原创/种草共用）
