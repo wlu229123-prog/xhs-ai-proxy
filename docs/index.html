@@ -151,6 +151,10 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
 .hot-src{flex-shrink:0;font-size:11px;color:var(--light);background:var(--bg);padding:1px 7px;border-radius:4px}
 .hotrow a{color:var(--text);text-decoration:none}
 .hotrow a:hover{color:var(--red)}
+.tcard-title a{color:var(--text);text-decoration:none}
+.tcard-title a:hover{color:var(--blue)}
+.nc-meta{margin-top:9px;font-size:12.5px;color:var(--muted);display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+.nc-plat{font-size:11px;padding:1px 7px;border-radius:4px;background:var(--red-l);color:var(--red);margin-left:2px}
 
 /* ── Progress ── */
 .prog-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:1.25rem;display:none}
@@ -595,8 +599,8 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
     <div class="page" id="page-topic">
       <div class="ph">
         <div class="ptag" style="background:var(--gold-l);color:var(--gold)">📋 选题规划</div>
-        <div class="ptitle">从关键词库选词，AI 生成爆款选题方向</div>
-        <div class="pdesc">内嵌①内容运营精选词库 + ③GEO精选词库，按阶段/竞争度筛选后交 AI 组合出选题</div>
+        <div class="ptitle">多源热点驱动选题：站外趋势 × 牛客站内 × 关键词库</div>
+        <div class="pdesc">三个栏目一站式产出：①每日科技热点+AI借势选题（自动刷新）②牛客站内高转化爆款内容 ③求职关键词库自选组合，帮你稳定找到 AI 求职爆款方向</div>
       </div>
 
       <!-- 二级栏目切换 -->
@@ -605,6 +609,11 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
           <span class="mtab-icon">🔥</span>
           <span class="mtab-name">今日热点与AI选题</span>
           <span class="mtab-desc">每日自动更新 · 借势选题</span>
+        </button>
+        <button class="mtab ttab" onclick="gotoTopicTab('nowcoder',this)">
+          <span class="mtab-icon">🎓</span>
+          <span class="mtab-name">牛客站内热点</span>
+          <span class="mtab-desc">站内高转化内容</span>
         </button>
         <button class="mtab ttab" onclick="gotoTopicTab('kw',this)">
           <span class="mtab-icon">📋</span>
@@ -625,7 +634,19 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
         <div id="daily-body"><div style="padding:36px;text-align:center;color:var(--muted)">加载中…</div></div>
       </div>
 
-      <!-- 栏目2：关键词库生成 -->
+      <!-- 栏目2：牛客站内热点 -->
+      <div class="tpanel" id="tpanel-nowcoder">
+        <div class="card" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+          <div style="font-size:12.5px;color:var(--muted)">数据来源：牛客站内内容消费数据(Metabase) · 筛高浏览高转化热点 · 每日自动刷新</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span id="nc-updated" style="font-size:12px;color:var(--light)"></span>
+            <button class="btn btn-s" onclick="loadNowcoder(true)">↻ 刷新</button>
+          </div>
+        </div>
+        <div id="nc-body"><div style="padding:36px;text-align:center;color:var(--muted)">加载中…</div></div>
+      </div>
+
+      <!-- 栏目3：关键词库生成 -->
       <div class="tpanel" id="tpanel-kw">
 
       <!-- Step 1: 筛选关键词 -->
@@ -812,6 +833,7 @@ function gotoTopicTab(id, btn) {
   document.getElementById('tpanel-' + id).classList.add('active');
   btn.classList.add('active');
   if (id === 'daily' && !window._dailyLoaded) loadDaily();
+  if (id === 'nowcoder' && !window._ncLoaded) loadNowcoder();
 }
 function escH(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 async function loadDaily(force) {
@@ -862,6 +884,49 @@ function renderDaily(d) {
   h += hotSec('🎯 直接相关（求职/职场）', hs.strong);
   h += hotSec('🌊 AI趋势（可借势）', hs.trend);
   document.getElementById('daily-body').innerHTML = h;
+}
+
+// 牛客站内热点（读 nowcoder.json）
+async function loadNowcoder(force) {
+  const body = document.getElementById('nc-body');
+  if (force) body.innerHTML = '<div style="padding:36px;text-align:center;color:var(--muted)">加载中…</div>';
+  try {
+    const r = await fetch('./nowcoder.json?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const d = await r.json();
+    window._ncLoaded = true;
+    renderNowcoder(d);
+  } catch (e) {
+    window._ncLoaded = false;
+    body.innerHTML = '<div style="padding:32px;text-align:center;color:var(--muted)">暂无牛客站内热点数据<br><span style="font-size:12px;color:var(--light)">配置 Metabase 凭证后每天自动刷新</span></div>';
+  }
+}
+function renderNowcoder(d) {
+  document.getElementById('nc-updated').textContent = d.updated ? ('数据日期 ' + d.updated + (d.isMock ? ' · 示例' : '')) : '';
+  let h = '';
+  const tax = d.taxonomyDistribution || {}, itr = d.interactionDistribution || {};
+  const chips = (obj) => Object.entries(obj).map(([k, v]) => '<span class="kw-chip">' + escH(k) + ' ' + v + '</span>').join('');
+  const list = d.hotpoints || [];
+  h += '<div class="dsec-h">📊 特征概览 <span class="cnt">共 ' + list.length + ' 条</span></div>';
+  h += '<div class="card"><div style="font-size:12px;color:var(--muted);margin-bottom:6px">内容分类</div><div class="kw-chips">' + chips(tax) + '</div>'
+    + '<div style="font-size:12px;color:var(--muted);margin:12px 0 6px">互动类型</div><div class="kw-chips">' + chips(itr) + '</div></div>';
+  h += '<div class="dsec-h">🔥 高转化热点 <span class="cnt">按浏览量排序</span></div>';
+  list.forEach((x, i) => {
+    const title = x.webLink
+      ? '<a href="' + escH(x.webLink) + '" target="_blank" rel="noopener">' + escH(x.title) + ' ↗</a>'
+      : escH(x.title);
+    const tags = [x.taxonomy, x.jobType, x.interactionType].filter(Boolean)
+      .map(t => '<span class="kw-chip">' + escH(t) + '</span>').join('');
+    const plats = (x.suggestedPlatforms || []).map(p => '<span class="nc-plat">' + escH(p) + '</span>').join('');
+    const subj = x.subjectNames ? '<div class="tcard-src">🏷 话题：' + escH(x.subjectNames) + '</div>' : '';
+    const cvr = (x.cvr != null && x.cvr !== '') ? (Math.round(x.cvr) + '%') : '-';
+    const views = (x.viewCnt || 0).toLocaleString();
+    h += '<div class="tcard"><div class="tcard-title" style="font-size:14px">' + (i + 1) + '. ' + title + '</div>'
+      + (tags ? '<div class="kw-chips">' + tags + '</div>' : '')
+      + '<div class="nc-meta">👁 ' + views + ' 浏览　·　CVR ' + cvr + (plats ? '　·　平台 ' + plats : '') + '</div>'
+      + subj + '</div>';
+  });
+  document.getElementById('nc-body').innerHTML = h;
 }
 
 // ═══ Word count ═══
@@ -1560,6 +1625,7 @@ ${kwList}
 (function initTopic() {
   renderKwPool();
   loadDaily();  // 预加载今日热点与AI选题
+  loadNowcoder();  // 预加载牛客站内热点
 })();
 
 // ═══ Init ═══
