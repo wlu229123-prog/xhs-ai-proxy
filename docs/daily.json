@@ -1,143 +1,187 @@
 {
- "date": "2026-07-01",
- "updated": "2026-07-01 18:32",
+ "date": "2026-07-02",
+ "updated": "2026-07-02 10:10",
  "topics": [
   {
-   "title": "DeepSeek V4下周上线，这3类AI岗位要涨薪，普通人怎么卡位",
-   "source_hot": "DeepSeek V4 7月中旬上线",
-   "keywords": "大模型/AI岗位/求职",
-   "score": 9.2,
-   "source_url": "https://www.ithome.com/0/971/289.htm"
+   "title": "2026最烧钱的硬科技赛道盘点，应届生挤进去到底值不值",
+   "source_hot": "硬科技融资潮：大疆系/清华系芯片/北航机器人半年连融数轮",
+   "source_url": "https://36kr.com/p/3877830625046535?f=rss",
+   "keywords": "硬科技/求职/应届",
+   "score": 8.6
   },
   {
-   "title": "月薪3万的AI产品岗，面试官到底在考什么（附高频真题）",
-   "source_hot": "Kimi估值315亿美元、ARR破3亿",
-   "keywords": "AI产品/面试/薪资",
-   "score": 8.8,
-   "source_url": "https://36kr.com/p/3873626697470985?f=rss"
+   "title": "AI产品经理岗爆火，面试官最爱问的3类问题(附答题思路)",
+   "source_hot": "专访美图CEO吴欣鸿：做AI产品是场难以策划的游戏",
+   "source_url": "https://36kr.com/p/3877112973733895?f=rss",
+   "keywords": "AI产品/面试/岗位",
+   "score": 8.9
   },
   {
-   "title": "2026最缺人的AI赛道是具身智能，非科班怎么挤进去",
-   "source_hot": "自变量2个月连融四轮、大湾区200亿具身大脑",
-   "keywords": "具身智能/求职/转行",
-   "score": 8.5,
-   "source_url": "https://36kr.com/p/3873626697470985?f=rss"
+   "title": "名校系AI创业公司扎堆，应届加入早期团队是机会还是坑",
+   "source_hot": "清华系初创完成数亿种子轮(世界模型方向)",
+   "source_url": "https://36kr.com/p/3877109751803904?f=rss",
+   "keywords": "AI创业/应届/求职",
+   "score": 8.4
   },
   {
-   "title": "用AI改简历，我把面试邀约从2个提到11个（保姆级实操）",
-   "source_hot": "AI简历/求职工具走热",
-   "keywords": "简历/AI工具/求职",
-   "score": 8.9,
-   "source_url": ""
+   "title": "AI芯片公司在疯抢人，这几个岗位应届开价有多香",
+   "source_hot": "清华系芯片企业再融资、AI电源打开算力增量",
+   "source_url": "https://36kr.com/p/3877057215393793?f=rss",
+   "keywords": "AI芯片/薪资/岗位",
+   "score": 8.7
   },
   {
-   "title": "大厂裁员季，如何用AI一周搞定跳槽准备",
-   "source_hot": "三星部门奖金差百倍、员工跳槽SK海力士",
-   "keywords": "裁员/跳槽/AI工具",
-   "score": 8.3,
-   "source_url": "https://www.ithome.com/0/971/124.htm"
+   "title": "机器人赛道井喷式融资，非科班怎么转进具身智能",
+   "source_hot": "北航机器人所团队创业、智能变刚度关节获天使轮",
+   "source_url": "https://36kr.com/p/3877060559433984?f=rss",
+   "keywords": "具身智能/转行/求职",
+   "score": 8.5
   },
   {
-   "title": "零基础转AI岗，先练熟这5个工具就够了",
-   "source_hot": "国内首个机器人学校开学做职业技能培训",
-   "keywords": "转行/AI技能/就业",
-   "score": 8.0,
-   "source_url": "https://www.ithome.com/0/971/269.htm"
+   "title": "大模型公司2026还在招人吗？AI岗位真实需求盘点",
+   "source_hot": "AI融资持续火热(世界模型/大模型/AI产品)",
+   "source_url": "https://36kr.com/p/3877109751803904?f=rss",
+   "keywords": "大模型/AI岗位/就业",
+   "score": 8.3
   }
  ],
  "hotspots": {
-  "strong": [
-   {
-    "source": "IT之家",
-    "title": "国内首个机器人学校开学，30 台“学生”将接受系统化职业技能培训",
-    "url": "https://www.ithome.com/0/971/269.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "曝三星不同部门奖金差距高达百倍：员工“大逃亡”，更有人有意跳槽 SK 海力士",
-    "url": "https://www.ithome.com/0/971/124.htm"
-   }
-  ],
+  "strong": [],
   "trend": [
    {
     "source": "36氪",
-    "title": "优必选超仿生机器人首发订单破万，最高售价99万元｜最前线",
-    "url": "https://36kr.com/p/3876811895992327?f=rss"
+    "title": "36氪首发 | 前大疆科学家创业，半年内连获四轮数亿融资，耀途资本、锦秋基金等押注",
+    "url": "https://36kr.com/p/3877830625046535?f=rss"
    },
    {
     "source": "36氪",
-    "title": "秋声 | 31岁学霸冲港股IPO，李泽湘成最大赢家",
-    "url": "https://36kr.com/p/3876760686309385?f=rss"
+    "title": "专访美图 CEO 吴欣鸿：做 AI 产品，是一场难以提前策划的游戏",
+    "url": "https://36kr.com/p/3877112973733895?f=rss"
    },
    {
     "source": "36氪",
-    "title": "最前线｜光子跃迁发布个人智能影像生态，推出AI戒指等产品布局多设备协同",
-    "url": "https://36kr.com/p/3876758574018822?f=rss"
+    "title": "独家｜清华系初创完成数亿元种子轮融资：我们不想被贴上「世界模型」的标签",
+    "url": "https://36kr.com/p/3877109751803904?f=rss"
    },
    {
     "source": "36氪",
-    "title": "告别硬件出海上一个十年，前安克CMO做了款AI时代的Memory产品｜硬氪专访",
-    "url": "https://36kr.com/p/3867992509125636?f=rss"
+    "title": "硬氪首发 | 北航机器人所团队创业，首创智能变刚度关节，完成近亿元天使轮融资",
+    "url": "https://36kr.com/p/3877060559433984?f=rss"
    },
    {
     "source": "36氪",
-    "title": "苏大教授创业做机器人触觉系统，获松禾资本千万级天使轮融资｜硬氪首发",
-    "url": "https://36kr.com/p/3874358072710407?f=rss"
+    "title": "硬氪首发 | 清华系芯片企业再获数千万融资，要以新技术突破AI算力瓶颈",
+    "url": "https://36kr.com/p/3877057215393793?f=rss"
    },
    {
     "source": "36氪",
-    "title": "赤子城独家投资：4人创业团队「MobAI」，推出AI互动平台「Lunaverse Stories」 | 36氪首发",
-    "url": "https://36kr.com/p/3875622047805447?f=rss"
+    "title": "硬氪首发 | 全球首款近视老花智能变焦眼镜企业融资数千万，韶音、高秉强押注",
+    "url": "https://36kr.com/p/3877054691930118?f=rss"
    },
    {
     "source": "36氪",
-    "title": "8点1氪丨“史上最严电池安全令”正式施行；苹果大量机密文件遭泄露；OpenAI首款硬件曝光",
-    "url": "https://36kr.com/p/3876318522077442?f=rss"
+    "title": "硬氪前线 | 东昇聚变获数亿元融资，国内唯一布局“氘-氦3”路线核聚变企业",
+    "url": "https://36kr.com/p/3877051217047816?f=rss"
    },
    {
     "source": "36氪",
-    "title": "氪星晚报｜Kimi估值升至315亿美元，ARR突破3亿美元；优艾智合具身智能系列新品全球首发，3年赋能10000个工业现场；国家航天局：我国将建立近地小行星天地协同监测体系",
-    "url": "https://36kr.com/p/3873626697470985?f=rss"
+    "title": "宠物科技品牌宠爱友家，既要做AI硬件也要做食品｜涌现新栏目",
+    "url": "https://36kr.com/p/3827530174862208?f=rss"
    },
    {
     "source": "36氪",
-    "title": "纳睿雷达：发布S波段全极化多功能有源相控阵雷达及AI气象大模型新产品",
-    "url": "https://36kr.com/newsflashes/3876874042388736?f=rss"
+    "title": "两市融资余额增加97.94亿元",
+    "url": "https://36kr.com/newsflashes/3877786304721154?f=rss"
+   },
+   {
+    "source": "36氪",
+    "title": "创新药板块表现活跃，机构：板块有望迎来新一轮估值修复机会",
+    "url": "https://36kr.com/newsflashes/3877777365430530?f=rss"
+   },
+   {
+    "source": "36氪",
+    "title": "中信证券：功率器件二轮涨价趋势确立，AI电源打开长期增量空间",
+    "url": "https://36kr.com/newsflashes/3877776878202889?f=rss"
+   },
+   {
+    "source": "36氪",
+    "title": "公募基金展望下半年：投资逻辑正由估值驱动转向业绩驱动",
+    "url": "https://36kr.com/newsflashes/3877774022848513?f=rss"
    },
    {
     "source": "IT之家",
-    "title": "瑞银：约六成企业收紧 AI 开支，DeepSeek 等开源大模型有望受益",
-    "url": "https://www.ithome.com/0/971/289.htm"
+    "title": "开源虚拟化软件 7.2.12 发布：修复 Arch Linux 内核崩溃、为 Win11 提升 DX11 性能",
+    "url": "https://www.ithome.com/0/971/444.htm"
    },
    {
     "source": "IT之家",
-    "title": "斥资 31 亿美元全现金，施耐德电气将收购工业 AI 公司 Cognite",
-    "url": "https://www.ithome.com/0/971/235.htm"
+    "title": "消息称快手可灵 AI 将完成 30 亿美元融资：投后估值 180 亿美元，腾讯参投",
+    "url": "https://www.ithome.com/0/971/440.htm"
    },
    {
     "source": "IT之家",
-    "title": "Anthropic 回应 Claude Code 暗藏代码检测中国用户：将在明日更新中删除",
-    "url": "https://www.ithome.com/0/971/118.htm"
+    "title": "葡萄牙发布首个欧洲葡语开源大语言模型 AMALIA",
+    "url": "https://www.ithome.com/0/971/439.htm"
    },
    {
     "source": "IT之家",
-    "title": "消息称三星 HBM4E 良率突破 70%，第七代 AI 内存开发进入稳定阶段",
-    "url": "https://www.ithome.com/0/971/114.htm"
+    "title": "联合国专家组警告：AI 能力进步速度已超过科学认知",
+    "url": "https://www.ithome.com/0/971/436.htm"
    },
    {
     "source": "IT之家",
-    "title": "何小鹏：小鹏 MONA L03 将 1500TOPS 有效算力带进 2 万美元级 SUV，还有满血版第二代 VLA",
-    "url": "https://www.ithome.com/0/971/095.htm"
+    "title": "优必选 CEO 周剑：珍惜我们作为牛马的最后光阴，可能 20 年后都是机器人干活",
+    "url": "https://www.ithome.com/0/971/428.htm"
    },
    {
     "source": "IT之家",
-    "title": "软银完成对 OpenAI 的 100 亿美元追加投资，10 月 1 日将再投 100 亿美元",
-    "url": "https://www.ithome.com/0/971/093.htm"
+    "title": "微软 Teams 下月将推 Facilitator，开会时 AI 辅助解答你的疑惑",
+    "url": "https://www.ithome.com/0/971/418.htm"
    },
    {
     "source": "IT之家",
-    "title": "开源游戏引擎 Godot 修改贡献指南，禁止开发者为项目引入 AI 直接生成的代码",
-    "url": "https://www.ithome.com/0/971/092.htm"
+    "title": "苹果 Safari 技术预览版 247 引入 MCP 服务，AI 智能体加速网页开发和调试",
+    "url": "https://www.ithome.com/0/971/411.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "马斯克回应网传“SpaceX 向投资者展示 AI 原型机”：太假了",
+    "url": "https://www.ithome.com/0/971/408.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "华为联合上海电信落地 5G-A×AI 大上行样板点：实测峰值速率 1Gbps，中心城区年底实现 20Mbps 上行连续覆盖",
+    "url": "https://www.ithome.com/0/971/407.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "M7 芯片首秀：古尔曼称苹果酝酿新入门级 MacBook Pro，增强本地 AI 能力",
+    "url": "https://www.ithome.com/0/971/397.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "比苹果 iPhone 要薄：马斯克 SpaceX 向投资者展示 AI 原型机",
+    "url": "https://www.ithome.com/0/971/392.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "OpenAI 推出 GeneBench-Pro 基准测试，用于评估 AI 模型生物学计算能力",
+    "url": "https://www.ithome.com/0/971/383.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "谷歌 AI 智能体 Gemini Spark 登陆苹果 Mac，可实时追踪资讯动态",
+    "url": "https://www.ithome.com/0/971/382.htm"
+   },
+   {
+    "source": "量子位",
+    "title": "具身智能Skill时刻！英伟达开源机器人技能库，Jim Fan：范式变了",
+    "url": "https://www.qbitai.com/2026/07/441396.html"
+   },
+   {
+    "source": "量子位",
+    "title": "OceanBase湖库一体，重新定义AI数据库",
+    "url": "https://www.qbitai.com/2026/07/441386.html"
    },
    {
     "source": "量子位",
@@ -165,9 +209,9 @@
     "url": "https://www.qbitai.com/2026/07/441124.html"
    },
    {
-    "source": "量子位",
-    "title": "视频版Nano Banana来了！内置Gemini世界知识；原版香蕉出图仅需4秒",
-    "url": "https://www.qbitai.com/2026/07/440985.html"
+    "source": "InfoQ",
+    "title": "Dapr 1.18 推出可验证执行功能，为 AI 智能体与工作流赋予密码学信任能力",
+    "url": "https://www.infoq.cn/article/U3gIuyf8VccCdKZeiyCi?utm_source=rss&utm_medium=article"
    },
    {
     "source": "InfoQ",
@@ -225,19 +269,9 @@
     "url": "https://www.infoq.cn/article/d5MOPSyGi5XPi1erhUW3?utm_source=rss&utm_medium=article"
    },
    {
-    "source": "InfoQ",
-    "title": "3000块钱，这支中国团队把ChatGPT成功的“秘密”用在了机器人训练上",
-    "url": "https://www.infoq.cn/article/t78dBsMM5KZabshzEMuo?utm_source=rss&utm_medium=article"
-   },
-   {
     "source": "少数派",
     "title": "100 天从创意到落地：我们做了一台可以随口问 AI 的对讲机",
     "url": "https://sspai.com/post/111706"
-   },
-   {
-    "source": "少数派",
-    "title": "派早报：DeepSeek V4 正式版 7 月中旬上线等",
-    "url": "https://sspai.com/post/111707"
    }
   ]
  }
