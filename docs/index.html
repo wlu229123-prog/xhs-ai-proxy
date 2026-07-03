@@ -155,6 +155,14 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
 .tcard-title a:hover{color:var(--blue)}
 .nc-meta{margin-top:9px;font-size:12.5px;color:var(--muted);display:flex;align-items:center;flex-wrap:wrap;gap:4px}
 .nc-plat{font-size:11px;padding:1px 7px;border-radius:4px;background:var(--red-l);color:var(--red);margin-left:2px}
+.cv-wrap{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.cv-ctrl{flex:1;min-width:300px}
+.cv-preview{flex:0 0 auto;text-align:center}
+#cv-canvas{width:300px;height:400px;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.14);display:block}
+.cv-mascot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:8px;max-height:210px;overflow-y:auto;padding:2px}
+.cv-mascot{width:100%;aspect-ratio:1;object-fit:contain;border:2px solid var(--border);border-radius:10px;cursor:pointer;padding:3px;background:var(--bg);transition:all .15s}
+.cv-mascot:hover{border-color:var(--red-m)}
+.cv-mascot.sel{border-color:var(--red);background:var(--red-l)}
 
 /* ── Progress ── */
 .prog-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:1.25rem;display:none}
@@ -298,6 +306,10 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
       <button class="nav-item" onclick="gotoPage('com',this)">
         <div class="nav-icon" style="background:var(--green-l)">💬</div>
         <div><div class="nav-txt">评论生成</div><div class="nav-sub">模拟真实用户评论</div></div>
+      </button>
+      <button class="nav-item" onclick="gotoPage('cover',this)">
+        <div class="nav-icon" style="background:#FFE8D6">🎨</div>
+        <div><div class="nav-txt">品牌配图</div><div class="nav-sub">封面图 · 牛可乐IP</div></div>
       </button>
     </div>
   </nav>
@@ -793,6 +805,47 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
       </div><!-- /tpanel-kw -->
     </div>
 
+    <!-- ═══ COVER 品牌配图 ═══ -->
+    <div class="page" id="page-cover">
+      <div class="ph">
+        <div class="ptag" style="background:#FFE8D6;color:#FF7300">🎨 品牌配图</div>
+        <div class="ptitle">一键生成牛客品牌封面图</div>
+        <div class="pdesc">品牌色 / Logo / 牛可乐 IP 自动锁定，输入标题即可导出小红书封面（1080×1440）</div>
+      </div>
+      <div class="cv-wrap">
+        <div class="card cv-ctrl">
+          <div class="field">
+            <label>封面标题<span class="hint">支持换行（Enter），建议 6-16 字</span></label>
+            <textarea id="cv-title" rows="3" placeholder="例：应届生进AI大厂&#10;这5个岗位最缺人" oninput="cvSet('title',this.value)"></textarea>
+          </div>
+          <div class="field">
+            <label>底部小字（可选）</label>
+            <input id="cv-sub" placeholder="例：@牛客 · 求职干货" oninput="cvSet('sub',this.value)">
+          </div>
+          <div class="field">
+            <label>背景色</label>
+            <div class="chiprow" id="cv-bg-row">
+              <span class="wcc active" data-c="#FF7300" onclick="cvBg(this)">🟧 牛客橙</span>
+              <span class="wcc" data-c="#30363D" onclick="cvBg(this)">⬛ 标识灰</span>
+              <span class="wcc" data-c="#FFFFFF" onclick="cvBg(this)">⬜ 白底</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>牛可乐表情<span class="hint">点选一个，右侧实时预览</span></label>
+            <div id="cv-mascot-grid" class="cv-mascot-grid"><span style="color:var(--muted);font-size:12px">加载中…</span></div>
+          </div>
+          <div class="arow">
+            <button class="btn btn-p" onclick="downloadCover()">⬇️ 导出封面 PNG</button>
+            <span style="font-size:12px;color:var(--muted)">1080×1440 · 小红书竖版</span>
+          </div>
+        </div>
+        <div class="card cv-preview">
+          <div style="font-size:13px;color:var(--muted);margin-bottom:8px">实时预览</div>
+          <canvas id="cv-canvas" width="1080" height="1440"></canvas>
+        </div>
+      </div>
+    </div>
+
   </main>
 </div>
 
@@ -871,6 +924,7 @@ function gotoPage(id, btn) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   btn.classList.add('active');
+  if (id === 'cover') initCover();
 }
 function gotoMode(id, btn) {
   document.querySelectorAll('#page-gen .mpanel').forEach(p => p.classList.remove('active'));
@@ -1752,6 +1806,66 @@ ${kwList}
 }
 
 // ── 初始化选题模块 ──
+// ═══ 品牌配图（Canvas 封面）═══
+let CVData = null, cvFontReady = false;
+const _cvImg = {};
+const cvState = { title: '', sub: '', bg: '#FF7300', mascotIdx: 0 };
+async function initCover() {
+  if (window._coverInited) return; window._coverInited = true;
+  try {
+    CVData = await fetch('./assets/brand/brand.json?t=' + Date.now()).then(r => r.json());
+    try {
+      const ff = new FontFace(CVData.font.family, `url(${CVData.font.file})`);
+      await ff.load(); document.fonts.add(ff); cvFontReady = true;
+    } catch (e) { cvFontReady = false; }
+    document.getElementById('cv-mascot-grid').innerHTML = CVData.mascots.map((m, i) =>
+      `<img src="${m.file}" title="${m.name}" alt="${m.name}" class="cv-mascot${i === 0 ? ' sel' : ''}" onclick="cvPickMascot(${i},this)">`).join('');
+    if (!cvState.title) cvState.title = '在这里输入\n你的封面标题';
+    drawCover();
+  } catch (e) {
+    document.getElementById('cv-mascot-grid').innerHTML = '<span style="color:var(--muted);font-size:12px">素材加载失败：' + e.message + '</span>';
+  }
+}
+function cvSet(k, v) { cvState[k] = v; drawCover(); }
+function cvBg(el) { document.querySelectorAll('#cv-bg-row .wcc').forEach(x => x.classList.remove('active')); el.classList.add('active'); cvState.bg = el.dataset.c; drawCover(); }
+function cvPickMascot(i, el) { document.querySelectorAll('#cv-mascot-grid .cv-mascot').forEach(x => x.classList.remove('sel')); el.classList.add('sel'); cvState.mascotIdx = i; drawCover(); }
+function cvLoadImg(src) { return new Promise(res => { if (_cvImg[src]) return res(_cvImg[src]); const im = new Image(); im.onload = () => { _cvImg[src] = im; res(im); }; im.onerror = () => res(null); im.src = src; }); }
+function cvWrap(ctx, text, maxW, font) {
+  ctx.font = font; if (!text) return [''];
+  const out = []; let cur = '';
+  for (const ch of text) { if (ctx.measureText(cur + ch).width > maxW && cur) { out.push(cur); cur = ch; } else cur += ch; }
+  if (cur) out.push(cur); return out;
+}
+async function drawCover() {
+  const cv = document.getElementById('cv-canvas'); if (!cv || !CVData) return;
+  const ctx = cv.getContext('2d'), W = 1080, H = 1440;
+  const bg = cvState.bg, isWhite = bg.toUpperCase() === '#FFFFFF';
+  const fg = isWhite ? '#30363D' : '#FFFFFF';
+  const fam = cvFontReady ? CVData.font.family : 'sans-serif';
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  if (isWhite) { ctx.fillStyle = '#FF7300'; ctx.fillRect(0, 0, W, 16); }
+  // Logo 顶部
+  const logo = await cvLoadImg(isWhite ? CVData.logo.full : CVData.logo.white);
+  if (logo) { const lw = 210, lh = lw * logo.height / logo.width; ctx.drawImage(logo, 72, 76, lw, lh); }
+  // 标题
+  ctx.fillStyle = fg; ctx.textBaseline = 'top';
+  const titleFont = `108px ${fam}`;
+  const lines = (cvState.title || '').split('\n').flatMap(l => cvWrap(ctx, l, W - 144, titleFont));
+  ctx.font = titleFont;
+  let y = 360;
+  for (const ln of lines) { ctx.fillText(ln, 72, y); y += 132; }
+  // 牛可乐 右下
+  const m = CVData.mascots[cvState.mascotIdx];
+  if (m) { const im = await cvLoadImg(m.file); if (im) { const mw = 440, mh = mw * im.height / im.width; ctx.drawImage(im, W - mw - 56, H - mh - 130, mw, mh); } }
+  // 底部小字
+  if (cvState.sub) { ctx.font = `44px ${fam}`; ctx.fillStyle = fg; ctx.globalAlpha = .9; ctx.textBaseline = 'alphabetic'; ctx.fillText(cvState.sub, 72, H - 90); ctx.globalAlpha = 1; }
+}
+function downloadCover() {
+  const cv = document.getElementById('cv-canvas'); if (!cv) return;
+  cv.toBlob(b => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = '牛客封面_' + Date.now() + '.png'; document.body.appendChild(a); a.click(); a.remove(); }, 'image/png');
+}
+
 (function initTopic() {
   renderKwPool();
   loadDaily();  // 预加载今日热点与AI选题
