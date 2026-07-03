@@ -1813,7 +1813,30 @@ const cvState = { title: '', sub: '', bg: '#FF7300', mascotIdx: 0 };
 async function initCover() {
   if (window._coverInited) return; window._coverInited = true;
   try {
-    CVData = await fetch('./assets/brand/brand.json?t=' + Date.now()).then(r => r.json());
+    const BASE = 'https://wlu229123-prog.github.io/xhs-ai-proxy/assets/brand/';
+    CVData = {
+      colors: { primary: '#FF7300', dark: '#30363D', white: '#FFFFFF' },
+      font: { file: BASE + 'fonts/AlimamaShuHei-Bold.woff2', family: 'AlimamaShuHei' },
+      logo: { full: BASE + 'logo/logo-full.png', white: BASE + 'logo/logo-white.png' },
+      mascots: [
+        { file: BASE + 'niukele/nkl-chong.png', name: '冲' },
+        { file: BASE + 'niukele/nkl-zan.png', name: '赞' },
+        { file: BASE + 'niukele/nkl-bixin.png', name: '比心' },
+        { file: BASE + 'niukele/nkl-mianjing.png', name: '面经' },
+        { file: BASE + 'niukele/nkl-offer.png', name: '有offer' },
+        { file: BASE + 'niukele/nkl-geju.png', name: '格局打开' },
+        { file: BASE + 'niukele/nkl-ye.png', name: '耶' },
+        { file: BASE + 'niukele/nkl-ok.png', name: 'OK' },
+        { file: BASE + 'niukele/nkl-qidao.png', name: '祈祷' },
+        { file: BASE + 'niukele/nkl-nuli.png', name: '努力' },
+        { file: BASE + 'niukele/nkl-guzhang.png', name: '鼓掌' },
+        { file: BASE + 'niukele/nkl-aixin.png', name: '爱心' },
+        { file: BASE + 'niukele/nkl-dengoffer.png', name: '等offer' },
+        { file: BASE + 'niukele/nkl-chongya.png', name: '冲鸭' },
+        { file: BASE + 'niukele/nkl-dacall.png', name: '打call' },
+        { file: BASE + 'niukele/nkl-daqi.png', name: '打气' }
+      ]
+    };
     try {
       const ff = new FontFace(CVData.font.family, `url(${CVData.font.file})`);
       await ff.load(); document.fonts.add(ff); cvFontReady = true;
@@ -1829,7 +1852,7 @@ async function initCover() {
 function cvSet(k, v) { cvState[k] = v; drawCover(); }
 function cvBg(el) { document.querySelectorAll('#cv-bg-row .wcc').forEach(x => x.classList.remove('active')); el.classList.add('active'); cvState.bg = el.dataset.c; drawCover(); }
 function cvPickMascot(i, el) { document.querySelectorAll('#cv-mascot-grid .cv-mascot').forEach(x => x.classList.remove('sel')); el.classList.add('sel'); cvState.mascotIdx = i; drawCover(); }
-function cvLoadImg(src) { return new Promise(res => { if (_cvImg[src]) return res(_cvImg[src]); const im = new Image(); im.onload = () => { _cvImg[src] = im; res(im); }; im.onerror = () => res(null); im.src = src; }); }
+function cvLoadImg(src) { return new Promise(res => { if (_cvImg[src]) return res(_cvImg[src]); const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => { _cvImg[src] = im; res(im); }; im.onerror = () => res(null); im.src = src; }); }
 function cvWrap(ctx, text, maxW, font) {
   ctx.font = font; if (!text) return [''];
   const out = []; let cur = '';
