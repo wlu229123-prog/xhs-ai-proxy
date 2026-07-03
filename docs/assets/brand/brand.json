@@ -1,0 +1,164 @@
+{
+ "brand": "牛客",
+ "colors": {
+  "primary": "#FF7300",
+  "dark": "#30363D",
+  "white": "#FFFFFF",
+  "primaryName": "牛客橙",
+  "darkName": "标识灰"
+ },
+ "font": {
+  "file": "assets/brand/fonts/AlimamaShuHei-Bold.woff2",
+  "family": "AlimamaShuHei"
+ },
+ "logo": {
+  "full": "assets/brand/logo/logo-full.png",
+  "white": "assets/brand/logo/logo-white.png"
+ },
+ "mascots": [
+  {
+   "file": "assets/brand/niukele/nkl-chong.png",
+   "name": "冲",
+   "tags": [
+    "冲",
+    "加油",
+    "努力"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-zan.png",
+   "name": "赞",
+   "tags": [
+    "赞",
+    "好评",
+    "支持"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-bixin.png",
+   "name": "比心",
+   "tags": [
+    "比心",
+    "爱",
+    "感谢"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-mianjing.png",
+   "name": "面经",
+   "tags": [
+    "面经",
+    "面试",
+    "干货"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-offer.png",
+   "name": "有offer",
+   "tags": [
+    "offer",
+    "上岸",
+    "录用"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-geju.png",
+   "name": "格局打开",
+   "tags": [
+    "格局",
+    "认知",
+    "思考"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-ye.png",
+   "name": "耶",
+   "tags": [
+    "耶",
+    "开心",
+    "胜利"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-ok.png",
+   "name": "OK",
+   "tags": [
+    "OK",
+    "好的",
+    "没问题"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-qidao.png",
+   "name": "祈祷",
+   "tags": [
+    "祈祷",
+    "保佑",
+    "许愿"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-nuli.png",
+   "name": "努力",
+   "tags": [
+    "努力",
+    "奋斗",
+    "拼"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-guzhang.png",
+   "name": "鼓掌",
+   "tags": [
+    "鼓掌",
+    "厉害",
+    "恭喜"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-aixin.png",
+   "name": "爱心",
+   "tags": [
+    "爱心",
+    "喜欢",
+    "温暖"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-dengoffer.png",
+   "name": "等offer",
+   "tags": [
+    "等offer",
+    "焦虑",
+    "等待"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-chongya.png",
+   "name": "冲鸭",
+   "tags": [
+    "冲鸭",
+    "冲刺",
+    "加油"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-dacall.png",
+   "name": "打call",
+   "tags": [
+    "打call",
+    "应援",
+    "支持"
+   ]
+  },
+  {
+   "file": "assets/brand/niukele/nkl-daqi.png",
+   "name": "打气",
+   "tags": [
+    "打气",
+    "鼓励",
+    "坚持"
+   ]
+  }
+ ]
+}
