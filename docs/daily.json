@@ -1,157 +1,268 @@
 {
- "date": "2026-07-06",
- "updated": "2026-07-06 10:23",
+ "date": "2026-07-07",
+ "updated": "2026-07-07 12:05",
  "topics": [
   {
-   "title": "国产AI编程工具打起来了，程序员现在该学哪个",
-   "source_hot": "DeepSeek推出自己的AI编程工具Deep Code、阿里内部禁用Claude Code",
-   "source_url": "https://www.ithome.com/0/972/910.htm",
-   "keywords": "AI编程/程序员/技能",
-   "score": 8.8
+   "title": "连大厂天才都吐槽的AI公司面试，到底怎么准备才不踩坑",
+   "source_hot": "前华为天才少年李博杰吐槽DeepSeek面试:流程拖沓、被质疑抄代码",
+   "source_url": "https://www.ithome.com/0/973/343.htm",
+   "keywords": "面试/大厂/求职",
+   "score": 9.0
   },
   {
-   "title": "机器人要抢工作了？AI时代普通人的机会到底在哪",
-   "source_hot": "日本目标2040部署1000万台AI机器人应对劳动力短缺",
-   "source_url": "https://www.ithome.com/0/972/895.htm",
-   "keywords": "AI就业/趋势/职场",
+   "title": "科技大厂又裁员了，2026求职到底该看重什么",
+   "source_hot": "微软XBOX全球裁员，B社工会声援被裁员工",
+   "source_url": "https://www.ithome.com/0/973/455.htm",
+   "keywords": "裁员/求职/职业安全",
    "score": 8.5
   },
   {
-   "title": "具身智能又双叒融资了，2026想进这行现在怎么准备",
-   "source_hot": "具身智能融资潮:忆生科技/清华师兄弟/多家天使轮",
-   "source_url": "https://36kr.com/p/3882365879005186?f=rss",
-   "keywords": "具身智能/求职/转行",
-   "score": 8.6
-  },
-  {
-   "title": "大厂高管都出来创业了，应届跟着创业公司干值不值",
-   "source_hot": "小米前高管唐沐创业咖啡机器人完成数亿融资",
-   "source_url": "https://36kr.com/p/3882361033322755?f=rss",
-   "keywords": "创业/应届/职业选择",
-   "score": 8.2
-  },
-  {
-   "title": "AI存储芯片爆火，这些岗位正在疯狂抢人",
-   "source_hot": "三星Q2利润暴涨18倍、SK海力士280亿IPO(AI存储芯片)",
-   "source_url": "https://www.ithome.com/0/972/896.htm",
-   "keywords": "AI芯片/岗位/薪资",
+   "title": "AI已经渗透30%工业岗位，你的工作会被替代吗",
+   "source_hot": "我国规上工业企业AI应用普及率已超30%",
+   "source_url": "https://36kr.com/newsflashes/3884995291246599?f=rss",
+   "keywords": "AI就业/趋势/职场",
    "score": 8.4
   },
   {
-   "title": "会用AI写代码的人，正在悄悄拉开和同龄人的差距",
-   "source_hot": "DeepSeek Deep Code等AI编程工具崛起",
-   "source_url": "https://36kr.com/p/3880629882679301?f=rss",
-   "keywords": "AI工具/程序员/效率",
-   "score": 8.7
+   "title": "AI销售、AI助手岗位悄悄崛起，普通人怎么上车",
+   "source_hot": "APTSell做AI版首席销售官、支付宝AI开放平台邀测",
+   "source_url": "https://36kr.com/p/3883591654895873?f=rss",
+   "keywords": "AI岗位/新职业/求职",
+   "score": 8.2
+  },
+  {
+   "title": "机器人公司还在疯狂融资招人，非科班怎么进这行",
+   "source_hot": "优必选机器人、佑驾四轮足机器人等具身智能持续融资",
+   "source_url": "https://36kr.com/p/3884831072514309?f=rss",
+   "keywords": "具身智能/求职/转行",
+   "score": 8.5
+  },
+  {
+   "title": "AI+生物/芯片成新风口，交叉背景反而更吃香",
+   "source_hot": "华源智因AI复刻细胞、上科大超高速光电芯片融资",
+   "source_url": "https://36kr.com/p/3883943959621634?f=rss",
+   "keywords": "AI交叉/求职/风口",
+   "score": 8.2
   }
  ],
  "hotspots": {
-  "strong": [],
+  "strong": [
+   {
+    "source": "IT之家",
+    "title": "暴雪总裁法里斯回应微软 XBOX 全球裁员：今天是艰难日子",
+    "url": "https://www.ithome.com/0/973/455.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "B 社工会声援 XBOX 被裁员工：微软高层还要错到何时",
+    "url": "https://www.ithome.com/0/973/350.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "前华为“天才少年”李博杰公开吐槽 DeepSeek 面试：流程拖沓、被面试官质疑抄代码",
+    "url": "https://www.ithome.com/0/973/343.htm"
+   }
+  ],
   "trend": [
    {
     "source": "36氪",
-    "title": "2026，量子计算迟到的狂欢：能拿订单、奔赴IPO、市值破百亿",
-    "url": "https://36kr.com/p/3883513899380744?f=rss"
+    "title": "前大疆员工做了款消费级纺织机，拿下红杉、顺为、米哈游等数亿融资｜产品观察",
+    "url": "https://36kr.com/p/3876837605585160?f=rss"
    },
    {
     "source": "36氪",
-    "title": "鄂尔多斯、和达金服共同领投，「贻如科技」完成超亿元A轮融资｜36氪首发",
-    "url": "https://36kr.com/p/3880060701388809?f=rss"
+    "title": "用AI“复刻”人类细胞、预判药效，「华源智因」获千万级人民币种子轮融资｜36氪首发",
+    "url": "https://36kr.com/p/3883943959621634?f=rss"
    },
    {
     "source": "36氪",
-    "title": "硬氪首发 | 港大教授成立的忆生科技获数亿天使轮融资，致力于为机器人造一套记忆系统",
-    "url": "https://36kr.com/p/3882365879005186?f=rss"
+    "title": "36氪首发丨上科大博士团队加速国产超高速光电探测芯片量产，获千万级天使轮融资",
+    "url": "https://36kr.com/p/3884289424437511?f=rss"
    },
    {
     "source": "36氪",
-    "title": "硬氪首发 | 清华车辆学院师兄弟创业具身智能，已完成数亿元天使融资，将落地汽车产业",
-    "url": "https://36kr.com/p/3882364132077577?f=rss"
+    "title": "8点1氪丨SK海力士本周五将登陆纳斯达克；99万机器人“伴侣”续航撑不过一晚？优必选回应；青海省博物馆回应“国家一级文物发现TCL字样”",
+    "url": "https://36kr.com/p/3884831072514309?f=rss"
    },
    {
     "source": "36氪",
-    "title": "硬氪首发 | 小米前高管唐沐创业咖啡机器人，完成数亿融资，林斌、黎万强投过",
-    "url": "https://36kr.com/p/3882361033322755?f=rss"
+    "title": "氪星晚报｜佑驾创新正式发布四轮足机器人；千问大模型升级实时语音识别大模型Fun-ASR-Realtime",
+    "url": "https://36kr.com/p/3884024701874183?f=rss"
    },
    {
     "source": "36氪",
-    "title": "9点1氪｜阿里内部全面禁用Claude Code；FF洛杉矶总部人去楼空？公司回应：不实；微软砸25亿美元组建6000人AI新公司",
-    "url": "https://36kr.com/p/3880629882679301?f=rss"
+    "title": "获DCM Ventures投资数百万美元，APTSell希望成为AI版的首席销售官｜涌现新项目",
+    "url": "https://36kr.com/p/3883591654895873?f=rss"
    },
    {
     "source": "36氪",
-    "title": "华泰证券：韩国出口高增表明全球AI链贸易仍处上行通道，亚洲AI供应链有望持续受益",
-    "url": "https://36kr.com/newsflashes/3883440823578889?f=rss"
+    "title": "上市前夜 | 哈工大在读博士以百亿市值冲港股IPO，创始三人只剩一人",
+    "url": "https://36kr.com/p/3883708118921480?f=rss"
    },
    {
     "source": "36氪",
-    "title": "两市融资余额减少196.66亿元",
-    "url": "https://36kr.com/newsflashes/3883448455246084?f=rss"
+    "title": "上市前夜｜4个月净利润38.4亿元，深圳存储黑马冲港股IPO",
+    "url": "https://36kr.com/p/3883706720727303?f=rss"
    },
    {
     "source": "36氪",
-    "title": "中信证券：底部期待黄金板块估值与盈利的双击",
-    "url": "https://36kr.com/newsflashes/3883411200634887?f=rss"
+    "title": "我国规上工业企业人工智能应用普及率已超30%",
+    "url": "https://36kr.com/newsflashes/3884995291246599?f=rss"
+   },
+   {
+    "source": "36氪",
+    "title": "支付宝AI开放平台开启邀测",
+    "url": "https://36kr.com/newsflashes/3884959785234689?f=rss"
+   },
+   {
+    "source": "36氪",
+    "title": "“迈巨微电子”完成数千万元融资",
+    "url": "https://36kr.com/newsflashes/3884959571128584?f=rss"
+   },
+   {
+    "source": "36氪",
+    "title": "潘功胜：香港可以抓住有利时机，吸引更多主权财富和国际企业到港发债融资",
+    "url": "https://36kr.com/newsflashes/3884919413108995?f=rss"
    },
    {
     "source": "IT之家",
-    "title": "DeepSeek 有了属于自己的“Claude Code”工具，Deep Code 开源 AI 编程助手上线",
-    "url": "https://www.ithome.com/0/972/910.htm"
+    "title": "以 AI 治理 AI：Reddit 近来每天拦截 2300 万条垃圾浏览信息",
+    "url": "https://www.ithome.com/0/973/441.htm"
    },
    {
     "source": "IT之家",
-    "title": "SK 海力士将启动 280 亿美元美股上市，有望成史上第二大 IPO",
-    "url": "https://www.ithome.com/0/972/896.htm"
+    "title": "被美国工会抵制的 AI 演员 Tilly Norwood 即将“主演”首部电影《Misaligned》",
+    "url": "https://www.ithome.com/0/973/436.htm"
    },
    {
     "source": "IT之家",
-    "title": "日本目标到 2040 年部署 1000 万台 AI 机器人，应对整体劳动力短缺",
-    "url": "https://www.ithome.com/0/972/895.htm"
+    "title": "Claude Sonnet 5 上线后遭大量投诉：总爱唱反调，还想教用户做事",
+    "url": "https://www.ithome.com/0/973/430.htm"
    },
    {
     "source": "IT之家",
-    "title": "贾跃亭宣布法拉第未来机器人 Q3 战役启动，与洛杉矶两大公立学区合办夏令营",
-    "url": "https://www.ithome.com/0/972/891.htm"
+    "title": "联想 AI 平板拯救者 Y700 无极预热：内置流量卡 + 实体 SIM 卡双 5G 双通，8 月发布",
+    "url": "https://www.ithome.com/0/973/385.htm"
    },
    {
     "source": "IT之家",
-    "title": "三星电子 Q2 营业利润预计同比暴涨 18 倍，AI 存储芯片需求持续引爆业绩",
-    "url": "https://www.ithome.com/0/972/890.htm"
+    "title": "报道称微软让步，Teams 会议中途支持关闭 Recap 等 AI 功能",
+    "url": "https://www.ithome.com/0/973/376.htm"
    },
    {
     "source": "IT之家",
-    "title": "亚马逊硬件主管 Panos Panay：正以自研芯片重塑沉浸式 AI 体验",
-    "url": "https://www.ithome.com/0/972/889.htm"
+    "title": "支付宝 AI 开放平台上线，商家可通过“阿宝”接入手机、车机、AI 眼镜",
+    "url": "https://www.ithome.com/0/973/375.htm"
    },
    {
     "source": "IT之家",
-    "title": "IT早报 0706：豆包千问智能体 Agent 下线；多地推行网约车“一车一码”；我国“人造太阳”计划 2030 年演示发出第一度电；微信承诺异常企微拉群将强制确认...",
-    "url": "https://www.ithome.com/0/972/874.htm"
+    "title": "苹果 iOS 27 新增提示：AI 生图等任务会发送数据给谷歌云",
+    "url": "https://www.ithome.com/0/973/344.htm"
    },
    {
     "source": "IT之家",
-    "title": "HBM 之父金正浩：AI 的本质是内存，GPU 真正工作的时间只有 10%-30%",
-    "url": "https://www.ithome.com/0/972/872.htm"
+    "title": "谷歌另类广告：如果《独立宣言》是借助 AI 完成的",
+    "url": "https://www.ithome.com/0/973/341.htm"
    },
    {
     "source": "IT之家",
-    "title": "美国部分富人放弃传统学校，年费 7.5 万美元送孩子上 AI 私塾",
-    "url": "https://www.ithome.com/0/972/868.htm"
+    "title": "AMD 宣布锐龙 AI Halo 开发者平台（395 版）现已发售，定价 3999 美元",
+    "url": "https://www.ithome.com/0/973/339.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "谷歌 Gemini 3.5 Pro 曝 200 万 Tokens 上下文，前端部分 AI 测试赶超 Claude Fable 5",
+    "url": "https://www.ithome.com/0/973/334.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "李在明下令加速推进韩国芯片与 AI 重大项目：速度是唯一重要因素",
+    "url": "https://www.ithome.com/0/973/325.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "苹果 iOS / iPadOS 27 Beta 3 更新汇总：增强 Siri AI，优化液态玻璃视觉",
+    "url": "https://www.ithome.com/0/973/323.htm"
    },
    {
     "source": "量子位",
-    "title": "李飞飞署名具身新论文：Sim2Real烧不起，Real2Sim量大管饱",
-    "url": "https://www.qbitai.com/2026/07/443066.html"
+    "title": "机器人视觉迎来新突破！蚂蚁灵波空间感知模型LingBot-Depth 2.0正式发布",
+    "url": "https://www.qbitai.com/2026/07/445184.html"
    },
    {
     "source": "量子位",
-    "title": "光象科技累计完成数亿元天使轮融资，布局物理原生基座模型",
-    "url": "https://www.qbitai.com/2026/07/442958.html"
+    "title": "征程赶超｜WAIC 2026科学智能：AI4S从“辅助计算”到“自主发现”，中国如何重塑全球科研版图？",
+    "url": "https://www.qbitai.com/2026/07/445067.html"
    },
    {
     "source": "量子位",
-    "title": "从LLM到JEPA，中国团队正在把“世界模型”搬进细胞内部",
-    "url": "https://www.qbitai.com/2026/07/442746.html"
+    "title": "征程赶超｜WAIC 2026理论突破：以数理双向赋能为钥，开启AI范式革新新征程",
+    "url": "https://www.qbitai.com/2026/07/444859.html"
+   },
+   {
+    "source": "量子位",
+    "title": "Claude的脑子里，也长出了一块「意识」",
+    "url": "https://www.qbitai.com/2026/07/444741.html"
+   },
+   {
+    "source": "量子位",
+    "title": "在联合国，这家中国公司给AI“减负”：不堆算力，而是给机器人装了个“类脑”",
+    "url": "https://www.qbitai.com/2026/07/444733.html"
+   },
+   {
+    "source": "InfoQ",
+    "title": "亚马逊云科技发布用于成本分析和优化的 FinOps Agent 预览版",
+    "url": "https://www.infoq.cn/article/OtPug093U3A6NXXhxdiW?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "Linus 再谈 AI：大模型能写 Demo，但对复杂系统要有敬畏之心",
+    "url": "https://www.infoq.cn/article/11fNtPYf59T76fyQkiPa?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "Agentic 范式下的视频画质优化：火山引擎的新路径",
+    "url": "https://www.infoq.cn/article/Gx6eXWNCqcVkET9wFZq9?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "腾讯混元Hy3正式发布，元宝同步上线Hy3 Agent能力、免费开放",
+    "url": "https://www.infoq.cn/article/2IGjsbCMxxHjLGPJ7tls?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "“我一行代码都没读就发布了”，被OpenAI收购后，uv工具创始人开始反思AI编程",
+    "url": "https://www.infoq.cn/article/katE2jJKMX7FaGskhvRL?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "GTLC 杭州站回顾｜AI 创业进入深水区，技术领导者都在关注什么？",
+    "url": "https://www.infoq.cn/article/MOVBghUgQrXWr9igbK2p?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "Anthropic：Claude 已承担 95% 的内部数据分析查询工作",
+    "url": "https://www.infoq.cn/article/eHH8RTgeeOUWODLCLWXS?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "Windows平台安全与保护AI智能体的竞赛",
+    "url": "https://www.infoq.cn/article/LT7lx2Qe5KkS9QCVSXCQ?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "73% PR 由AI生成！Claude Code之父对话Spotify：2900名工程师每天部署4500次，坐地铁都能提交代码",
+    "url": "https://www.infoq.cn/article/e6J4FbXQj28CiziktLuS?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "豆包、千问关停智能体功能；曝腾讯研发token额度1400元/月起步，有人过万；美团限豆包、阿里禁Claude Code｜AI周报",
+    "url": "https://www.infoq.cn/article/rs0HJTRdN6Pl88LIFh1a?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "让 Agent 成为音视频工作台：AI MediaKit CLI + Skill 发布",
+    "url": "https://www.infoq.cn/article/jpGdhU4YBXiXOloMEb2I?utm_source=rss&utm_medium=article"
    },
    {
     "source": "InfoQ",
@@ -162,76 +273,6 @@
     "source": "InfoQ",
     "title": "Azure Functions在Build 2026发布Serverless智能体运行时",
     "url": "https://www.infoq.cn/article/kGHZu2K5V8IrwYvo6Cm3?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "Claude Code 80%的提示词说删就删，Anthropic用Fable 5打了个样：AI行业的“降本”才刚刚开始",
-    "url": "https://www.infoq.cn/article/GEkEm7rkUJfF8bdwTuBt?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "Agent 上岗之后，企业如何治理硅基团队？",
-    "url": "https://www.infoq.cn/article/pNFHkLos3FoDNm8cQsyt?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "从 Coding 到 Anything，Agent 正在重写工作流",
-    "url": "https://www.infoq.cn/article/yM8ms1eDlrY7wvF3SXtY?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "拒绝天价账单！OpenAI、Anthropic 自研芯片，剑指英伟达“暴利”护城河",
-    "url": "https://www.infoq.cn/article/MOqFJbvWYlJ9PXcfdfCC?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "大晓机器人首席科学家陶大程：世界模型的使命不是完整复制世界，而是精准支撑行动",
-    "url": "https://www.infoq.cn/article/tZe66KJ12UsjrqpeSiaA?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "从生成到交付，音视频 Agent 要有生产级开发套件",
-    "url": "https://www.infoq.cn/article/qA1Ucwbw3KZy5yIgCrVo?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "被骂“退出AI竞赛”，Meta改行卖算力股价暴涨10%：卖铲子比淘金更赚？",
-    "url": "https://www.infoq.cn/article/vxgbzsNORRzQDz6xK1jv?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "Agent 狂欢热潮下的冷思考：为什么规模化落地总是陷入僵局？",
-    "url": "https://www.infoq.cn/article/KmDMAvlzBGgwu5A2kf7t?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "亚马逊云科技推出 Lambda MicroVM，提供隔离式智能体与用户代码运行环境",
-    "url": "https://www.infoq.cn/article/QbFT0uMbBd8rcZ0zEfit?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "行业智能体时代来临：出行、货运率先破局",
-    "url": "https://www.infoq.cn/article/k8tlXTTbFmTGOLojQVZB?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "如何利用 AI Agent 实现热补丁的自动化生成",
-    "url": "https://www.infoq.cn/article/BXc66LG3pVL8ZMme0ehy?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "从龙蜥孵化到上游贡献：SGLang Tracing 与 AI Agent 调优实践",
-    "url": "https://www.infoq.cn/article/o5BOhliYRHIe4ZZPrHY9?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "GitLab 调研：AI 工具仅加快编码，整体软件交付效率并未提升",
-    "url": "https://www.infoq.cn/article/8WD205mNH9OGrkf8BRYO?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "让Agent越用越强：AReaL 2.0开源，给智能体装上“成长系统”",
-    "url": "https://www.infoq.cn/article/IeXGCZqbv5WQ5zFQXoup?utm_source=rss&utm_medium=article"
    },
    {
     "source": "少数派",
