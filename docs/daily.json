@@ -1,188 +1,198 @@
 {
- "date": "2026-07-07",
- "updated": "2026-07-07 12:05",
+ "date": "2026-07-08",
+ "updated": "2026-07-08 12:28",
  "topics": [
   {
-   "title": "连大厂天才都吐槽的AI公司面试，到底怎么准备才不踩坑",
-   "source_hot": "前华为天才少年李博杰吐槽DeepSeek面试:流程拖沓、被质疑抄代码",
-   "source_url": "https://www.ithome.com/0/973/343.htm",
+   "title": "华为天才少年硬刚DeepSeek面试，这场撕逼普通人能学到啥",
+   "source_hot": "前华为天才少年李博杰吐槽DeepSeek面试、被投资人反怼(持续发酵)",
+   "source_url": "https://36kr.com/p/3886238403129353?f=rss",
    "keywords": "面试/大厂/求职",
-   "score": 9.0
+   "score": 9.1
   },
   {
-   "title": "科技大厂又裁员了，2026求职到底该看重什么",
-   "source_hot": "微软XBOX全球裁员，B社工会声援被裁员工",
-   "source_url": "https://www.ithome.com/0/973/455.htm",
-   "keywords": "裁员/求职/职业安全",
+   "title": "微软裁员给39周工资，大厂裁员补偿到底怎么算",
+   "source_hot": "微软裁员补偿方案曝光:美国员工最高拿39周遣散费",
+   "source_url": "https://www.ithome.com/0/973/972.htm",
+   "keywords": "裁员/补偿/职场",
    "score": 8.5
   },
   {
-   "title": "AI已经渗透30%工业岗位，你的工作会被替代吗",
-   "source_hot": "我国规上工业企业AI应用普及率已超30%",
-   "source_url": "https://36kr.com/newsflashes/3884995291246599?f=rss",
-   "keywords": "AI就业/趋势/职场",
+   "title": "保时捷晒工资单了，什么样的公司值得挤破头进",
+   "source_hot": "保时捷首度公开薪酬:近4成员工年入超10万欧元",
+   "source_url": "https://www.ithome.com/0/973/859.htm",
+   "keywords": "薪资/择业/职场",
+   "score": 8.3
+  },
+  {
+   "title": "GPT-5.6又要来了，AI每次进化我们的求职优势还剩啥",
+   "source_hot": "OpenAI将发布GPT-5.6、美国解除限制",
+   "source_url": "https://36kr.com/newsflashes/3886483143667715?f=rss",
+   "keywords": "AI趋势/求职/技能",
    "score": 8.4
   },
   {
-   "title": "AI销售、AI助手岗位悄悄崛起，普通人怎么上车",
-   "source_hot": "APTSell做AI版首席销售官、支付宝AI开放平台邀测",
-   "source_url": "https://36kr.com/p/3883591654895873?f=rss",
-   "keywords": "AI岗位/新职业/求职",
-   "score": 8.2
+   "title": "大学都开始砍英语课了，AI时代到底该学什么才不被淘汰",
+   "source_hot": "深圳理工取消大学英语改跨文化课(称AI模仿不来人文思维)",
+   "source_url": "https://www.ithome.com/0/973/973.htm",
+   "keywords": "AI时代/技能/成长",
+   "score": 8.6
   },
   {
-   "title": "机器人公司还在疯狂融资招人，非科班怎么进这行",
-   "source_hot": "优必选机器人、佑驾四轮足机器人等具身智能持续融资",
-   "source_url": "https://36kr.com/p/3884831072514309?f=rss",
+   "title": "具身智能又开源又融资，2026想进机器人行业怎么准备",
+   "source_hot": "蚂蚁具身基座模型LingBot开源、智元机器人系融资",
+   "source_url": "https://36kr.com/newsflashes/3886479015555336?f=rss",
    "keywords": "具身智能/求职/转行",
-   "score": 8.5
-  },
-  {
-   "title": "AI+生物/芯片成新风口，交叉背景反而更吃香",
-   "source_hot": "华源智因AI复刻细胞、上科大超高速光电芯片融资",
-   "source_url": "https://36kr.com/p/3883943959621634?f=rss",
-   "keywords": "AI交叉/求职/风口",
-   "score": 8.2
+   "score": 8.4
   }
  ],
  "hotspots": {
   "strong": [
    {
-    "source": "IT之家",
-    "title": "暴雪总裁法里斯回应微软 XBOX 全球裁员：今天是艰难日子",
-    "url": "https://www.ithome.com/0/973/455.htm"
+    "source": "36氪",
+    "title": "8点1氪丨前华为天才少年吐槽DeepSeek面试，称面试官质疑他抄袭；苹果折叠屏已在量产；特朗普呼吁购买戴尔电脑，引发戴尔暴涨百亿美元",
+    "url": "https://36kr.com/p/3886238403129353?f=rss"
    },
    {
     "source": "IT之家",
-    "title": "B 社工会声援 XBOX 被裁员工：微软高层还要错到何时",
-    "url": "https://www.ithome.com/0/973/350.htm"
+    "title": "微软裁员补偿方案曝光：美国员工最高能拿 39 周基本工资遣散费",
+    "url": "https://www.ithome.com/0/973/972.htm"
    },
    {
     "source": "IT之家",
-    "title": "前华为“天才少年”李博杰公开吐槽 DeepSeek 面试：流程拖沓、被面试官质疑抄代码",
-    "url": "https://www.ithome.com/0/973/343.htm"
+    "title": "前华为天才少年李博杰吐槽 DeepSeek 面试后遭投资人“反怼”：被指拿钱失联，称其为“合作过最没契约精神的创始人”",
+    "url": "https://www.ithome.com/0/973/883.htm"
+   },
+   {
+    "source": "IT之家",
+    "title": "保时捷首度公开薪酬：近 4 成员工年入超 10 万欧元，前 CEO 奥博穆 190 万欧元",
+    "url": "https://www.ithome.com/0/973/859.htm"
+   },
+   {
+    "source": "量子位",
+    "title": "DeepSeek招聘被「华为天才少年」公开吐槽，“面到最不专业的”",
+    "url": "https://www.qbitai.com/2026/07/445608.html"
    }
   ],
   "trend": [
    {
     "source": "36氪",
-    "title": "前大疆员工做了款消费级纺织机，拿下红杉、顺为、米哈游等数亿融资｜产品观察",
-    "url": "https://36kr.com/p/3876837605585160?f=rss"
+    "title": "AI 视频全面成熟：Seedance 2.0 领衔，6 款主流工具深度横评",
+    "url": "https://36kr.com/p/3886403765596418?f=rss"
    },
    {
     "source": "36氪",
-    "title": "用AI“复刻”人类细胞、预判药效，「华源智因」获千万级人民币种子轮融资｜36氪首发",
-    "url": "https://36kr.com/p/3883943959621634?f=rss"
+    "title": "36氪首发 | 五粮液基金领投，国产高端机床企业获数亿元融资，加速海外市场布局",
+    "url": "https://36kr.com/p/3886400975040520?f=rss"
    },
    {
     "source": "36氪",
-    "title": "36氪首发丨上科大博士团队加速国产超高速光电探测芯片量产，获千万级天使轮融资",
-    "url": "https://36kr.com/p/3884289424437511?f=rss"
+    "title": "36氪独家 | 快造科技完成10亿元融资，为一级市场消费级3D打印最大单笔融资",
+    "url": "https://36kr.com/p/3885728813691145?f=rss"
    },
    {
     "source": "36氪",
-    "title": "8点1氪丨SK海力士本周五将登陆纳斯达克；99万机器人“伴侣”续航撑不过一晚？优必选回应；青海省博物馆回应“国家一级文物发现TCL字样”",
-    "url": "https://36kr.com/p/3884831072514309?f=rss"
+    "title": "「德睿智药」获5200万美元B轮融资，AI设计的减肥药已进入3期临床｜36氪首发",
+    "url": "https://36kr.com/p/3885479689465858?f=rss"
    },
    {
     "source": "36氪",
-    "title": "氪星晚报｜佑驾创新正式发布四轮足机器人；千问大模型升级实时语音识别大模型Fun-ASR-Realtime",
-    "url": "https://36kr.com/p/3884024701874183?f=rss"
+    "title": "氪星晚报 ｜苹果折叠屏已在量产；潘功胜：香港可以抓住有利时机，吸引更多主权财富和国际企业到港发债融资",
+    "url": "https://36kr.com/p/3885457443385346?f=rss"
    },
    {
     "source": "36氪",
-    "title": "获DCM Ventures投资数百万美元，APTSell希望成为AI版的首席销售官｜涌现新项目",
-    "url": "https://36kr.com/p/3883591654895873?f=rss"
+    "title": "OpenAI将于9日正式发布GPT-5.6系列",
+    "url": "https://36kr.com/newsflashes/3886483143667715?f=rss"
    },
    {
     "source": "36氪",
-    "title": "上市前夜 | 哈工大在读博士以百亿市值冲港股IPO，创始三人只剩一人",
-    "url": "https://36kr.com/p/3883708118921480?f=rss"
+    "title": "蚂蚁灵波具身基座模型LingBot-VLA 2.0开源",
+    "url": "https://36kr.com/newsflashes/3886479015555336?f=rss"
    },
    {
     "source": "36氪",
-    "title": "上市前夜｜4个月净利润38.4亿元，深圳存储黑马冲港股IPO",
-    "url": "https://36kr.com/p/3883706720727303?f=rss"
+    "title": "百度旗下基金等入股智元机器人旗下觅蜂科技",
+    "url": "https://36kr.com/newsflashes/3886433739485188?f=rss"
    },
    {
     "source": "36氪",
-    "title": "我国规上工业企业人工智能应用普及率已超30%",
-    "url": "https://36kr.com/newsflashes/3884995291246599?f=rss"
+    "title": "报道称特朗普政府解除对OpenAI的GPT 5.6的限制",
+    "url": "https://36kr.com/newsflashes/3886425178271744?f=rss"
    },
    {
     "source": "36氪",
-    "title": "支付宝AI开放平台开启邀测",
-    "url": "https://36kr.com/newsflashes/3884959785234689?f=rss"
-   },
-   {
-    "source": "36氪",
-    "title": "“迈巨微电子”完成数千万元融资",
-    "url": "https://36kr.com/newsflashes/3884959571128584?f=rss"
-   },
-   {
-    "source": "36氪",
-    "title": "潘功胜：香港可以抓住有利时机，吸引更多主权财富和国际企业到港发债融资",
-    "url": "https://36kr.com/newsflashes/3884919413108995?f=rss"
+    "title": "“德睿智药”完成5200万美元B轮融资",
+    "url": "https://36kr.com/newsflashes/3886387918483460?f=rss"
    },
    {
     "source": "IT之家",
-    "title": "以 AI 治理 AI：Reddit 近来每天拦截 2300 万条垃圾浏览信息",
-    "url": "https://www.ithome.com/0/973/441.htm"
+    "title": "深圳理工大学开实验班逐步取消大学英语：改为跨文化交流课程，AI 模仿不来人文思维",
+    "url": "https://www.ithome.com/0/973/973.htm"
    },
    {
     "source": "IT之家",
-    "title": "被美国工会抵制的 AI 演员 Tilly Norwood 即将“主演”首部电影《Misaligned》",
-    "url": "https://www.ithome.com/0/973/436.htm"
+    "title": "尼日利亚将对人工智能企业涉嫌侵犯该国媒体行业权益进行调查",
+    "url": "https://www.ithome.com/0/973/967.htm"
    },
    {
     "source": "IT之家",
-    "title": "Claude Sonnet 5 上线后遭大量投诉：总爱唱反调，还想教用户做事",
-    "url": "https://www.ithome.com/0/973/430.htm"
+    "title": "OpenAI 首席未来学家 Joshua Achiam 官宣毕业离职，结束近九年任职生涯",
+    "url": "https://www.ithome.com/0/973/938.htm"
    },
    {
     "source": "IT之家",
-    "title": "联想 AI 平板拯救者 Y700 无极预热：内置流量卡 + 实体 SIM 卡双 5G 双通，8 月发布",
-    "url": "https://www.ithome.com/0/973/385.htm"
+    "title": "结束管制：美国政府批准 OpenAI 大规模推广 GPT-5.6，Sol 明日亮相",
+    "url": "https://www.ithome.com/0/973/922.htm"
    },
    {
     "source": "IT之家",
-    "title": "报道称微软让步，Teams 会议中途支持关闭 Recap 等 AI 功能",
-    "url": "https://www.ithome.com/0/973/376.htm"
+    "title": "调查发现 31% 的 Steam 用户对游戏中使用 AI 不满，43% 表示可以接受",
+    "url": "https://www.ithome.com/0/973/921.htm"
    },
    {
     "source": "IT之家",
-    "title": "支付宝 AI 开放平台上线，商家可通过“阿宝”接入手机、车机、AI 眼镜",
-    "url": "https://www.ithome.com/0/973/375.htm"
+    "title": "姚顺雨 OpenAI 前同事田永龙被曝加入腾讯，混元多模态有望迎来新负责人",
+    "url": "https://www.ithome.com/0/973/892.htm"
    },
    {
     "source": "IT之家",
-    "title": "苹果 iOS 27 新增提示：AI 生图等任务会发送数据给谷歌云",
-    "url": "https://www.ithome.com/0/973/344.htm"
+    "title": "SpaceX 申请部署最多 10 万颗卫星，拟打造 AI 时代太空通信底座",
+    "url": "https://www.ithome.com/0/973/891.htm"
    },
    {
     "source": "IT之家",
-    "title": "谷歌另类广告：如果《独立宣言》是借助 AI 完成的",
-    "url": "https://www.ithome.com/0/973/341.htm"
+    "title": "换装 AMD 锐龙 AI 9 HX 470，极摩客上线 EVO-X1Pro 迷你主机",
+    "url": "https://www.ithome.com/0/973/880.htm"
    },
    {
     "source": "IT之家",
-    "title": "AMD 宣布锐龙 AI Halo 开发者平台（395 版）现已发售，定价 3999 美元",
-    "url": "https://www.ithome.com/0/973/339.htm"
+    "title": "消息称 SpaceXAI 与 Cursor 合作 AI 模型最快今日亮相，部分性能可与 GPT 5.5 媲美",
+    "url": "https://www.ithome.com/0/973/847.htm"
    },
    {
-    "source": "IT之家",
-    "title": "谷歌 Gemini 3.5 Pro 曝 200 万 Tokens 上下文，前端部分 AI 测试赶超 Claude Fable 5",
-    "url": "https://www.ithome.com/0/973/334.htm"
+    "source": "量子位",
+    "title": "60000小时炼出新开源VLA！20多种机器人都能用",
+    "url": "https://www.qbitai.com/2026/07/445678.html"
    },
    {
-    "source": "IT之家",
-    "title": "李在明下令加速推进韩国芯片与 AI 重大项目：速度是唯一重要因素",
-    "url": "https://www.ithome.com/0/973/325.htm"
+    "source": "量子位",
+    "title": "支持17家机器人厂商20多种构型，蚂蚁灵波LingBot-VLA 2.0正式开源",
+    "url": "https://www.qbitai.com/2026/07/445668.html"
    },
    {
-    "source": "IT之家",
-    "title": "苹果 iOS / iPadOS 27 Beta 3 更新汇总：增强 Siri AI，优化液态玻璃视觉",
-    "url": "https://www.ithome.com/0/973/323.htm"
+    "source": "量子位",
+    "title": "三个理想火枪手创业，打破具身最快百台交付纪录",
+    "url": "https://www.qbitai.com/2026/07/445531.html"
+   },
+   {
+    "source": "量子位",
+    "title": "从共识到非共识：科技有「联想」沙龙首场活动直击具身智能产业化“三大困惑”",
+    "url": "https://www.qbitai.com/2026/07/445443.html"
+   },
+   {
+    "source": "量子位",
+    "title": "刚刚，首个空间原生的具身视觉基模开源！机器人更会看我们的世界了",
+    "url": "https://www.qbitai.com/2026/07/445230.html"
    },
    {
     "source": "量子位",
@@ -195,19 +205,49 @@
     "url": "https://www.qbitai.com/2026/07/445067.html"
    },
    {
-    "source": "量子位",
-    "title": "征程赶超｜WAIC 2026理论突破：以数理双向赋能为钥，开启AI范式革新新征程",
-    "url": "https://www.qbitai.com/2026/07/444859.html"
+    "source": "InfoQ",
+    "title": "大模型推理也能“智能调度”：让奖励模型按需分配算力的动态路由机制 | ACL 2026",
+    "url": "https://www.infoq.cn/article/qYcpkTcUhClJvytSbLu1?utm_source=rss&utm_medium=article"
    },
    {
-    "source": "量子位",
-    "title": "Claude的脑子里，也长出了一块「意识」",
-    "url": "https://www.qbitai.com/2026/07/444741.html"
+    "source": "InfoQ",
+    "title": "虚拟座谈会：机器时代的安全——专家解读 AI 威胁的演变",
+    "url": "https://www.infoq.cn/article/LhZ4t3N4yxTm3ISZvUp5?utm_source=rss&utm_medium=article"
    },
    {
-    "source": "量子位",
-    "title": "在联合国，这家中国公司给AI“减负”：不堆算力，而是给机器人装了个“类脑”",
-    "url": "https://www.qbitai.com/2026/07/444733.html"
+    "source": "InfoQ",
+    "title": "Target 推出基于 LLM 的语义匹配系统，提升营销预测流程效率",
+    "url": "https://www.infoq.cn/article/cEfBc7qdIDe3ZVFDyjS5?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "企业微信首款 AI 硬件：出门问问TicNote合作款正式发布",
+    "url": "https://www.infoq.cn/article/CiwPd7c4oYfzqBGMbotV?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "AI Agent 会自己选 CDN 了：当网站访问者从 “人” 扩展到 “AI”，内容分发已升级",
+    "url": "https://www.infoq.cn/article/WNWuMomRvix0FT0dZ8yI?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "微软通过 Copilot Autofix 将基于 AI 的漏洞修复功能引入 Azure DevOps",
+    "url": "https://www.infoq.cn/article/CSS70hYSA57JBUMLdf7L?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "让 AI 真正“懂时间”：QC-MHM 时序知识图谱问答的全新突破 | AAAI",
+    "url": "https://www.infoq.cn/article/pAGx3GoLbi16BwUsoKw7?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "开源AI编程工具第一来啦：智谱GLM-5.2上线模力工场，还有专属折扣！",
+    "url": "https://www.infoq.cn/article/woKuALR13UH0o9XicUlZ?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "Elastic 开源了基于认知科学的 Atlas Agent Memory",
+    "url": "https://www.infoq.cn/article/pzYuRUO0ECSKktJjKV8P?utm_source=rss&utm_medium=article"
    },
    {
     "source": "InfoQ",
@@ -228,56 +268,6 @@
     "source": "InfoQ",
     "title": "腾讯混元Hy3正式发布，元宝同步上线Hy3 Agent能力、免费开放",
     "url": "https://www.infoq.cn/article/2IGjsbCMxxHjLGPJ7tls?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "“我一行代码都没读就发布了”，被OpenAI收购后，uv工具创始人开始反思AI编程",
-    "url": "https://www.infoq.cn/article/katE2jJKMX7FaGskhvRL?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "GTLC 杭州站回顾｜AI 创业进入深水区，技术领导者都在关注什么？",
-    "url": "https://www.infoq.cn/article/MOVBghUgQrXWr9igbK2p?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "Anthropic：Claude 已承担 95% 的内部数据分析查询工作",
-    "url": "https://www.infoq.cn/article/eHH8RTgeeOUWODLCLWXS?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "Windows平台安全与保护AI智能体的竞赛",
-    "url": "https://www.infoq.cn/article/LT7lx2Qe5KkS9QCVSXCQ?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "73% PR 由AI生成！Claude Code之父对话Spotify：2900名工程师每天部署4500次，坐地铁都能提交代码",
-    "url": "https://www.infoq.cn/article/e6J4FbXQj28CiziktLuS?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "豆包、千问关停智能体功能；曝腾讯研发token额度1400元/月起步，有人过万；美团限豆包、阿里禁Claude Code｜AI周报",
-    "url": "https://www.infoq.cn/article/rs0HJTRdN6Pl88LIFh1a?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "让 Agent 成为音视频工作台：AI MediaKit CLI + Skill 发布",
-    "url": "https://www.infoq.cn/article/jpGdhU4YBXiXOloMEb2I?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "数亿元融资落地！光象科技自研物理原生基座模型，跳出 VLA 与世界模型路线",
-    "url": "https://www.infoq.cn/article/m4QJlWAyRq7Fp4yQImp9?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "Azure Functions在Build 2026发布Serverless智能体运行时",
-    "url": "https://www.infoq.cn/article/kGHZu2K5V8IrwYvo6Cm3?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "少数派",
-    "title": "派早报：阿里禁用 Claude 模型",
-    "url": "https://sspai.com/post/111973"
    }
   ]
  }
