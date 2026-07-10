@@ -1,18 +1,18 @@
 {
- "updated": "2026-07-08",
+ "updated": "2026-07-10",
  "isMock": false,
  "totalCount": 20,
  "taxonomyDistribution": {
   "简历交流": 8,
-  "求职交流": 5,
   "职场交流": 5,
+  "求职交流": 3,
+  "公司交流": 2,
   "校园": 1,
   "生活": 1
  },
  "interactionDistribution": {
-  "话题讨论型": 14,
-  "标题吸引型": 4,
-  "干货收藏型": 2
+  "话题讨论型": 17,
+  "标题吸引型": 3
  },
  "hotpoints": [
   {
@@ -20,12 +20,12 @@
    "webLink": "https://www.nowcoder.com/discuss/896373925599342592",
    "taxonomy": "校园",
    "jobType": "软件开发",
-   "viewCnt": 42201,
-   "ctr": 35.64,
-   "cvr": 0.2,
+   "viewCnt": 44365,
+   "ctr": 35.6,
+   "cvr": 0.19,
    "likeCnt": 27,
    "commentCnt": 17,
-   "followCnt": 17,
+   "followCnt": 18,
    "shareCnt": 1,
    "interactionType": "标题吸引型",
    "suggestedPlatforms": [
@@ -40,12 +40,12 @@
    "webLink": "https://www.nowcoder.com/feed/main/detail/926d24c86a8542488e60285eba73add0",
    "taxonomy": "简历交流",
    "jobType": "软件开发",
-   "viewCnt": 32074,
-   "ctr": 61.61,
-   "cvr": 0.28,
-   "likeCnt": 17,
-   "commentCnt": 27,
-   "followCnt": 13,
+   "viewCnt": 36204,
+   "ctr": 60.77,
+   "cvr": 0.3,
+   "likeCnt": 20,
+   "commentCnt": 33,
+   "followCnt": 15,
    "shareCnt": 1,
    "interactionType": "话题讨论型",
    "suggestedPlatforms": [
@@ -61,12 +61,12 @@
    "webLink": "https://www.nowcoder.com/feed/main/detail/d69839081a7e40d797e5053b6eaa73a9",
    "taxonomy": "简历交流",
    "jobType": "软件开发",
-   "viewCnt": 25090,
-   "ctr": 54.04,
-   "cvr": 0.37,
-   "likeCnt": 17,
-   "commentCnt": 26,
-   "followCnt": 18,
+   "viewCnt": 26031,
+   "ctr": 53.92,
+   "cvr": 0.39,
+   "likeCnt": 19,
+   "commentCnt": 28,
+   "followCnt": 19,
    "shareCnt": 4,
    "interactionType": "标题吸引型",
    "suggestedPlatforms": [
@@ -77,36 +77,15 @@
    "createDate": "2026-06-15"
   },
   {
-   "title": "辣鸡简历还想找实习？",
-   "webLink": "https://www.nowcoder.com/discuss/893645243151577088",
-   "taxonomy": "简历交流",
-   "jobType": "软件开发",
-   "viewCnt": 23107,
-   "ctr": 38.28,
-   "cvr": 0.22,
-   "likeCnt": 14,
-   "commentCnt": 18,
-   "followCnt": 8,
-   "shareCnt": 0,
-   "interactionType": "话题讨论型",
-   "suggestedPlatforms": [
-    "小红书",
-    "公众号",
-    "牛客"
-   ],
-   "subjectNames": "实习,我的求职进度条,投了多少份简历才上岸",
-   "createDate": "2026-06-08"
-  },
-  {
    "title": "27",
    "webLink": "https://www.nowcoder.com/feed/main/detail/160e72aab530494f96a4adad90eefced",
    "taxonomy": "求职交流",
    "jobType": "其他",
-   "viewCnt": 22792,
-   "ctr": 29.9,
+   "viewCnt": 23248,
+   "ctr": 29.93,
    "cvr": 1.19,
-   "likeCnt": 30,
-   "commentCnt": 72,
+   "likeCnt": 31,
+   "commentCnt": 74,
    "followCnt": 24,
    "shareCnt": 7,
    "interactionType": "话题讨论型",
@@ -119,36 +98,16 @@
    "createDate": "2026-06-12"
   },
   {
-   "title": "实习就是一个互相骗的过程",
-   "webLink": "https://www.nowcoder.com/feed/main/detail/c3a78d2c12aa4e5a8498b469f96800f7",
-   "taxonomy": "职场交流",
-   "jobType": "产品/项目/运营",
-   "viewCnt": 21093,
-   "ctr": 25.28,
-   "cvr": 0.71,
-   "likeCnt": 43,
-   "commentCnt": 22,
-   "followCnt": 26,
-   "shareCnt": 3,
-   "interactionType": "标题吸引型",
-   "suggestedPlatforms": [
-    "小红书",
-    "公众号"
-   ],
-   "subjectNames": "你以为的实习VS真实的实习",
-   "createDate": "2026-06-09"
-  },
-  {
    "title": "室友简历很拉但找到实习了，一直在装B",
    "webLink": "https://www.nowcoder.com/feed/main/detail/c89212a7c7324c36a0f126cf2da44434",
    "taxonomy": "简历交流",
    "jobType": "软件开发",
-   "viewCnt": 19169,
-   "ctr": 41.12,
-   "cvr": 0.86,
-   "likeCnt": 33,
-   "commentCnt": 48,
-   "followCnt": 16,
+   "viewCnt": 19892,
+   "ctr": 41.01,
+   "cvr": 0.91,
+   "likeCnt": 34,
+   "commentCnt": 55,
+   "followCnt": 17,
    "shareCnt": 2,
    "interactionType": "话题讨论型",
    "suggestedPlatforms": [
@@ -160,36 +119,16 @@
    "createDate": "2026-06-17"
   },
   {
-   "title": "我哭死，面试遇贵人了……",
-   "webLink": "https://www.nowcoder.com/feed/main/detail/72e082727d8d45bfa95fea341bef9dfc",
-   "taxonomy": "求职交流",
+   "title": "发工资了，还有比我低的吗？",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/cdd314eaf8964d5d9242eba643b86e9a",
+   "taxonomy": "职场交流",
    "jobType": "其他",
-   "viewCnt": 17854,
-   "ctr": 34.89,
-   "cvr": 1.13,
-   "likeCnt": 85,
-   "commentCnt": 25,
-   "followCnt": 30,
-   "shareCnt": 2,
-   "interactionType": "标题吸引型",
-   "suggestedPlatforms": [
-    "小红书",
-    "抖音"
-   ],
-   "subjectNames": "",
-   "createDate": "2026-06-08"
-  },
-  {
-   "title": "27界双非一本简历，感觉已经很硬了，还是找不到实习",
-   "webLink": "https://www.nowcoder.com/discuss/893944624392224768",
-   "taxonomy": "简历交流",
-   "jobType": "软件开发",
-   "viewCnt": 17568,
-   "ctr": 38.5,
-   "cvr": 0.79,
-   "likeCnt": 23,
-   "commentCnt": 39,
-   "followCnt": 25,
+   "viewCnt": 18724,
+   "ctr": 52.77,
+   "cvr": 0.39,
+   "likeCnt": 12,
+   "commentCnt": 35,
+   "followCnt": 1,
    "shareCnt": 4,
    "interactionType": "话题讨论型",
    "suggestedPlatforms": [
@@ -198,17 +137,17 @@
     "牛客"
    ],
    "subjectNames": "",
-   "createDate": "2026-06-09"
+   "createDate": "2026-06-11"
   },
   {
    "title": "mentor你这句话很诡异你知道吗？",
    "webLink": "https://www.nowcoder.com/feed/main/detail/a4b7cca1139c469b8cfe4893d937b126",
    "taxonomy": "职场交流",
    "jobType": "其他",
-   "viewCnt": 17456,
-   "ctr": 51.36,
-   "cvr": 0.31,
-   "likeCnt": 15,
+   "viewCnt": 18663,
+   "ctr": 50.77,
+   "cvr": 0.3,
+   "likeCnt": 16,
    "commentCnt": 22,
    "followCnt": 3,
    "shareCnt": 1,
@@ -222,59 +161,17 @@
    "createDate": "2026-06-18"
   },
   {
-   "title": "发工资了，还有比我低的吗？",
-   "webLink": "https://www.nowcoder.com/feed/main/detail/cdd314eaf8964d5d9242eba643b86e9a",
-   "taxonomy": "职场交流",
-   "jobType": "其他",
-   "viewCnt": 17327,
-   "ctr": 52.75,
-   "cvr": 0.38,
-   "likeCnt": 10,
-   "commentCnt": 34,
-   "followCnt": 1,
-   "shareCnt": 2,
-   "interactionType": "话题讨论型",
-   "suggestedPlatforms": [
-    "小红书",
-    "公众号",
-    "牛客"
-   ],
-   "subjectNames": "",
-   "createDate": "2026-06-11"
-  },
-  {
-   "title": "麻了，又因为选offer吵架了",
-   "webLink": "https://www.nowcoder.com/feed/main/detail/33e35a9ae3654518bcd06e3ea7974e7d",
-   "taxonomy": "求职交流",
-   "jobType": "其他",
-   "viewCnt": 17323,
-   "ctr": 38.32,
-   "cvr": 1.36,
-   "likeCnt": 21,
-   "commentCnt": 107,
-   "followCnt": 13,
-   "shareCnt": 9,
-   "interactionType": "话题讨论型",
-   "suggestedPlatforms": [
-    "小红书",
-    "抖音",
-    "牛客"
-   ],
-   "subjectNames": "",
-   "createDate": "2026-06-08"
-  },
-  {
    "title": "实习生是不是没人权？",
    "webLink": "https://www.nowcoder.com/feed/main/detail/a77017aadf1a404187c30b1afc964208",
    "taxonomy": "职场交流",
    "jobType": "软件开发",
-   "viewCnt": 17319,
-   "ctr": 49.83,
-   "cvr": 0.87,
+   "viewCnt": 18005,
+   "ctr": 49.7,
+   "cvr": 0.86,
    "likeCnt": 25,
-   "commentCnt": 53,
+   "commentCnt": 54,
    "followCnt": 7,
-   "shareCnt": 24,
+   "shareCnt": 25,
    "interactionType": "话题讨论型",
    "suggestedPlatforms": [
     "小红书",
@@ -283,6 +180,27 @@
    ],
    "subjectNames": "",
    "createDate": "2026-06-16"
+  },
+  {
+   "title": "好不容易上岸字节，但想和女友分手了",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/9dc9b2ae17a24a26ad2428ea51c4a750",
+   "taxonomy": "生活",
+   "jobType": "其他",
+   "viewCnt": 15844,
+   "ctr": 33.87,
+   "cvr": 3.26,
+   "likeCnt": 67,
+   "commentCnt": 144,
+   "followCnt": 39,
+   "shareCnt": 36,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "抖音",
+    "小红书",
+    "牛客"
+   ],
+   "subjectNames": "",
+   "createDate": "2026-06-15"
   },
   {
    "title": "感觉本科生好没礼貌",
@@ -306,35 +224,14 @@
    "createDate": "2026-06-17"
   },
   {
-   "title": "好不容易上岸字节，但想和女友分手了",
-   "webLink": "https://www.nowcoder.com/feed/main/detail/9dc9b2ae17a24a26ad2428ea51c4a750",
-   "taxonomy": "生活",
-   "jobType": "其他",
-   "viewCnt": 15540,
-   "ctr": 34.02,
-   "cvr": 3.3,
-   "likeCnt": 66,
-   "commentCnt": 144,
-   "followCnt": 39,
-   "shareCnt": 35,
-   "interactionType": "话题讨论型",
-   "suggestedPlatforms": [
-    "抖音",
-    "小红书",
-    "牛客"
-   ],
-   "subjectNames": "",
-   "createDate": "2026-06-15"
-  },
-  {
    "title": "室友天天投简历真招笑",
    "webLink": "https://www.nowcoder.com/feed/main/detail/eef4fbc7571845df8537d518f4290afa",
    "taxonomy": "简历交流",
    "jobType": "软件开发",
-   "viewCnt": 15490,
-   "ctr": 47.01,
-   "cvr": 0.3,
-   "likeCnt": 8,
+   "viewCnt": 15599,
+   "ctr": 46.94,
+   "cvr": 0.31,
+   "likeCnt": 9,
    "commentCnt": 17,
    "followCnt": 7,
    "shareCnt": 0,
@@ -346,26 +243,6 @@
    ],
    "subjectNames": "",
    "createDate": "2026-06-17"
-  },
-  {
-   "title": "这个简历真的很差吗",
-   "webLink": "https://www.nowcoder.com/feed/main/detail/e53480a96f2046dbb93892d1d119f59e",
-   "taxonomy": "简历交流",
-   "jobType": "软件开发",
-   "viewCnt": 15378,
-   "ctr": 53.46,
-   "cvr": 0.36,
-   "likeCnt": 13,
-   "commentCnt": 11,
-   "followCnt": 15,
-   "shareCnt": 0,
-   "interactionType": "干货收藏型",
-   "suggestedPlatforms": [
-    "小红书",
-    "公众号"
-   ],
-   "subjectNames": "",
-   "createDate": "2026-06-09"
   },
   {
    "title": "室友天天在寝室装逼？",
@@ -389,25 +266,45 @@
    "createDate": "2026-06-14"
   },
   {
-   "title": "春招/秋招完蛋，你的人生也不会完蛋",
-   "webLink": "https://www.nowcoder.com/discuss/893513094129852416",
-   "taxonomy": "求职交流",
+   "title": "这简历居然找不到实习",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/6fc78a948fb04b0ab6dfdf8ef52cd323",
+   "taxonomy": "简历交流",
    "jobType": "软件开发",
-   "viewCnt": 14930,
-   "ctr": 23.57,
-   "cvr": 4.44,
-   "likeCnt": 264,
-   "commentCnt": 78,
-   "followCnt": 150,
-   "shareCnt": 6,
-   "interactionType": "干货收藏型",
+   "viewCnt": 15062,
+   "ctr": 58.27,
+   "cvr": 0.23,
+   "likeCnt": 3,
+   "commentCnt": 17,
+   "followCnt": 2,
+   "shareCnt": 2,
+   "interactionType": "话题讨论型",
    "suggestedPlatforms": [
     "小红书",
-    "抖音",
+    "公众号",
+    "牛客"
+   ],
+   "subjectNames": "",
+   "createDate": "2026-06-15"
+  },
+  {
+   "title": "美团裁应届生",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/7949b0e211e94659ac29314720a53f93",
+   "taxonomy": "公司交流",
+   "jobType": "其他",
+   "viewCnt": 14678,
+   "ctr": 24.05,
+   "cvr": 3.47,
+   "likeCnt": 49,
+   "commentCnt": 71,
+   "followCnt": 30,
+   "shareCnt": 36,
+   "interactionType": "标题吸引型",
+   "suggestedPlatforms": [
+    "小红书",
     "公众号"
    ],
-   "subjectNames": "我的求职进度条",
-   "createDate": "2026-06-08"
+   "subjectNames": "大厂裁员",
+   "createDate": "2026-06-12"
   },
   {
    "title": "字节面试",
@@ -428,6 +325,111 @@
     "牛客"
    ],
    "subjectNames": "我的求职进度条",
+   "createDate": "2026-06-11"
+  },
+  {
+   "title": "人麻了",
+   "webLink": "https://www.nowcoder.com/discuss/896406028273709056",
+   "taxonomy": "简历交流",
+   "jobType": "软件开发",
+   "viewCnt": 14471,
+   "ctr": 29.23,
+   "cvr": 0.31,
+   "likeCnt": 8,
+   "commentCnt": 23,
+   "followCnt": 4,
+   "shareCnt": 0,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号",
+    "牛客"
+   ],
+   "subjectNames": "",
+   "createDate": "2026-06-16"
+  },
+  {
+   "title": "小厂也不要…",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/ec22acf0685445ec8642401e2fa5f007",
+   "taxonomy": "简历交流",
+   "jobType": "产品/项目/运营",
+   "viewCnt": 13841,
+   "ctr": 42.88,
+   "cvr": 0.38,
+   "likeCnt": 13,
+   "commentCnt": 16,
+   "followCnt": 2,
+   "shareCnt": 2,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号",
+    "牛客"
+   ],
+   "subjectNames": "你的简历改到第几版了,求职",
+   "createDate": "2026-06-15"
+  },
+  {
+   "title": "26届0offer",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/8a612e4055cd46028dd5b8e471133c48",
+   "taxonomy": "求职交流",
+   "jobType": "软件开发",
+   "viewCnt": 11818,
+   "ctr": 25.55,
+   "cvr": 1.99,
+   "likeCnt": 33,
+   "commentCnt": 56,
+   "followCnt": 33,
+   "shareCnt": 4,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "抖音",
+    "牛客"
+   ],
+   "subjectNames": "我的求职进度条",
+   "createDate": "2026-06-17"
+  },
+  {
+   "title": "裁员的刀终究是落在我身上了",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/b9679763febb4564888465c040efc7ef",
+   "taxonomy": "职场交流",
+   "jobType": "其他",
+   "viewCnt": 10735,
+   "ctr": 35.65,
+   "cvr": 0.84,
+   "likeCnt": 18,
+   "commentCnt": 32,
+   "followCnt": 9,
+   "shareCnt": 1,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号",
+    "牛客"
+   ],
+   "subjectNames": "",
+   "createDate": "2026-06-15"
+  },
+  {
+   "title": "被美团630裁员影响的",
+   "webLink": "https://www.nowcoder.com/feed/main/detail/a016cfac6071445d942a4644ceb8de23",
+   "taxonomy": "公司交流",
+   "jobType": "其他",
+   "viewCnt": 10572,
+   "ctr": 27.9,
+   "cvr": 0.57,
+   "likeCnt": 10,
+   "commentCnt": 16,
+   "followCnt": 1,
+   "shareCnt": 3,
+   "interactionType": "话题讨论型",
+   "suggestedPlatforms": [
+    "小红书",
+    "公众号",
+    "牛客"
+   ],
+   "subjectNames": "",
    "createDate": "2026-06-11"
   }
  ]
