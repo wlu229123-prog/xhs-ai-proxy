@@ -1,263 +1,247 @@
 {
- "date": "2026-07-10",
- "updated": "2026-07-10 10:05",
+ "date": "2026-07-13",
+ "updated": "2026-07-13 10:00",
  "topics": [
   {
-   "title": "AI大厂CEO自降薪给团队分股，这信号对求职者意味着啥",
-   "source_hot": "MiniMax闫俊杰不领薪酬、拿5%个人股份激励团队和支持开源",
-   "source_url": "https://36kr.com/newsflashes/3889170152258307?f=rss",
-   "keywords": "AI公司/职场/择业",
+   "title": "AI工具突然变笨了？可能是你不会用，聊聊AI提效正确姿势",
+   "source_hot": "全网骂Claude变笨，Anthropic下场揭秘:坑你的不是模型",
+   "source_url": "https://36kr.com/p/3892222176574211?f=rss",
+   "keywords": "AI工具/效率/技能",
    "score": 8.5
   },
   {
-   "title": "具身智能又融资，工业机器人方向到底缺什么人",
-   "source_hot": "具身智能持续火:英伟达触觉仿真、智能焊工昇视唯盛、Momenta",
-   "source_url": "https://36kr.com/p/3889141540370949?f=rss",
-   "keywords": "具身智能/求职/转行",
-   "score": 8.5
-  },
-  {
-   "title": "大模型公司还在疯狂融资，AI岗位2026还香吗",
-   "source_hot": "MiniMax完成160亿港元股权融资",
-   "source_url": "https://36kr.com/newsflashes/3889142872849157?f=rss",
-   "keywords": "大模型/AI岗位/求职",
+   "title": "具身智能催生新行当:数据采集标注，普通人能上车吗",
+   "source_hot": "具身数据一年融资44.7亿，近百玩家涌入卖数据",
+   "source_url": "https://36kr.com/p/3892027841362694?f=rss",
+   "keywords": "具身智能/新职业/求职",
    "score": 8.4
   },
   {
-   "title": "国产算力崛起，这些新岗位正在悄悄冒出来",
-   "source_hot": "粤港澳大湾区国产智算超万卡集群发布、算力自主",
-   "source_url": "https://www.ithome.com/0/974/822.htm",
-   "keywords": "算力/新岗位/求职",
-   "score": 8.2
+   "title": "AI芯片超级周期来了，存储半导体岗位正在爆发",
+   "source_hot": "SK海力士登陆美股大涨、长鑫国产存储第一股、台积电AI涨价",
+   "source_url": "https://36kr.com/p/3893305996442118?f=rss",
+   "keywords": "AI芯片/岗位/求职",
+   "score": 8.5
   },
   {
-   "title": "AI芯片存储持续爆火，相关岗位薪资水涨船高",
-   "source_hot": "SK海力士7月13日挂牌纳斯达克、三星李在镕赴美见黄仁勋",
-   "source_url": "https://www.ithome.com/0/974/828.htm",
-   "keywords": "AI芯片/薪资/岗位",
+   "title": "AI智能体要进手机了，产品运营岗又有新机会",
+   "source_hot": "首款智能体手机呼之欲出，大规模商用要迈几道坎",
+   "source_url": "https://36kr.com/newsflashes/3893348775590407?f=rss",
+   "keywords": "AI Agent/岗位/趋势",
    "score": 8.3
   },
   {
-   "title": "AI合规、AI治理岗位悄悄崛起，文科生也能进AI",
-   "source_hot": "Character.AI被罚、谷歌要求AI广告标注(AI监管趋严)",
-   "source_url": "https://36kr.com/newsflashes/3889106112002561?f=rss",
-   "keywords": "AI合规/新职业/转行",
+   "title": "苹果告OpenAI偷人偷机密，AI人才争夺战有多疯",
+   "source_hot": "苹果起诉OpenAI窃取商业机密",
+   "source_url": "https://36kr.com/p/3893305996442118?f=rss",
+   "keywords": "AI人才/竞争/求职",
+   "score": 8.2
+  },
+  {
+   "title": "英伟达又赚翻了，AI硬件产业链藏着哪些高薪岗",
+   "source_hot": "黄仁勋:英伟达季度收入逼近千亿美元，AI需求强劲",
+   "source_url": "https://www.ithome.com/0/975/865.htm",
+   "keywords": "AI硬件/薪资/岗位",
    "score": 8.3
   }
  ],
  "hotspots": {
-  "strong": [
-   {
-    "source": "36氪",
-    "title": "MiniMax闫俊杰：不再领取薪酬，个人拿出5%公司股份用于团队激励和开源支持",
-    "url": "https://36kr.com/newsflashes/3889170152258307?f=rss"
-   }
-  ],
+  "strong": [],
   "trend": [
    {
     "source": "36氪",
-    "title": "36氪首发 | 英伟达全球首家触觉仿真合作伙伴再获数亿融资，上半年订单超去年四倍",
-    "url": "https://36kr.com/p/3889141540370949?f=rss"
+    "title": "年入4亿、服务600+品牌，膳食补充剂原料商「纽邦生物」获近2亿元C+轮融资｜36氪首发",
+    "url": "https://36kr.com/p/3890940898867712?f=rss"
    },
    {
     "source": "36氪",
-    "title": "揭秘Momenta：马斯克式CEO、AI执念和量产机器丨深氪",
-    "url": "https://36kr.com/p/3888180493318921?f=rss"
+    "title": "8点1氪丨SK海力士CEO称史上最大存储短缺将在明年到来；苹果起诉OpenAI窃取商业机密‌；赛力斯预计上半年净亏损15亿元-18亿元",
+    "url": "https://36kr.com/p/3893305996442118?f=rss"
    },
    {
     "source": "36氪",
-    "title": "自研焊接具身大脑模型，以“智能焊工”切入工业制造具身智能赛道，「昇视唯盛」完成数亿元B轮融资｜36氪首发",
-    "url": "https://36kr.com/p/3887871679347208?f=rss"
+    "title": "腾讯重仓一个IPO",
+    "url": "https://36kr.com/p/3892352153942530?f=rss"
    },
    {
     "source": "36氪",
-    "title": "MiniMax完成160亿港元股权类融资",
-    "url": "https://36kr.com/newsflashes/3889142872849157?f=rss"
+    "title": "全网骂Claude变笨，Anthropic下场揭秘：坑你的不是模型",
+    "url": "https://36kr.com/p/3892222176574211?f=rss"
    },
    {
     "source": "36氪",
-    "title": "“他山科技”完成数亿元B轮融资",
-    "url": "https://36kr.com/newsflashes/3889136108419587?f=rss"
+    "title": "近百名玩家涌入具身数据 : 一年融资44.7亿，谁能真靠“卖数据”赚钱？",
+    "url": "https://36kr.com/p/3892027841362694?f=rss"
    },
    {
     "source": "36氪",
-    "title": "“Databento”完成9700万美元B轮融资",
-    "url": "https://36kr.com/newsflashes/3889130683464456?f=rss"
+    "title": "9点1氪丨“国产存储第一股”长鑫科技公布承销团阵容；SK海力士登陆美股，上市首日大涨近13%；OpenAI推出ChatGPT智能体",
+    "url": "https://36kr.com/p/3890553690192384?f=rss"
    },
    {
     "source": "36氪",
-    "title": "两市融资余额减少39.18亿元",
-    "url": "https://36kr.com/newsflashes/3889114034125319?f=rss"
+    "title": "AI火热需求蔓延至成熟制程，台积电掀新一波涨价潮",
+    "url": "https://36kr.com/newsflashes/3893368739674884?f=rss"
    },
    {
     "source": "36氪",
-    "title": "谷歌要求AI广告必须标注：涵盖搜索和YouTube等",
-    "url": "https://36kr.com/newsflashes/3889106112002561?f=rss"
+    "title": "首款智能体手机呼之欲出，大规模商用需迈几道坎",
+    "url": "https://36kr.com/newsflashes/3893348775590407?f=rss"
+   },
+   {
+    "source": "36氪",
+    "title": "两市融资余额减少113.39亿元",
+    "url": "https://36kr.com/newsflashes/3893357590051593?f=rss"
    },
    {
     "source": "IT之家",
-    "title": "三星电子会长李在镕拟于本月底赴美，会见英伟达 CEO 黄仁勋",
-    "url": "https://www.ithome.com/0/974/828.htm"
+    "title": "韩国央行：AI 驱动的半导体超级周期未结束，供应扩张受限将支撑长期增长",
+    "url": "https://www.ithome.com/0/975/879.htm"
    },
    {
     "source": "IT之家",
-    "title": "铭凡公布本地 AI 边缘工作站 MS-03 更多信息：支持 128GB DDR5-7200",
-    "url": "https://www.ithome.com/0/974/827.htm"
+    "title": "小鹏 MONA L03 将于 7 月 16 日慕尼黑全球上市，同步公布物理 AI 新进展",
+    "url": "https://www.ithome.com/0/975/871.htm"
    },
    {
     "source": "IT之家",
-    "title": "开启“算力自主”，粤港澳大湾区国产智算超万卡集群发布",
-    "url": "https://www.ithome.com/0/974/822.htm"
+    "title": "黄仁勋：英伟达季度收入逼近千亿美元，Rubin Ultra 架构未延期",
+    "url": "https://www.ithome.com/0/975/865.htm"
    },
    {
     "source": "IT之家",
-    "title": "超阿里巴巴刷新外企赴美 IPO 募资纪录，SK 海力士 7 月 13 日正式挂牌纳斯达克",
-    "url": "https://www.ithome.com/0/974/820.htm"
+    "title": "中国电信试验 AI 传输卫星视频新方案，效率比 H.265 提升 3.5 倍",
+    "url": "https://www.ithome.com/0/975/855.htm"
    },
    {
     "source": "IT之家",
-    "title": "微软承认可持续发展解决方案未能跟上 AI 需求，去年碳排放大增 25%",
-    "url": "https://www.ithome.com/0/974/818.htm"
+    "title": "芯片板块剧烈波动，业内多位高管称 AI 需求依然强劲",
+    "url": "https://www.ithome.com/0/975/850.htm"
    },
    {
     "source": "IT之家",
-    "title": "Character.AI 因数据和未成年人保护问题在意大利被罚 15.8 万欧元",
-    "url": "https://www.ithome.com/0/974/810.htm"
+    "title": "调查显示近七成美国民众支持设立 AI 主权财富基金，用于全民共享 AI 红利",
+    "url": "https://www.ithome.com/0/975/847.htm"
    },
    {
     "source": "IT之家",
-    "title": "OpenAI 升级适用于谷歌 Chrome 浏览器的 ChatGPT 扩展：与你并肩工作",
-    "url": "https://www.ithome.com/0/974/807.htm"
+    "title": "IT早报 0713：央视曝家电测评造假链条；金山 WPS 宣布已改善 C 盘占用；GPT-5.6 一小时破解 50 年难题；宠物坐主驾自动泊车博眼球被交警处罚 3 分 200 元...",
+    "url": "https://www.ithome.com/0/975/843.htm"
    },
    {
     "source": "IT之家",
-    "title": "摩根大通：AI 投资热潮降温，市场已不再想着“凡是跟 AI 沾边的东西都买”",
-    "url": "https://www.ithome.com/0/974/806.htm"
+    "title": "分析：社交媒体超四分之一长文为 AI 生成，LinkedIn 成重灾区",
+    "url": "https://www.ithome.com/0/975/842.htm"
    },
    {
     "source": "IT之家",
-    "title": "OpenAI 整合桌面端 ChatGPT / Codex 应用，集成聊天、工作和 AI 编程",
-    "url": "https://www.ithome.com/0/974/804.htm"
+    "title": "家长花 3 万打造“少年马斯克”，有研学营标榜让孩子“6 天创办 AI 公司”",
+    "url": "https://www.ithome.com/0/975/841.htm"
    },
    {
     "source": "IT之家",
-    "title": "纽约联储主席威廉姆斯：AI 现在是我最关注的通胀问题，未来或迫使美联储加息",
-    "url": "https://www.ithome.com/0/974/803.htm"
+    "title": "OpenAI Codex、ChatGPT Work 暂时取消 Plus / Pro / Business 订阅 5 小时使用限制",
+    "url": "https://www.ithome.com/0/975/839.htm"
    },
    {
     "source": "IT之家",
-    "title": "刷新外国企业赴美 IPO 纪录：曝 SK 海力士募资约 265 亿美元，预发行交易今日开启",
-    "url": "https://www.ithome.com/0/974/800.htm"
+    "title": "特斯拉 Robotaxi 枢纽清洁机器人已投入运行，配套设施逐步完善",
+    "url": "https://www.ithome.com/0/975/838.htm"
    },
    {
     "source": "IT之家",
-    "title": "Anthropic Claude 测试上线 Reflect：四个维度回顾用户使用 AI 习惯",
-    "url": "https://www.ithome.com/0/974/798.htm"
+    "title": "Meta 发布多模态推理模型 Muse Spark 1.1，强化 AI 智能体任务能力",
+    "url": "https://www.ithome.com/0/975/832.htm"
    },
    {
     "source": "IT之家",
-    "title": "健康在先：OpenAI 应用业务 CEO 菲吉・西莫因慢性病严重恶化，转任兼职顾问",
-    "url": "https://www.ithome.com/0/974/797.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "已在 iPhone 17 Pro 上完整运行 Qwen 3.6，消息称 PrismML 模型 AI 压缩技术被苹果看中",
-    "url": "https://www.ithome.com/0/974/796.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "IT早报 0710：OpenAI 发布 GPT-5.6 系列模型；支付宝客服就花呗服务问题致歉；小米澎程首款 SUV 内外饰首秀；华为李文广回应友商智驾兜底...",
-    "url": "https://www.ithome.com/0/974/795.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "谷歌为“我的广告中心”新增 AI 生成标记，可识别 AI 制作广告",
-    "url": "https://www.ithome.com/0/974/794.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "奥尔特曼：GPT-5.6 Sol 是 OpenAI 最好 AI 模型，同等 / 更优性能下 Token 效率提高 54%",
-    "url": "https://www.ithome.com/0/974/792.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "OpenAI 推出 ChatGPT Work 智能体：GPT-5.6 支持，可驾驭长时间、多步骤任务",
-    "url": "https://www.ithome.com/0/974/789.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "OpenAI 旗下桌面浏览器 ChatGPT Atlas 即将被砍，部分功能会整合进其他产品",
-    "url": "https://www.ithome.com/0/974/788.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "OpenAI 最强 AI 模型：GPT-5.6 系列正式上线，纳德拉称微软 Copilot 同步接入",
-    "url": "https://www.ithome.com/0/974/787.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "消息称特斯拉三代擎天柱人形机器人初步定型，马斯克放话达不成产能目标就开掉整个采购团队",
-    "url": "https://www.ithome.com/0/974/782.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "SpaceX 与 AI 公司排队造富，私人飞机行业意外先被新贵们带火了",
-    "url": "https://www.ithome.com/0/974/780.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "全球首例：美国研究团队远程操控宇树 G1 人形机器人完成活体动物外科手术",
-    "url": "https://www.ithome.com/0/974/777.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "Meta 正式向开发者开放 Muse Spark AI 模型 API，加入 AI 商业化竞争",
-    "url": "https://www.ithome.com/0/974/775.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "AMD 确认 7 月 22~23 日 Advancing AI 2026 推出 \"Zen 6\" 处理器",
-    "url": "https://www.ithome.com/0/974/769.htm"
-   },
-   {
-    "source": "IT之家",
-    "title": "时隔 10 余年重返 PC 芯片市场：消息称三星研发 4nm 制程 AI PC 芯片 Gaia，目标明年量产",
-    "url": "https://www.ithome.com/0/974/762.htm"
+    "title": "微软研究院推出开源可视化中间语言 Flint，让 AI 智能体“一句话生成专业图表”",
+    "url": "https://www.ithome.com/0/975/816.htm"
    },
    {
     "source": "量子位",
-    "title": "刚刚，OpenAI首席未来学家离职！曾被马斯克骂蠢驴",
-    "url": "https://www.qbitai.com/2026/07/446658.html"
+    "title": "老黄RTX Spark真机现身Bilibili World！CPU和GPU直接焊在一起，笔记本跑120B大模型",
+    "url": "https://www.qbitai.com/2026/07/447981.html"
    },
    {
     "source": "量子位",
-    "title": "刚刚，全球首个具身专属的MoE视频模型，开源了！",
-    "url": "https://www.qbitai.com/2026/07/446568.html"
+    "title": "近百名玩家涌入具身数据：一年融资44.7亿，谁能真靠“卖数据”赚钱？",
+    "url": "https://www.qbitai.com/2026/07/447914.html"
    },
    {
     "source": "量子位",
-    "title": "2026年世界人工智能大会，7月17-7月20上海举办",
-    "url": "https://www.qbitai.com/2026/07/436498.html"
+    "title": "中国首个十万卡集群落成！全国产算力支撑“十万卡时代”",
+    "url": "https://www.qbitai.com/2026/07/447902.html"
    },
    {
     "source": "量子位",
-    "title": "获联合国机构点赞！天立启鸣“AI+教育”方案入选AI for Good",
-    "url": "https://www.qbitai.com/2026/07/446562.html"
+    "title": "GPT-5.6一小时解开50年数学猜想，700词Prompt驾驭64个子Agent",
+    "url": "https://www.qbitai.com/2026/07/447873.html"
    },
    {
     "source": "量子位",
-    "title": "世界模型首次迎来“小时级”生成！蚂蚁灵波开源LingBot-World 2.0，支持AI原生多人交互",
-    "url": "https://www.qbitai.com/2026/07/446548.html"
+    "title": "AI生物研发进入“操作系统时代”，许锦波团队MoleculeOS正式开放",
+    "url": "https://www.qbitai.com/2026/07/447832.html"
    },
    {
     "source": "量子位",
-    "title": "蚂蚁灵波开源LingBot-Video，全球首个面向具身的视频基模来了！",
-    "url": "https://www.qbitai.com/2026/07/446458.html"
+    "title": "GPT-5.6一发布，Claude终于舍得重置Fable 5额度了",
+    "url": "https://www.qbitai.com/2026/07/447691.html"
    },
    {
-    "source": "量子位",
-    "title": "从餐饮后厨到物理世界基础模型：量化派的物理AI，走的是卖能力的路",
-    "url": "https://www.qbitai.com/2026/07/446435.html"
+    "source": "InfoQ",
+    "title": "面向 Qwen 系列模型线性注意力的高性能优化实践｜AICon深圳",
+    "url": "https://www.infoq.cn/article/wg5h3JBMvs5ZkoP0azha?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "苹果甩出41页PDF怒告OpenAI“偷师”其核心机密！网友：早知道就等印度开源了",
+    "url": "https://www.infoq.cn/article/Rzh9umgPl90MgGolBcWm?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "从 HAMi 到 HAMi-DRA：异构环境的算力资源管理实践｜AICon深圳",
+    "url": "https://www.infoq.cn/article/fRMquPuKMsj6zkyFmO6P?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "AI时代最被低估的创业资本，不是技术，是你的“老本行”",
+    "url": "https://www.infoq.cn/article/KAweBbBoUV2ufYlocaul?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "精彩预告：从看见问题到解决问题，Agent 正重新定义可观测？",
+    "url": "https://www.infoq.cn/video/GqOVrgegDNS1TDrwGLK4?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "从零开始预训练，蚂蚁灵波发布具身原生世界动作模型LingBot-VA 2.0",
+    "url": "https://www.infoq.cn/article/aU7GMFKF8qZRhT8VMWvY?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "GPT-5.6全面围剿Claude Fable 5，“超级应用”ChatGPT Work上位，Altman紧急澄清：不会取代Coedx",
+    "url": "https://www.infoq.cn/article/iqUrh3vqeO4xszUa1bCd?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "史上最高调的AI重写：Claude花11天搞定Bun，创始人花一个月才敢交底",
+    "url": "https://www.infoq.cn/article/uHkOoJ6Nfm6wNCsUryuO?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "GitHub 的旧模式被 AI 击穿，Cursor、GitLab、Zed 各自开打",
+    "url": "https://www.infoq.cn/article/7ZSdewTwDBz1mrx6wmat?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "当 AI 智能体遭遇“至暗时刻”，企业的最后防线是什么？｜ 技术趋势",
+    "url": "https://www.infoq.cn/article/zi38zKUQa1l31F0ilh2T?utm_source=rss&utm_medium=article"
+   },
+   {
+    "source": "InfoQ",
+    "title": "vLLM 针对多模态模型的推理优化实践｜AICon深圳",
+    "url": "https://www.infoq.cn/article/ItOOYNuWf6t9KtfgeH7F?utm_source=rss&utm_medium=article"
    },
    {
     "source": "InfoQ",
@@ -275,54 +259,9 @@
     "url": "https://www.infoq.cn/article/qALuq71AxiG5VLmWqSzU?utm_source=rss&utm_medium=article"
    },
    {
-    "source": "InfoQ",
-    "title": "Snowflake CoWork：每位知识工作者的专属工作 Agent ｜ 技术趋势",
-    "url": "https://www.infoq.cn/article/VoJ3wVeUv5txrOYqSYpR?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "首个具身视频基模开源！LingBot-Video 如何为“机器人大脑”构建物理引擎？",
-    "url": "https://www.infoq.cn/article/SCC8javdsA2zgBg0c2C1?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "Claude“脑内小剧场”首曝光：隐藏工作空间自发涌现类人意识，谷歌DeepMind权威认证！",
-    "url": "https://www.infoq.cn/article/7Rgp3820XIGYqEV9JPSq?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "Claude 在 Foundry 上正式可用，但欧洲企业无法部署",
-    "url": "https://www.infoq.cn/article/hOGtafDIR2GvccjYiLEc?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "Claude、Cursor、OpenClaw 集体上手机，不摸鱼、不请假、24h 为你打工",
-    "url": "https://www.infoq.cn/article/77YytRGDYm7T9ovQKaW9?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "“300行代码写个Cursor，这是AI时代软件工程师的新底线。”Ralph Loop创造者、Claude Code核心技术设计者的暴论",
-    "url": "https://www.infoq.cn/article/d2tmcGi9Fy6PMkNGpo9y?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "Cube Sandbox正式支持Arm架构！腾讯云与Arm联手解锁Agent多架构算力",
-    "url": "https://www.infoq.cn/article/c4GEoZLWvNZQhSSSWAoH?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "开源模型赢了 Token 流量，Anthropic 赚走了大部分钱",
-    "url": "https://www.infoq.cn/article/7qI7yUXcZIwazjEW2Aho?utm_source=rss&utm_medium=article"
-   },
-   {
-    "source": "InfoQ",
-    "title": "进球、切片、全网爆：如何打造一座跑赢热搜的赛事“AI短视频工厂”？",
-    "url": "https://www.infoq.cn/article/vBspiJudGOkY1yNG5Utx?utm_source=rss&utm_medium=article"
-   },
-   {
     "source": "少数派",
-    "title": "派早报：GPT-5.6 即将开放使用、Nothing 发布 Phone (4b) 等",
-    "url": "https://sspai.com/post/112091"
+    "title": "派早报：苹果起诉 OpenAI 窃取商业机密",
+    "url": "https://sspai.com/post/112215"
    }
   ]
  }
