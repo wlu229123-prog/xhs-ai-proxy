@@ -531,6 +531,11 @@ textarea:focus,input:focus,select:focus{border-color:var(--red);background:#fff}
                 <span class="ipt-emoji">👥</span>
                 <div><div class="ipt-name">百万求职社区</div><div class="ipt-desc">1400万+用户，求职不孤军奋战</div></div>
               </div>
+              <div class="ipt-card" data-key="ai_coding" onclick="toggleInjPt(this)">
+                <div class="ipt-check">✓</div>
+                <span class="ipt-emoji">💻</span>
+                <div><div class="ipt-name">AI Coding题库</div><div class="ipt-desc">1:1还原大厂AI笔试，技术/非技术岗都能刷</div></div>
+              </div>
             </div>
             <div class="ipts-hint" id="i-pts-hint">已选 2 个营销点（点击切换）</div>
           </div>
@@ -1528,6 +1533,7 @@ const INJ_PT_INFO = {
   salary:        { name:'薪资爆料',         desc:'在职员工匿名爆料真实薪资、福利待遇、加班情况，薪资透明不踩坑，再也不会被HR压价当白菜' },
   ai_predict:    { name:'AI 面试押题',      desc:'根据目标公司历年真题大数据，智能预测高频考点，命中率极高，笔试面试都能押中原题' },
   community:     { name:'百万求职社区',     desc:'1400万+用户真实互动，学长学姐分享经验、答疑解惑，求职不再孤军奋战' },
+  ai_coding:     { name:'AI Coding题库',    desc:'牛客率先搭建的AI Coding笔试专属题库，1:1还原字节腾讯等大厂真实AI笔试环境（在线编程+AI辅助一站式），技术岗和非技术岗都能提前刷题，适应AI时代大厂笔试新考验，真题紧跟大厂命题实时更新' },
 };
 
 function toggleInjPt(el) {
